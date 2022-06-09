@@ -1,0 +1,246 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{braket}
+
+%\usepackage{enumerate}
+%\usepackage{blindtext}
+
+\usepackage[left=3.25cm,top=3cm,right=2cm,bottom=3.25cm]{geometry}
+
+%Nuevos entornos
+\newtheorem{deff}{Definición}[section]
+
+%Enumeración
+\numberwithin{equation}{section}
+
+
+\title{Computación Cuántica}
+\author{Chenjie Huang}
+\date{}
+
+
+%Documento
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\thispagestyle{empty}
+
+\newpage
+
+\section{Introducción}
+
+Alguna breve introducción y tal???
+
+\subsection{Objetivos}
+
+(Pendiente)
+
+\begin{itemize}
+\item Introducción a la computación cuántica. Como la metodología de trabajo. Teoría matemática, espacios de Hilbelt y Producto tensorial.
+
+\item Estructura básica, qubits, y puertas cuánticas.
+
+\item Algoritmos cuánticos. Con ejemplos en qiskit.
+
+\begin{itemize}
+	\item Algoritmo de Deutsch
+	\item Algoritmo de Deutsch-Jozsa
+	\item Algoritmo de Búsqueda de Grover
+	\item Algoritmo de Periodicidad de Simon
+	\item Algoritmo de Factorización de Shor.
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Metodología}
+Lectura parcial de los libros que ha recomendado el tutor, seguidos de su discusión e implementación en Qiskit.(?)
+
+\subsection{Preliminares}
+%%Parte matemáticas. Hablar de Espacios Vectoriales. Espacios de hilbert. Producto tensorial. Productos <inner> >outer< con la notación braket.
+La Teoría Cuántica se apoya principalmente sobre álgebra lineal, concretamente sobre el espacio vectorial complejo de dimensión finita $\mathbb{C}^n$.
+En esta sección que servirá como preliminares como indica el título, nos centraremos en la teoría de álgebra lineal sobre el espacio vectorial complejo. 
+
+Estudiaremos los conceptos básicos de este campo y describiremos la notación estándar utilizada en el área de estudio de la mecánica cuántica. El objetivo es conseguir que este apartado sirva a modo de fundamento y bases para secciones posteriores y también como a modo de consulta posteriormente.
+
+\subsubsection{Espacios Vectoriales}
+
+Recordaremos la definición de espacio vectorial y nos familiarizaremos con la notación braket.%(???)
+
+\begin{deff}
+
+Un espacio vectorial sobre un cuerpo $\mathbb{K}$ es un conjunto no vacío $\mathbb{V}$, cuyo elementos llamaremos vectores, y llevan asociado dos operaciones, 
+\begin{itemize}
+
+\item La Suma, $\textbf{+}: \mathbb{V} \times \mathbb{V} \longrightarrow \mathbb{V}$
+
+\item El Producto por un escalar, $\textbf{$\cdot$}:\mathbb{K} \times \mathbb{V} \longrightarrow \mathbb{V}$
+
+\end{itemize}
+tal que $(\mathbb{V},+)$ cumple las propiedades de formar un \textbf{grupo abeliano} y el producto por un escalar $\cdot$ cumpla las propiedades de:
+\begin{itemize}
+
+\item Existencia de elemento neutro:
+\begin{equation}
+\exists e \in \mathbb{K} \text{ tal que } \forall v \in \mathbb{V},  e \cdot v = v
+\end{equation}
+
+\item Propiedad asociativa:
+\begin{equation}
+\forall a, b \in \mathbb{K}, \forall v \in \mathbb{V}, a\cdot(b\cdot v) = (a\cdot b)\cdot v
+\end{equation}
+
+\item Propiedad distributiva respecto a la suma de vectores:
+\begin{equation}
+\forall a \in \mathbb{K}, \forall u, v \in \mathbb{V}, a\cdot(u + v) = a\cdot u + a\cdot v
+\end{equation}
+
+\item Propiedad distributiva respecto a la suma de escalares:
+\begin{equation}
+\forall a, b \in \mathbb{K}, \forall v \in \mathbb{V}, (a + b)\cdot v = a\cdot v + b\cdot v
+\end{equation}
+
+\end{itemize}
+
+\end{deff}
+
+En el caso de que el cuerpo de escalares sea el de los complejos $\mathbb{C}$, se le denominará \textbf{espacio vectorial complejo}, siendo estas de gran interés para nuestro campo de estudio que es la mecánica cuántica.
+
+A partir de ahora usaremos la notación estándar de mecánica cuántica para referirnos a los elementos básicos de la álgebra lineal.
+
+Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{\varphi}$, donde usaremos $\ket{\cdot}$ para indicar que es un vector del espacio, denominado \textbf{\textit{ket}}.
+
+En cuanto al elemento neutro del espacio vectorial, el vector cero, lo denotaremos excepcionalmente como $\mathbf{0}$. Veremos posteriormente que usaremos $\ket{0}$ para referirnos a algo completamente diferente.
+
+Centrándonos más en $\mathbb{C}^n$, el espacio vectorial complejo cuyo elementos son $n$-tuplas $(z_1, z_2, \ldots z_n)$, usaremos a veces la notación de vector columna:
+$$\begin{bmatrix}
+z_1 \\ z_2 \\ \vdots \\ z_n
+\end{bmatrix}$$
+\subsubsection{Bases y dimensión}
+
+\begin{deff} Sea $\ket{v_1},\ket{v_2}, \ldots, \ket{v_n}$ vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{K}$. Diremos que un vector $\ket{v}\in\mathbb{V}$ es \textbf{combinación lineal} de ellos si existe $a_1, a_2, \ldots, a_n \in \mathbb{K}$ escalares tal que podemos escribir $\ket{v}$ como:
+\begin{equation}
+\ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}
+\end{equation}
+\end{deff}
+
+\begin{deff} Sea $\{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ un conjunto de vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{K}$. Diremos que son \textbf{linealmente dependientes} si existe $a_1, a_2, \ldots, a_n \in \mathbb{K}$, con $a_i \neq 0$ para al menos algún valor de $i$, tal que
+\begin{equation}
+a_1\ket{v_1} + a_2\ket{v_2} + \ldots + a_n\ket{v_n} = 0
+\end{equation}
+
+Además diremos que son \textbf{linealmente independientes} si no son linealmente dependientes. Es decir, si existe una combinación lineal de ellos, entonces los coeficientes son todos nulos.
+\end{deff}
+
+\begin{deff} Llamaremos entonces al conjunto $B = \{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ \textbf{base} del espacio $\mathbb{V}$ si:
+\begin{itemize}
+\item $B$ es linealmente independiente.
+
+\item $\forall \ket{v} \in \mathbb{V}$, $\ket{v}$ puede ser escrito como combinación lineal de vectores de $B$.
+\end{itemize}
+\end{deff}
+
+Además podemos asegurar la existencia de este conjunto para todo espacio vectorial y  nos referiremos como \textbf{dimensión} del espacio $\mathbb{V}$ al número $n$ de vectores del conjunto $B$.
+
+Como hemos hecho mención antes, nuestro interés se halla en espacios vectoriales de dimensión finita, por tanto haremos omiso de las cuestiones relacionadas con espacios de dimensión infinita.
+
+\subsubsection{Aplicaciones lineales y forma matricial}
+
+\begin{deff} Una aplicación lineal entre dos espacios vectoriales $\mathbb{V}$ y $\mathbb{W}$ sobre el mismo cuerpo $\mathbb{K}$ es una aplicación $f: \mathbb{V} \longrightarrow \mathbb{W}$ tal que es lineal sobre sus componentes, es decir, si $\ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}$ entonces se cumple:
+\begin{equation} \label{eq7}
+f(\ket{v}) = f(\sum_{i=1}^n a_i \cdot \ket{v_i}) = \sum_{i=1}^n a_i \cdot f(\ket{v_i})
+\end{equation}
+
+Diremos además que una aplicación lineal está definida sobre $\mathbb{V}$ para referirnos a que es una aplicación lineal de $\mathbb{V}$ a $\mathbb{V}$
+\end{deff}
+
+Un aplicación de gran importancia es la aplicación identidad, que denotaremos con $id_{\mathbb{V}}$ y cumple la propiedad de que $\forall \ket{v}\in\mathbb{V}$, $id_{\mathbb{V}}(\ket{v}) = \ket{v}$.
+
+Observando la expresión \ref{eq7} podemos llegar a la conclusión de que una aplicación lineal está completamente determinada por su acción sobre los elementos de una base, pues todo vector se puede expresar como combinación lineal de los vectores de una base.
+
+Una manera muy útil de expresar una aplicación lineal es a través de su expresión matricial. Veamos esto con la aplicación de $f:\mathbb{V} \longrightarrow \mathbb{W}$ sobre los vectores de las bases correspondientes. Sea $\{ \ket{v_1}, \ldots, \ket{v_m} \}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ la base correspondiente a $\mathbb{V}$ y $\mathbb{W}$.
+
+Entonces para cada j de $1$ a $m$ existirá $a_{1j}, \ldots, a_{nj} \in \mathbb{K}$ tal que
+\begin{equation} \label{eq8}
+f(\ket{v_j} = \sum_{i=1}^n a_{ij} \ket{w_i}
+\end{equation}
+por ser $f(\ket{v_j} \in \mathbb{W}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ base de $\mathbb{W}$.
+
+\begin{deff}Llamaremos entonces $A$ a la matriz formada por los elementos $a_{ij}$ de la ecuación \ref{eq8}, como representación matricial de la función $f$.
+\end{deff}
+
+Además tomando las coordenadas de un vector $\ket{v} = \sum_{j=1}^m z_j \ket{v_j}$ de $\mathbb{V}$ y su imagen por $f$ con la expresión \ref{eq8}:
+\begin{equation}
+f(\ket{v}) = f(\sum_{j=1}^m z_j \ket{v_j}) = \sum_{j=1}^m z_j f(\ket{v_j}) = \sum_{j=1}^m z_j (\sum_{i=1}^n a_{ij} \ket{w_i}) = 
+\sum_{i=1}^n (\sum_{j=1}^m a_{ij} z_{j}) \ket{w_i}
+\end{equation}
+podemos observar la aplicación de $f$ sobre el vector $\ket{v}$ no es más que el producto de la matriz $A$ con el vector $\ket{v}$ en columnas:
+\begin{equation}
+A\ket{v} = 
+\begin{bmatrix}
+a_{11} & a_{12} &\ldots & a_{1m} \\
+a_{21} & a_{22} &\ldots & a_{2m} \\
+\vdots & \vdots &\ddots & \vdots \\
+a_{n1} & a_{n2} &\ldots & a_{nm}
+\end{bmatrix}
+\begin{bmatrix}
+z_1 \\ z_2 \\ \vdots \\ z_m
+\end{bmatrix} =
+\begin{bmatrix}
+\sum_{j=1}^m a_{1j}z_j \\
+\sum_{j=1}^m a_{2j}z_j \\
+\vdots \\
+\sum_{j=1}^m a_{nj}z_j \\
+\end{bmatrix}
+\end{equation}
+
+\subsubsection{Producto Escalar}
+%Aplicaciones lineales y matrices
+
+%Bases
+
+%Producto escalar
+
+%Autovalores y autovectores puede ser.
+
+%Espacio de Gilbert y Matrices Adjuntas o Hermitian(buscar traducción)
+
+%Producto tensorial
+
+
+
+
+
+\newpage
+
+\section{Puertas Cuánticas}%Nombre pendiente
+
+\newpage
+
+\section{Algoritmos}
+
+\subsection{...}
+
+\newpage
+
+\section{Conclusión}
+
+\newpage
+
+\section{Bibliografía}
+%Dos libros...
+%https://es.wikipedia.org/wiki/Espacio_vectorial
+
+%https://ctan.org/pkg/braket
+
+\end{document}
