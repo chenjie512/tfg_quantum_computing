@@ -19,6 +19,8 @@
 %Enumeración
 \numberwithin{equation}{section}
 
+%Nuevo comandos
+\newcommand\norm[1]{\lVert#1\rVert}
 
 \title{Computación Cuántica}
 \author{Chenjie Huang}
@@ -75,7 +77,7 @@ Estudiaremos los conceptos básicos de este campo y describiremos la notación e
 
 \subsubsection{Espacios Vectoriales}
 
-Recordaremos la definición de espacio vectorial y nos familiarizaremos con la notación braket.%(???)
+%Recordaremos la definición de espacio vectorial y nos familiarizaremos con la notación braket.%(???)
 
 \begin{deff}
 
@@ -116,7 +118,7 @@ tal que $(\mathbb{V},+)$ cumple las propiedades de formar un \textbf{grupo abeli
 
 En el caso de que el cuerpo de escalares sea el de los complejos $\mathbb{C}$, se le denominará \textbf{espacio vectorial complejo}, siendo estas de gran interés para nuestro campo de estudio que es la mecánica cuántica.
 
-A partir de ahora usaremos la notación estándar de mecánica cuántica para referirnos a los elementos básicos de la álgebra lineal.
+A partir de ahora usaremos $\mathbb{C}$ como cuerpo de escalares del espacio vectorial junto a la notación estándar de mecánica cuántica para referirnos a los elementos básicos de la álgebra lineal.
 
 Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{\varphi}$, donde usaremos $\ket{\cdot}$ para indicar que es un vector del espacio, denominado \textbf{\textit{ket}}.
 
@@ -128,13 +130,13 @@ z_1 \\ z_2 \\ \vdots \\ z_n
 \end{bmatrix}$$
 \subsubsection{Bases y dimensión}
 
-\begin{deff} Sea $\ket{v_1},\ket{v_2}, \ldots, \ket{v_n}$ vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{K}$. Diremos que un vector $\ket{v}\in\mathbb{V}$ es \textbf{combinación lineal} de ellos si existe $a_1, a_2, \ldots, a_n \in \mathbb{K}$ escalares tal que podemos escribir $\ket{v}$ como:
+\begin{deff} Sea $\ket{v_1},\ket{v_2}, \ldots, \ket{v_n}$ vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que un vector $\ket{v}\in\mathbb{V}$ es \textbf{combinación lineal} de ellos si existe $a_1, a_2, \ldots, a_n \in \mathbb{C}$ escalares tal que podemos escribir $\ket{v}$ como:
 \begin{equation}
 \ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}
 \end{equation}
 \end{deff}
 
-\begin{deff} Sea $\{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ un conjunto de vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{K}$. Diremos que son \textbf{linealmente dependientes} si existe $a_1, a_2, \ldots, a_n \in \mathbb{K}$, con $a_i \neq 0$ para al menos algún valor de $i$, tal que
+\begin{deff} Sea $\{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ un conjunto de vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que son \textbf{linealmente dependientes} si existe $a_1, a_2, \ldots, a_n \in \mathbb{C}$, con $a_i \neq 0$ para al menos algún valor de $i$, tal que
 \begin{equation}
 a_1\ket{v_1} + a_2\ket{v_2} + \ldots + a_n\ket{v_n} = 0
 \end{equation}
@@ -156,7 +158,7 @@ Como hemos hecho mención antes, nuestro interés se halla en espacios vectorial
 
 \subsubsection{Aplicaciones lineales y forma matricial}
 
-\begin{deff} Una aplicación lineal entre dos espacios vectoriales $\mathbb{V}$ y $\mathbb{W}$ sobre el mismo cuerpo $\mathbb{K}$ es una aplicación $f: \mathbb{V} \longrightarrow \mathbb{W}$ tal que es lineal sobre sus componentes, es decir, si $\ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}$ entonces se cumple:
+\begin{deff} Una aplicación lineal entre dos espacios vectoriales $\mathbb{V}$ y $\mathbb{W}$ sobre el mismo cuerpo $\mathbb{C}$ es una aplicación $f: \mathbb{V} \longrightarrow \mathbb{W}$ tal que es lineal sobre sus componentes, es decir, si $\ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}$ entonces se cumple:
 \begin{equation} \label{eq7}
 f(\ket{v}) = f(\sum_{i=1}^n a_i \cdot \ket{v_i}) = \sum_{i=1}^n a_i \cdot f(\ket{v_i})
 \end{equation}
@@ -170,7 +172,7 @@ Observando la expresión \ref{eq7} podemos llegar a la conclusión de que una ap
 
 Una manera muy útil de expresar una aplicación lineal es a través de su expresión matricial. Veamos esto con la aplicación de $f:\mathbb{V} \longrightarrow \mathbb{W}$ sobre los vectores de las bases correspondientes. Sea $\{ \ket{v_1}, \ldots, \ket{v_m} \}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ la base correspondiente a $\mathbb{V}$ y $\mathbb{W}$.
 
-Entonces para cada j de $1$ a $m$ existirá $a_{1j}, \ldots, a_{nj} \in \mathbb{K}$ tal que
+Entonces para cada j de $1$ a $m$ existirá $a_{1j}, \ldots, a_{nj} \in \mathbb{C}$ tal que
 \begin{equation} \label{eq8}
 f(\ket{v_j} = \sum_{i=1}^n a_{ij} \ket{w_i}
 \end{equation}
@@ -204,16 +206,153 @@ z_1 \\ z_2 \\ \vdots \\ z_m
 \end{bmatrix}
 \end{equation}
 
-\subsubsection{Producto Escalar}
-%Aplicaciones lineales y matrices
+\subsubsection{Producto Escalar y Espacios de Hilbert}
+%Intro de producto escalar (???)
 
-%Bases
+\begin{deff}Un \textbf{producto escalar}, o también conocido como producto interno, es una aplicación $(\cdot, \cdot): \mathbb{V}\times\mathbb{V} \longrightarrow \mathbb{C}$ que cumple:
+\begin{itemize}
 
-%Producto escalar
+\item Es definida positiva,
+\begin{equation}
+(\ket{v}, \ket{v}) \geq 0
+\end{equation} y
+\begin{equation}
+(\ket{v}, \ket{v}) = 0 \Leftrightarrow \ket{v} = 0
+\end{equation}.
 
-%Autovalores y autovectores puede ser.
+\item Es lineal en el primer argumento y lineal conjugada en el segundo,\textbf{(Creo que está al revés, preguntar!!!)}
+\begin{equation}
+(a\ket{u} + b\ket{v}, \ket{w}) = a\cdot(\ket{u}, \ket{w}) + b\cdot(\ket{v}, \ket{w})
+\end{equation}
+\begin{equation}
+(\ket{u}, a\ket{v} + b\ket{w}) = \bar{a} \cdot (\ket{u}, \ket{v}) + \bar{b} \cdot (\ket{u}, \ket{w})
+\end{equation}
 
-%Espacio de Gilbert y Matrices Adjuntas o Hermitian(buscar traducción)
+\item Es anti-simétrico,
+\begin{equation}
+(\ket{u}, \ket{v}) = \overline{(\ket{v}, \ket{u})}
+\end{equation}
+\end{itemize}
+donde $a,b \in \mathbb{C}$, $\ket{u}, \ket{v}, \ket{w} \in \mathbb{V}$ y $\bar{a} \in \mathbb{C}$ es el conjugado complejo del elemento $a$.
+\end{deff}
+La notación estándar del producto escalar en mecánica cuántica no es $(\ket{u}, \ket{v})$, sino $\braket{u|v}$, donde $\ket{u}$ y $\ket{v}$ son vectores de $\mathbb{V}$ y $\bra{u}$ denota el vector dual al vector $\ket{u}$, también conocido como \textbf{bra}. El dual es una aplicación lineal cuya definición es $\bra{u}(\ket{v}) := \braket{u|v} = (\ket{u},\ket{v})$. A partir de ahora, usaremos más convenientemente esta notación.
+
+\begin{deff}Diremos que dos vectores $\ket{u}$ y $\ket{v}$ son \textbf{ortogonales} si su producto escalar es 0.
+
+Además definiremos como \textbf{norma} del vector como 
+\begin{equation}
+\norm{\ket{v}} = \sqrt{\braket{v|v}}
+\end{equation}
+y diremos que $\ket{v}$ es unitario o normalizado si $\norm{\ket{v}} = 1$.
+\end{deff}
+
+\begin{deff}Por tanto diremos que un conjunto, $\ket{i} \in \mathbb{V}$ de vectores es \textbf{ortonormal} si son vectores unitarios y además son ortogonales entre sí. Es decir,
+\begin{equation}
+\forall \ket{i},\ket{j} \in \mathbb{V} \:
+\braket{i|j} = \delta_{ij} = \left\{ 
+\begin{array}{lcc}
+1 & si & i = j \\
+0 & si & i \neq j
+\end{array} \right.
+\end{equation}
+\end{deff}
+
+Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un producto escalar. Trabajaremos a partir de ahora en un espacio vectorial complejo de dimensión finita y con un producto escalar. Dicho espacio es denominado usualmente como \textbf{espacio de Hilbert}. En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
+No entraremos en detalles en el caso de que la dimensión sea infinita, ya que para hablar de espacio de Hilbert sería necesario que se cumplan alguna propiedad extra. Nos centraremos en el caso de la dimensión finita cuando hablemos de espacio de Hilbert.
+
+Podemos ver ahora que el producto escalar en un espacio de Hilbert tiene una representación matricial muy útil.
+Consideramos $\ket{u} = \sum_i u_i\ket{i}$ y $\ket{v} = \sum_j v_j\ket{j}$ con $\ket{i}, \ket{j}$ vectores de una base ortonormal $\{ \ket{1}, \ket{2}, \ldots, \ket{n} \}$.
+Entonces el producto escalar,
+\begin{equation}
+\braket{u|v} = (\sum_i u_i\ket{i}, \sum_j v_j\ket{j}) = \sum_{ij} \bar{u_i} v_j\braket{i|j} = \sum_{ij} \bar{u_i} v_j\delta_{ij} = \sum_i \bar{u_i} v_i
+\end{equation}
+que claramente es el producto entre un vector fila conjugado y uno columna,
+\begin{equation}
+\braket{u|v} =
+\left[ \bar{u_1}  \bar{u_2}  \ldots  \bar{u_n} \right]
+\begin{bmatrix}
+v_1 \\ v_2 \\ \vdots \\ v_n
+\end{bmatrix} =
+\sum_i \bar{u_i} v_i
+\end{equation}
+
+Podemos observar también que el vector dual $\bra{u}$ se puede expresar como un vector fila cuyo componentes están conjugados.
+
+Una manera útil de ver las aplicaciones lineales es a través de su representación como \textbf{producto exterior}.
+
+\begin{deff}LLamaremos producto exterior a la aplicación $\ket{u}\bra{v}: \mathbb{V} \longrightarrow \mathbb{W}$, donde $\ket{v} \in \mathbb{V}$ y $\ket{u} \in \mathbb{W}$,
+\begin{equation}
+\ket{u}\bra{v}(\ket{v'}) = \ket{u}\braket{v|v'} = \braket{v|v'} \cdot \ket{u}
+\end{equation}
+\end{deff}
+
+Considerando ahora una base ortonormal $\{\ket{i}\}_{1\leq i\leq n}$, podemos deducir la propiedad de completitud del producto exterior. Sea el vector $\ket{v} = \sum_i v_i\ket{i}$, teniendo en cuenta que $\braket{i|v} = v_i$, tenemos que la aplicación de $\sum_i \ket{i}\bra{i}$ sobre el vector
+\begin{equation}
+(\sum_i \ket{i}\bra{i}) (\ket{v}) = \sum_i \ket{i}\braket{i|v} = \sum_i v_i \ket{i} = \ket{v}
+\end{equation}
+Lo que nos permite llegar a la conclusión de que $\sum_i \ket{i}\bra{i}$ es equivalente a la identidad.
+
+%Esta parte necesita una revisión
+Teniendo en mente esta propiedad podemos conseguir la expresión de un aplicación lineal $f: \mathbb{V} \longrightarrow \mathbb{W}$, considerando $\ket{v_i}$ y $\ket{w_j}$ un base ortonormal de ambos espacios. Con la propiedad de completitud tenemos que
+\begin{equation}
+f \equiv id_{\mathbb{W}} \circ f \circ id_{\mathbb{V}} \equiv
+\sum_{ij} (\ket{w_j}\bra{w_j}) \circ f \circ (\ket{v_i}\bra{v_i}) \equiv \sum_{ij} \braket{w_j|f(v_i)} \ket{w_j}\bra{v_i}
+\end{equation}
+donde podemos concluir que el valor $\braket{w_j|f(v_i)}$ es el elemento de la columna $i$ y fila $j$ de la representación matricial de $f$ en las bases correspondientes.
+
+Además observamos que esto concuerda con la expresión de una vector y su dual como vector fila y columna pues el producto resultante de
+\begin{equation}
+\begin{bmatrix}
+w_1 \\ \vdots \\ w_n
+\end{bmatrix}
+\left[ v_1 \ldots v_n \right]
+= \begin{bmatrix}
+w_1 v_1 & \ldots & w_1 v_n \\
+\vdots & \ddots & \vdots \\
+w_n v_1 & \ldots & w_n v_n
+\end{bmatrix}
+\end{equation} es una matriz, correspondiente a la aplicación lineal.
+
+\subsubsection{Matrices Adjuntas o Hermitianas}
+Veremos ahora un tipo de matriz y su función asociada que se comporta de una manera muy buena con el espacio de Hilbert.
+
+\begin{deff}Consideramos una matriz $A \in \mathbb{C}^{n\times n}$, definiremos su \textbf{adjunta} o \textbf{conjugada Hermitiana} como la matriz traspuesta con los elementos conjugados y lo denotaremos como $A^\dagger = \overline{A^T}$
+
+Además diremos que $A$ es \textbf{hermintiana} si $A^\dagger = A$ y llamaremos a la aplicación lineal asociada, aplicación \textbf{auto-adjunta}.
+
+\end{deff}
+
+Podemos ver fácilmente que este tipo de matrices cumple ciertas propiedades,
+\begin{itemize}
+
+\item $\forall \ket{u}, \ket{v} \in \mathbb{V}$
+\begin{equation}
+(\ket{u}, A \ket{w}) = (A^\dagger \ket{u},\ket{w})
+\end{equation}
+
+\item Definiremos por convenio la adjunta de un vector $\ket{v}^\dagger = \bra{v}$, que concuerda con toda la notación que hemos estado usando. De esta manera considerando que $(AB)^\dagger = B^\dagger A^\dagger$, tenemos que
+\begin{equation}
+(A\ket{v})^\dagger = \bra{v}A^\dagger
+\end{equation}
+\end{itemize}
+%alguna propiedad más(???)
+
+Otras matrices que nos interesan son las matrices \textbf{unitarias}. Son un tipo de matrices invertibles que cumplen que
+\begin{equation}
+U * U^\dagger = U^\dagger * U = I_n
+\end{equation}
+
+\subsubsection{Producto Tensorial}
+
+%Aplicaciones lineales y matrices[x]
+
+%Bases[x]
+
+%Producto escalar[x]
+
+%Autovalores y autovectores puede ser.[Por ahora no]
+
+%Matrices Adjuntas o Hermitian(buscar traducción)
 
 %Producto tensorial
 
