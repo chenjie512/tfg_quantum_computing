@@ -344,6 +344,39 @@ U * U^\dagger = U^\dagger * U = I_n
 
 \subsubsection{Producto Tensorial}
 
+En esta sección estudiaremos el producto tensorial entre espacios vectoriales, una herramienta esencial para trabajar con sistemas de varios elementos en esta área. Hablaremos de estos sistemas en secciones posteriores, por ahora nos centraremos en el producto tensorial.
+
+\begin{deff}
+Consideramos $\mathbb{V}$ y $\mathbb{W}$ dos espacios vectoriales, llamaremos \textbf{producto escalar} a la aplicación \underline{bilineal} $\otimes : \mathbb{V}\times \mathbb{W} \longrightarrow \mathbb{V}\otimes \mathbb{W}$, que lleva $\ket{v} \in \mathbb{V}$ y $\ket{w} \in \mathbb{W}$ a un elemento de $\mathbb{V} \otimes \mathbb{W}$ que llamaremos \textbf{tensor} y lo denotaremos por $\ket{v}\otimes \ket{w}$, o de manera abreviada $\ket{v}\ket{w}$, $\ket{vw}$.
+\end{deff}
+
+El espacio de la imagen sigue siendo un espacio vectorial y de hecho, si tomamos $\lbrace \ket{v_1}, \ldots, \ket{v_m} \rbrace$ y $\lbrace \ket{w_1}, \ldots, \ket{w_n} \rbrace$ como bases de $\mathbb{V}$ y $\mathbb{W}$ respectivamente, tenemos que
+\begin{equation}
+\lbrace \ket{v_i}\otimes\ket{w_j} \mid 1\leq i \leq m, 1\leq j \leq n \rbrace
+\end{equation}
+es una base de $\mathbb{V}\otimes\mathbb{W}$. Y por tanto, la dimensión como espacio vectorial de $\mathbb{V}\otimes\mathbb{W}$ es $m\cdot n$ siendo $m$ y $n$ la dimensión de $\mathbb{V}$ y $\mathbb{W}$ respectivamente.
+
+Las aplicaciones lineales del espacio $\mathbb{V}\otimes\mathbb{W}$ que consideraremos serán aquellas resultantes del producto tensorial de dos aplicaciones lineales del espacio de los factores, de manera que cumplan
+\begin{equation}
+(f\otimes g) (\ket{v}\otimes\ket{w}) = f(\ket{v}) \otimes g(\ket{w}).
+\end{equation}
+
+De hecho, toda aplicación lineal de $\mathbb{V}\otimes\mathbb{W}$ se puede representar como combinación lineal de aplicaciones de $\mathbb{V}$ y $\mathbb{W}$ con el producto tensorial, actuando como espacio resultante del producto tensorial del espacio de los endomorfismos.
+
+En cuanto a la práctica resulta muy cómodo trabajar con la representación matricial de estas aplicaciones y el producto de Kronecker. Pues si consideramos $A$ una matriz $m\times n$ y $B$ una matriz $p\times q$, su producto tensorial sería:
+\begin{equation}
+A\otimes B =
+\begin{bmatrix}
+a_{11}B & a_{12}B & \ldots & a_{1n}B \\
+a_{21}B & a_{22}B & \ldots & a_{2n}B \\
+\vdots & \vdots & & \ddots & \vdots \\
+a_{m1}B & a_{m2}B & \ldots & a_{mn}B \\
+\end{bmatrix}
+\end{equation}
+donde $a_{ij}$ es el elemento de la posición $(ij)$ de la matriz A.
+
+De la misma manera se puede operar con los vectores columnas del espacio vectorial $\mathbb{C}^n$.
+
 %Aplicaciones lineales y matrices[x]
 
 %Bases[x]
@@ -380,6 +413,10 @@ U * U^\dagger = U^\dagger * U = I_n
 %Dos libros...
 %https://es.wikipedia.org/wiki/Espacio_vectorial
 
+%https://en.wikipedia.org/wiki/Tensor_product
+
 %https://ctan.org/pkg/braket
+
+
 
 \end{document}
