@@ -49,7 +49,7 @@ Alguna breve introducción y tal???
 (Pendiente)
 
 \begin{itemize}
-\item Introducción a la computación cuántica. Como la metodología de trabajo. Teoría matemática, espacios de Hilbelt y Producto tensorial.
+\item Introducción a la computación cuántica. Como la metodología de trabajo. Teoría matemática, espacios de Hilbert y Producto tensorial.
 
 \item Estructura básica, qubits, y puertas cuánticas.
 
@@ -68,14 +68,16 @@ Alguna breve introducción y tal???
 \subsection{Metodología}
 Lectura parcial de los libros que ha recomendado el tutor, seguidos de su discusión e implementación en Qiskit.(?)
 
-\subsection{Preliminares}
-%%Parte matemáticas. Hablar de Espacios Vectoriales. Espacios de hilbert. Producto tensorial. Productos <inner> >outer< con la notación braket.
+\section{Preliminares}
+
 La Teoría Cuántica se apoya principalmente sobre álgebra lineal, concretamente sobre el espacio vectorial complejo de dimensión finita $\mathbb{C}^n$.
 En esta sección que servirá como preliminares como indica el título, nos centraremos en la teoría de álgebra lineal sobre el espacio vectorial complejo. 
 
-Estudiaremos los conceptos básicos de este campo y describiremos la notación estándar utilizada en el área de estudio de la mecánica cuántica. El objetivo es conseguir que este apartado sirva a modo de fundamento y bases para secciones posteriores y también como a modo de consulta posteriormente.
+%Estudiaremos los conceptos básicos de este campo y describiremos la notación estándar utilizada en el área de estudio de la mecánica cuántica.%
 
-\subsubsection{Espacios Vectoriales}
+El objetivo es conseguir que este apartado sirva a modo de fundamento y bases para secciones posteriores y también de consulta posteriormente.
+
+\subsection{Espacios Vectoriales}
 
 %Recordaremos la definición de espacio vectorial y nos familiarizaremos con la notación braket.%(???)
 
@@ -120,7 +122,7 @@ En el caso de que el cuerpo de escalares sea el de los complejos $\mathbb{C}$, s
 
 A partir de ahora usaremos $\mathbb{C}$ como cuerpo de escalares del espacio vectorial junto a la notación estándar de mecánica cuántica para referirnos a los elementos básicos de la álgebra lineal.
 
-Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{\varphi}$, donde usaremos $\ket{\cdot}$ para indicar que es un vector del espacio, denominado \textbf{\textit{ket}}.
+Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{v}$, donde usaremos $\ket{\cdot}$ para indicar que es un vector del espacio, denominado \textbf{\textit{ket}}.
 
 En cuanto al elemento neutro del espacio vectorial, el vector cero, lo denotaremos excepcionalmente como $\mathbf{0}$. Veremos posteriormente que usaremos $\ket{0}$ para referirnos a algo completamente diferente.
 
@@ -128,15 +130,16 @@ Centrándonos más en $\mathbb{C}^n$, el espacio vectorial complejo cuyo element
 $$\begin{bmatrix}
 z_1 \\ z_2 \\ \vdots \\ z_n
 \end{bmatrix}$$
-\subsubsection{Bases y dimensión}
 
-\begin{deff} Sea $\ket{v_1},\ket{v_2}, \ldots, \ket{v_n}$ vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que un vector $\ket{v}\in\mathbb{V}$ es \textbf{combinación lineal} de ellos si existe $a_1, a_2, \ldots, a_n \in \mathbb{C}$ escalares tal que podemos escribir $\ket{v}$ como:
+\subsection{Bases y dimensión}
+
+\begin{deff} Sea $\ket{v_1},\ket{v_2}, \ldots, \ket{v_n}$ vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que un vector $\ket{v}\in\mathbb{V}$ es \textbf{combinación lineal} de ellos si existen $a_1, a_2, \ldots, a_n \in \mathbb{C}$ escalares tal que podemos escribir $\ket{v}$ como:
 \begin{equation}
 \ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}
 \end{equation}
 \end{deff}
 
-\begin{deff} Sea $\{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ un conjunto de vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que son \textbf{linealmente dependientes} si existe $a_1, a_2, \ldots, a_n \in \mathbb{C}$, con $a_i \neq 0$ para al menos algún valor de $i$, tal que
+\begin{deff} Sea $\{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ un conjunto de vectores de un cierto espacio vectorial $\mathbb{V}$ sobre $\mathbb{C}$. Diremos que son \textbf{linealmente dependientes} si existen $a_1, a_2, \ldots, a_n \in \mathbb{C}$, con algún $a_i \neq 0$, tal que
 \begin{equation}
 a_1\ket{v_1} + a_2\ket{v_2} + \ldots + a_n\ket{v_n} = 0
 \end{equation}
@@ -152,11 +155,11 @@ Además diremos que son \textbf{linealmente independientes} si no son linealment
 \end{itemize}
 \end{deff}
 
-Además podemos asegurar la existencia de este conjunto para todo espacio vectorial y  nos referiremos como \textbf{dimensión} del espacio $\mathbb{V}$ al número $n$ de vectores del conjunto $B$.
+Además podemos asegurar la existencia de este conjunto para todo espacio vectorial. Y también de que el número de elementos de dos bases distintas del mismo espacio vectorial coincide y nos referiremos a este número como \textbf{dimensión} del espacio $\mathbb{V}$.
 
 Como hemos hecho mención antes, nuestro interés se halla en espacios vectoriales de dimensión finita, por tanto haremos omiso de las cuestiones relacionadas con espacios de dimensión infinita.
 
-\subsubsection{Aplicaciones lineales y forma matricial}
+\subsection{Aplicaciones lineales y forma matricial}
 
 \begin{deff} Una aplicación lineal entre dos espacios vectoriales $\mathbb{V}$ y $\mathbb{W}$ sobre el mismo cuerpo $\mathbb{C}$ es una aplicación $f: \mathbb{V} \longrightarrow \mathbb{W}$ tal que es lineal sobre sus componentes, es decir, si $\ket{v} = \sum_{i=1}^n a_i \cdot \ket{v_i}$ entonces se cumple:
 \begin{equation} \label{eq7}
@@ -170,18 +173,18 @@ Un aplicación de gran importancia es la aplicación identidad, que denotaremos 
 
 Observando la expresión \ref{eq7} podemos llegar a la conclusión de que una aplicación lineal está completamente determinada por su acción sobre los elementos de una base, pues todo vector se puede expresar como combinación lineal de los vectores de una base.
 
-Una manera muy útil de expresar una aplicación lineal es a través de su expresión matricial. Veamos esto con la aplicación de $f:\mathbb{V} \longrightarrow \mathbb{W}$ sobre los vectores de las bases correspondientes. Sea $\{ \ket{v_1}, \ldots, \ket{v_m} \}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ la base correspondiente a $\mathbb{V}$ y $\mathbb{W}$.
+Una manera muy útil de expresar una aplicación lineal es a través de su expresión matricial. Veamos esto con la aplicación de $f:\mathbb{V} \longrightarrow \mathbb{W}$ sobre los vectores de las bases correspondientes. Sea $\{ \ket{v_1}, \ldots, \ket{v_m} \}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ bases correspondientes a $\mathbb{V}$ y $\mathbb{W}$.
 
-Entonces para cada j de $1$ a $m$ existirá $a_{1j}, \ldots, a_{nj} \in \mathbb{C}$ tal que
+Entonces para cada j de $1$ a $m$ existirán $a_{1j}, \ldots, a_{nj} \in \mathbb{C}$ tal que
 \begin{equation} \label{eq8}
-f(\ket{v_j} = \sum_{i=1}^n a_{ij} \ket{w_i}
+f(\ket{v_j}) = \sum_{i=1}^n a_{ij} \ket{w_i}
 \end{equation}
-por ser $f(\ket{v_j} \in \mathbb{W}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ base de $\mathbb{W}$.
+por ser $f(\ket{v_j}) \in \mathbb{W}$ y $\{ \ket{w_1}, \ldots, \ket{w_n} \}$ base de $\mathbb{W}$.
 
-\begin{deff}Llamaremos entonces $A$ a la matriz formada por los elementos $a_{ij}$ de la ecuación \ref{eq8}, como representación matricial de la función $f$.
+\begin{deff}Llamaremos entonces $A$ a la matriz formada por los elementos $a_{ij}$ de la ecuación \ref{eq8} en la posición $(ij)$ en la matriz, como representación matricial de la función $f$.
 \end{deff}
 
-Además tomando las coordenadas de un vector $\ket{v} = \sum_{j=1}^m z_j \ket{v_j}$ de $\mathbb{V}$ y su imagen por $f$ con la expresión \ref{eq8}:
+Además, tomando las \textbf{coordenadas} $\boldsymbol{z_j}$ de un vector $\ket{v} = \sum_{j=1}^m \boldsymbol{z_j} \ket{v_j}$ de $\mathbb{V}$ y su imagen por $f$ con la expresión \ref{eq8}:
 \begin{equation}
 f(\ket{v}) = f(\sum_{j=1}^m z_j \ket{v_j}) = \sum_{j=1}^m z_j f(\ket{v_j}) = \sum_{j=1}^m z_j (\sum_{i=1}^n a_{ij} \ket{w_i}) = 
 \sum_{i=1}^n (\sum_{j=1}^m a_{ij} z_{j}) \ket{w_i}
@@ -206,7 +209,7 @@ z_1 \\ z_2 \\ \vdots \\ z_m
 \end{bmatrix}
 \end{equation}
 
-\subsubsection{Producto Escalar y Espacios de Hilbert}
+\subsection{Producto Escalar y Espacios de Hilbert}
 %Intro de producto escalar (???)
 
 \begin{deff}Un \textbf{producto escalar}, o también conocido como producto interno, es una aplicación $(\cdot, \cdot): \mathbb{V}\times\mathbb{V} \longrightarrow \mathbb{C}$ que cumple:
@@ -218,7 +221,7 @@ z_1 \\ z_2 \\ \vdots \\ z_m
 \end{equation} y
 \begin{equation}
 (\ket{v}, \ket{v}) = 0 \Leftrightarrow \ket{v} = 0
-\end{equation}.
+\end{equation}
 
 \item Es lineal en el primer argumento y lineal conjugada en el segundo,\textbf{(Creo que está al revés, preguntar!!!)}
 \begin{equation}
@@ -235,7 +238,7 @@ z_1 \\ z_2 \\ \vdots \\ z_m
 \end{itemize}
 donde $a,b \in \mathbb{C}$, $\ket{u}, \ket{v}, \ket{w} \in \mathbb{V}$ y $\bar{a} \in \mathbb{C}$ es el conjugado complejo del elemento $a$.
 \end{deff}
-La notación estándar del producto escalar en mecánica cuántica no es $(\ket{u}, \ket{v})$, sino $\braket{u|v}$, donde $\ket{u}$ y $\ket{v}$ son vectores de $\mathbb{V}$ y $\bra{u}$ denota el vector dual al vector $\ket{u}$, también conocido como \textbf{bra}. El dual es una aplicación lineal cuya definición es $\bra{u}(\ket{v}) := \braket{u|v} = (\ket{u},\ket{v})$. A partir de ahora, usaremos más convenientemente esta notación.
+La notación estándar del producto escalar en mecánica cuántica no es $(\ket{u}, \ket{v})$, sino $\braket{u|v}$, donde $\ket{u}$ y $\ket{v}$ son vectores de $\mathbb{V}$ y $\bra{u}$ denota el vector dual al vector $\ket{u}$, también conocido como \textbf{bra}. El dual es una aplicación lineal cuya definición es $\bra{u}(\ket{v}) := \braket{u|v} = (\ket{u},\ket{v})$. A partir de ahora, usaremos más esta notación.
 
 \begin{deff}Diremos que dos vectores $\ket{u}$ y $\ket{v}$ son \textbf{ortogonales} si su producto escalar es 0.
 
@@ -257,7 +260,13 @@ y diremos que $\ket{v}$ es unitario o normalizado si $\norm{\ket{v}} = 1$.
 \end{equation}
 \end{deff}
 
-Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un producto escalar. Trabajaremos a partir de ahora en un espacio vectorial complejo de dimensión finita y con un producto escalar. Dicho espacio es denominado usualmente como \textbf{espacio de Hilbert}. En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
+Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un producto escalar. Trabajaremos a partir de ahora en un espacio vectorial complejo de dimensión finita y con un producto escalar. Dicho espacio es denominado usualmente como \textbf{espacio de Hilbert}.
+
+\begin{deff}\textbf{Espacio de Hilbert}
+(falta)(y buscar referencia)
+\end{deff}
+
+ En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
 No entraremos en detalles en el caso de que la dimensión sea infinita, ya que para hablar de espacio de Hilbert sería necesario que se cumplan alguna propiedad extra. Nos centraremos en el caso de la dimensión finita cuando hablemos de espacio de Hilbert.
 
 Podemos ver ahora que el producto escalar en un espacio de Hilbert tiene una representación matricial muy útil.
@@ -276,11 +285,11 @@ v_1 \\ v_2 \\ \vdots \\ v_n
 \sum_i \bar{u_i} v_i
 \end{equation}
 
-Podemos observar también que el vector dual $\bra{u}$ se puede expresar como un vector fila cuyo componentes están conjugados.
+Podemos observar también que el vector dual $\bra{u}$ se puede expresar como un vector fila cuyas componentes están conjugadas.
 
 Una manera útil de ver las aplicaciones lineales es a través de su representación como \textbf{producto exterior}.
 
-\begin{deff}LLamaremos producto exterior a la aplicación $\ket{u}\bra{v}: \mathbb{V} \longrightarrow \mathbb{W}$, donde $\ket{v} \in \mathbb{V}$ y $\ket{u} \in \mathbb{W}$,
+\begin{deff}Llamaremos producto exterior a la aplicación $\ket{u}\bra{v}: \mathbb{V} \longrightarrow \mathbb{W}$, donde $\ket{v} \in \mathbb{V}$ y $\ket{u} \in \mathbb{W}$,
 \begin{equation}
 \ket{u}\bra{v}(\ket{v'}) = \ket{u}\braket{v|v'} = \braket{v|v'} \cdot \ket{u}
 \end{equation}
@@ -300,7 +309,7 @@ f \equiv id_{\mathbb{W}} \circ f \circ id_{\mathbb{V}} \equiv
 \end{equation}
 donde podemos concluir que el valor $\braket{w_j|f(v_i)}$ es el elemento de la columna $i$ y fila $j$ de la representación matricial de $f$ en las bases correspondientes.
 
-Además observamos que esto concuerda con la expresión de una vector y su dual como vector fila y columna pues el producto resultante de
+Además observamos que esto concuerda con la expresión de un vector y su dual como vector fila y columna pues el producto resultante de
 \begin{equation}
 \begin{bmatrix}
 w_1 \\ \vdots \\ w_n
@@ -313,7 +322,7 @@ w_n v_1 & \ldots & w_n v_n
 \end{bmatrix}
 \end{equation} es una matriz, correspondiente a la aplicación lineal.
 
-\subsubsection{Matrices Adjuntas o Hermitianas}
+\subsection{Matrices Adjuntas o Hermitianas}
 Veremos ahora un tipo de matriz y su función asociada que se comporta de una manera muy buena con el espacio de Hilbert.
 
 \begin{deff}Consideramos una matriz $A \in \mathbb{C}^{n\times n}$, definiremos su \textbf{adjunta} o \textbf{conjugada Hermitiana} como la matriz traspuesta con los elementos conjugados y lo denotaremos como $A^\dagger = \overline{A^T}$
@@ -322,7 +331,7 @@ Además diremos que $A$ es \textbf{hermintiana} si $A^\dagger = A$ y llamaremos 
 
 \end{deff}
 
-Podemos ver fácilmente que este tipo de matrices cumple ciertas propiedades,
+Podemos ver fácilmente que este tipo de matrices cumplen ciertas propiedades,
 \begin{itemize}
 
 \item $\forall \ket{u}, \ket{v} \in \mathbb{V}$
@@ -330,7 +339,7 @@ Podemos ver fácilmente que este tipo de matrices cumple ciertas propiedades,
 (\ket{u}, A \ket{w}) = (A^\dagger \ket{u},\ket{w})
 \end{equation}
 
-\item Definiremos por convenio la adjunta de un vector $\ket{v}^\dagger = \bra{v}$, que concuerda con toda la notación que hemos estado usando. De esta manera considerando que $(AB)^\dagger = B^\dagger A^\dagger$, tenemos que
+\item Definiremos por convenio la adjunta de un vector $\ket{v}^\dagger = \bra{v}$, que concuerda con toda la notación que hemos estado usando. De esta manera, teniendo en cuenta que $(AB)^\dagger = B^\dagger A^\dagger$, tenemos que
 \begin{equation}
 (A\ket{v})^\dagger = \bra{v}A^\dagger
 \end{equation}
@@ -342,9 +351,9 @@ Otras matrices que nos interesan son las matrices \textbf{unitarias}. Son un tip
 U * U^\dagger = U^\dagger * U = I_n
 \end{equation}
 
-\subsubsection{Producto Tensorial}
+\subsection{Producto Tensorial}
 
-En esta sección estudiaremos el producto tensorial entre espacios vectoriales, una herramienta esencial para trabajar con sistemas de varios elementos en esta área. Hablaremos de estos sistemas en secciones posteriores, por ahora nos centraremos en el producto tensorial.
+En esta sección estudiaremos el producto tensorial entre espacios vectoriales, una herramienta esencial para trabajar con sistemas cuánticos de varios elementos en esta área. Hablaremos de estos sistemas en secciones posteriores, por ahora nos centraremos en el producto tensorial.
 
 \begin{deff}
 Consideramos $\mathbb{V}$ y $\mathbb{W}$ dos espacios vectoriales, llamaremos \textbf{producto escalar} a la aplicación \underline{bilineal} $\otimes : \mathbb{V}\times \mathbb{W} \longrightarrow \mathbb{V}\otimes \mathbb{W}$, que lleva $\ket{v} \in \mathbb{V}$ y $\ket{w} \in \mathbb{W}$ a un elemento de $\mathbb{V} \otimes \mathbb{W}$ que llamaremos \textbf{tensor} y lo denotaremos por $\ket{v}\otimes \ket{w}$, o de manera abreviada $\ket{v}\ket{w}$, $\ket{vw}$.
