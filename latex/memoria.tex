@@ -272,7 +272,7 @@ Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un 
 (falta)(y buscar referencia)
 \end{deff}
 
- En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
+En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
 No entraremos en detalles en el caso de que la dimensión sea infinita, ya que para hablar de espacio de Hilbert sería necesario que se cumplan alguna propiedad extra. Nos centraremos en el caso de la dimensión finita cuando hablemos de espacio de Hilbert.
 
 Podemos ver ahora que el producto escalar en un espacio de Hilbert tiene una representación matricial muy útil.
@@ -390,7 +390,7 @@ El espacio de la imagen sigue siendo un espacio vectorial y de hecho, si tomamos
 es una base de $\mathbb{V}\otimes\mathbb{W}$. Y por tanto, la dimensión como espacio vectorial de $\mathbb{V}\otimes\mathbb{W}$ es $m\cdot n$ siendo $m$ y $n$ la dimensión de $\mathbb{V}$ y $\mathbb{W}$ respectivamente.
 
 Las aplicaciones lineales del espacio $\mathbb{V}\otimes\mathbb{W}$ que consideraremos serán aquellas resultantes del producto tensorial de dos aplicaciones lineales del espacio de los factores, de manera que cumplan
-\begin{equation}
+\begin{equation} \label{prtensorial_aplineal}
 (f\otimes g) (\ket{v}\otimes\ket{w}) = f(\ket{v}) \otimes g(\ket{w}).
 \end{equation}
 
@@ -463,7 +463,7 @@ Conocemos el concepto de bit, que es un elemento de un sistema con dos estados p
 \end{equation}
 Con $\alpha$ y $\beta$ números complejos que cumplen que $|\alpha|^2 + |\beta|^2 = 1$.
 \end{deff}
-Se entiende fácilmente el estado de un qubit como un vector del espacio vectorial complejo de dimensión 2, restringido a la circunferencia unidad, donde los estados $\ket{0}$ y $\ket{1}$ son los elementos de la base ortonormal del espacio con $\alpha$ y $\beta$ como coordenadas del vector.
+Se entiende fácilmente el estado de un qubit como un vector del espacio vectorial complejo de dimensión 2, restringido a la circunferencia unidad, donde los estados $\ket{0}$ y $\ket{1}$ son los elementos de la base ortonormal del espacio con $\alpha$ y $\beta$ como coordenadas del vector de norma 1.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.3]{qubit_vector}
@@ -490,7 +490,7 @@ Tomando ahora coordenadas polares $r_0 = \cos(\theta)$, $r_1 = \sin(\theta)$ y e
 \end{equation}
 Considerando $\theta$ y $\varphi$ como coordenadas de un punto en una esfera tridimensional, podemos ver el estado del qubit como un punto en la superficie de dicha esfera, siendo los polos los estados $\ket{0}$ y $\ket{1}$. Esta esfera recibe el nombre de \textbf{esfera de Bloch} y veremos en poco que con ella podemos representar operaciones de qubits como rotaciones de la esfera.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=.3]{esfera_bloch}
 	\caption{Esfera de Bloch.}
@@ -556,16 +556,40 @@ su representación matricial sería:
 \end{equation}
 Trabajaremos a partir de ahora con la notación del sistema de varios qubits como $\ket{xy}$, $\ket{x\otimes y}$, ó $\ket{x}\otimes\ket{y}$ y los trataremos de manera indiferente según convenga.
 
+Podemos medir únicamente un subconjunto de qubits del sistema total siendo la probabilidad de obtener el qubit en un estado concreto la suma de las probabilidades del estado del sistema con el qubit correspondiente en el estado en concreto. Por ejemplo si tomamos el sistema de dos qubits anterior, la probabilidad de que el primer qubit esté en el estado $\ket{0}$ será $|c_0|^2 + |c_1|^2$ que son las probabilidades de que el sistema esté en el estado $\ket{00}$ ó $\ket{01}$. Hacemos notar que tras medirlo, el sistema quedará en el estado
+\begin{equation}
+\ket{\psi'} = \frac{c_0\ket{00} + c_1\ket{01}}{\sqrt{|c_0|^2 + |c_1|^2}}
+\end{equation}
+ya que hemos determinado el estado del primer qubit haciéndolo colapsar a un estado clásico a la hora de medirlo. Además, el denominador $\sqrt{|c_0|^2 + |c_1|^2}$ se debe por normalizar el vector que representa el estado del sistema. Recordemos que esto era una condición necesaria que tenemos que pedir.
+Un ejemplo importante de un sistema de dos qubits es el \textbf{estado de Bell} ó \textbf{par ERP},
+\begin{equation}
+\frac{\ket{00} + \ket{11}}{\sqrt{2}}
+\end{equation}
+que nos muestra una propiedad importante de los sistemas de varios qubits a la hora de hacer mediciones. Si medimos el primer qubit tendrá una probabilidad de $(\frac{1}{\sqrt{2}})^2 = \frac{1}{2}$ de estar en el estado $\ket{0}$ y una probabilidad de $\frac{1}{2}$ de estar en el estado $\ket{1}$. Esto dejará el sistema en el estado $\ket{\psi'} = \ket{00}$ ó $\ket{\psi'} = \ket{11}$. En cualquier caso tenemos que ambas situaciones, tras medir el primer qubit, si medimos el segundo este coincidirá con el primero. Es decir, que ambos qubits está relacionados(entagled).
 
-(poner estados de bell y entagled)
-\subsection{Puertas Cúanticas}
+Nos fijamos un momento en la dimensión del espacio vectorial que representa nuestro sistema. Supongamos que tenemos un número de un tamaño considerable de qubits, $n=500$. Si quisiéramos simular este sistema en un ordenador clásico realizando las operaciones matriciales necesarias en la computación, tendríamos que para un estado del sistema almacenar $2^{500}$ coordenadas complejas del vector además de trabajar con matrices de tamaño $2^{500}$. Esto claramente no es factible hoy en día resultando en una de los problemas en cuanto a la computación cuántica.
 
-La manera de trabajar y operar con los bits es a través de las puertas lógicas. Igual que hemos asociado con vectores a los bits, y podemos operar con los vectores de forma matricial, las puertas lógicas están asociados a las matrices.
+\subsection{Circuitos y Puertas Cuánticas}
 
-Tomemos con ejemplo la puerta NOT, que funcione de la siguiente manera. NOT transformará el bit $\ket{0}$ en $\ket{1}$ y transformará el bit $\ket{1}$ en $\ket{0}$. Es decir, es la operación lógica $\neg$.
+Al igual que un circuito de un ordenador clásico consiste en cables y puertas lógicas que interaccionan con la información que es transportada por el cableado, un circuito cuántico consiste en cables que transportan información cuántica en forma de qubits que son manipulados a través de puertas cuánticas.
 
-Por tanto si tomamos la matriz $\textrm{NOT} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$,
-esta matriz cumple que
+Consideremos primero la puerta clásica \textbf{NOT} que queremos que realice la operación de la tabla de verdad sobre un bit, es decir,
+\begin{equation}
+\begin{cases}
+0 \rightarrow 1 \\
+1 \rightarrow 0
+\end{cases}
+\end{equation}
+intercambiando los estados 0 y 1. Queremos que nuestra puerta cuántica se comporte de la misma manera sobre qubits. Queremos que intercambie los estados $\ket{0}$ y $\ket{1}$ y además por ser puerta cuántica pediremos que sea lineal, es decir, si tenemos un un qubit arbitrario en estado de superposición
+\begin{equation}
+\alpha\ket{0} + \beta\ket{1}
+\end{equation}
+queremos que se aplique de forma lineal a cada uno de los términos de la suma,
+\begin{equation}
+\alpha\ket{1} + \beta\ket{0}.
+\end{equation}
+Igual que hemos asociado con vectores a los bits, y podemos operar con los vectores de forma matricial, las puertas lógicas están asociados a las matrices.
+Por tanto si tomamos la matriz $\textrm{NOT} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$, esta matriz cumple que
 \begin{equation}
 \begin{bmatrix}
 0 & 1 \\
@@ -589,108 +613,138 @@ esta matriz cumple que
 1 \\ 0
 \end{bmatrix}
 \end{equation}
-
-Es decir, tenemos que la puerta NOT,
+tomando el vector correspondiente al estado cuántico $\ket{0}$ y $\ket{1}$ y los intercambia:
 \begin{equation}
 \textrm{NOT} \ket{0} = \ket{1} \textrm{ y } \textrm{NOT}\ket{1} = \ket{0}
 \end{equation}
-
-Una observación es que estas matrices no tiene que ser necesariamente cuadradas. Por ejemplo, la puerta AND que queremos que tome dos bits y le aplique la operación lógica $ \wedge $.
-Para ello, tomaremos la matriz $\textrm{AND} = \begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}$ que satisface,
-\begin{equation}
-\begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-0 \\ 0 \\ 0 \\ 1
-\end{bmatrix} =
-\begin{bmatrix}
-0 \\ 1
-\end{bmatrix}
-\end{equation}
-Es decir, $\textrm{AND}(\ket{1}\otimes\ket{1}) = \textrm{AND}\ket{11} = \ket{1}$.
-Además también cumple,
-\begin{equation}
-\begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-1 \\ 0 \\ 0 \\ 0
-\end{bmatrix} =
-\begin{bmatrix}
-1 \\ 0
-\end{bmatrix}
-\textrm{, }
-\begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-0 \\ 1 \\ 0 \\ 0
-\end{bmatrix} =
-\begin{bmatrix}
-1 \\ 0
-\end{bmatrix}
-\textrm{, y }
-\begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-0 \\ 0 \\ 1 \\ 0
-\end{bmatrix} =
-\begin{bmatrix}
-1 \\ 0
-\end{bmatrix}
-\end{equation}
-Es decir, $\textrm{AND}\ket{00} = \ket{0}$, $\textrm{AND}\ket{01} = \ket{0}$, y $\textrm{AND}\ket{10} = \ket{0}$.
-
-De la misma manera podemos obtener por ejemplo la matriz asociada a la operación $\vee$, que llamaremos como puerta $\textrm{OR} = \begin{bmatrix}
-0 & 1 & 1 & 1 \\
-1 & 0 & 0 & 0
-\end{bmatrix}$.
-
-En cuanto a concatenar las puertas en un circuito, se representará por productos de matrices de manera natural. Por ejemplo si queremos aplicar primero la puerta AND seguido de la puerta NOT,
-\begin{equation}
-\textrm{NOT}\cdot\textrm{AND} =
-\begin{bmatrix}
-0 & 1 \\
-1 & 0
-\end{bmatrix} \cdot
-\begin{bmatrix}
-1 & 1 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix} =
-\begin{bmatrix}
-0 & 0 & 0 & 1 \\
-1 & 1 & 1 & 0
-\end{bmatrix}
-\end{equation}
-
-También podemos realizar operaciones de manera paralela a distintos bits a través de productos tensoriales entre las matrices, siempre cuidando el tamaño de las matrices. Por ejemplo si $A$ es una puerta que recibe 2 bits como entrada y devuelve 2 bits como salida, luego $B$ es una puerta con 1 bit de entrada y 1 de salida, y queremos aplicar primero $A$ a dos bits y después la puerta $B$ al primer bit, la matriz correspondiente sería,
-\begin{equation}
-(B \otimes I) \cdot A
-\end{equation} 
-Observamos que A es una matriz 4 por 4 y $B$ es una matriz 2 por 2, por lo que no podremos realizar el producto de los dos para componer las dos aplicaciones. Para completar la matriz $B$ tomaremos la matriz identidad y le aplicaremos el producto tensorial con $B$, que interpretaremos como aplicar la matriz identidad al segundo bit.
-
-Observamos que en los vectores que estamos usando en los ejemplos son solos $\ket{0}$ y $\ket{1}$. Ya que no tiene sentido que estas puertas tengan como entrada bits distintos de $\ket{0}$ y $\ket{1}$, no permitiremos su uso en las puertas clásicas. Veremos que a continuación, esto no será un problema para las puertas cuánticas.
-
-Una propiedad que les pediremos a las puertas cuánticas es que sean reversibles. Esto es que dados la salida y la operación aplicada seamos capaces de determinar la entrada del circuito. Representaremos las puertas cuánticas con matrices unitarias que son reversibles por su propia adjunta. Recordemos que esto es:
+Otra propiedad que les pediremos a las puertas cuánticas es que sean reversibles. Esto es que dados la salida y la operación aplicada seamos capaces de determinar la entrada del circuito. Representaremos las puertas cuánticas con matrices unitarias que son reversibles por su propia adjunta. Recordemos que esto es:
 \begin{equation}
 U * U^\dagger = U^\dagger * U = I_n
 \end{equation}
+Podemos poner de ejemplo, la operación AND, que toma dos bits y nos devuelve 1 si ambos inputs son 1. Esta operación no es reversible, ya que si conocemos solamente el output, no podemos determinar cuál ha sido el input de la operación. \\
+De esta manera tenemos que, aparte de la propiedad de ser lineal que está implicada, cualquier matriz unitaria lleva asociada su puerta cuántica correspondiente, siendo el único requisito que pediremos.
+Veamos otras puertas cuánticas de un qubits de importancia. Si consideramos las matrices de Pauli,
+\begin{equation}
+X = \begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}, \ 
+Y = \begin{bmatrix}
+	0 & -i \\
+	i & 0
+\end{bmatrix}, \ 
+Z = \begin{bmatrix}
+	1 & 0 \\
+	0 & -1
+\end{bmatrix},
+\end{equation}
+tendremos que cada una de ellas tiene asociado una puerta cuántica correspondiente. De hecho, la matriz X corresponde con la puerta NOT. Podemos evaluar la matriz con los estados del qubit para determinar su comportamiento, pues por ejemplo si tomamos la matriz Z,
+\begin{equation}
+Z(\alpha\ket{0} + \beta\ket{1}) = 
+\begin{bmatrix}
+	1 & 0 \\
+	0 & -1 
+\end{bmatrix}
+\begin{bmatrix}
+	\alpha \\ \beta
+\end{bmatrix} =
+\begin{bmatrix}
+	\alpha \\ -\beta
+\end{bmatrix} =
+\alpha\ket{0} - \beta\ket{1},
+\end{equation}
+que cambia el signo del coeficiente de $\ket{1}$.\\
+Otra manera de visualizar estas puertas es como rotaciones de $180º$ sobre la esfera de Bloch en el eje correspondiente. \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.65]{rotacion_bloch}
+	\caption{Rotación sobre el eje Y en la esfera de Bloch.}
+\end{figure}
 
-Por ejemplo una puerta que cumple esta propiedad es la puerta NOT controlada.
-(Poner puerta en un circuito)
-Esta puerta tomará dos entradas y dará dos salidas. La primera entrada la llamaremos bit de control, es decir, controlará el bit de salida. Si $\ket{x} = \ket{0}$, la salida del segundo bit $\ket{y}$ permanecerá igual. Si  $\ket{x} = \ket{1}$ entonces $\ket{y}$ se le aplicará la puerta NOT, es decir, será lo contrario.
+Una puerta cuántica de mucha importancia es la puerta de Hadamard ya que nos permitirá poner qubit en una configuración en la que todos los estados son equiprobables. Esta puerta tiene por matriz:
+\begin{equation}
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix},
+\end{equation}
+que lleva
+\begin{equation}
+\begin{cases}
+\ket{0} \rightarrow \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \\
+\ket{1} \rightarrow \frac{1}{\sqrt{2}}(\ket{0} - \ket{1})
+\end{cases}
+\end{equation}
+Una propiedad que cumple $H^2 = I$ que se comprueba fácilmente. Esto nos permite posteriormente llevar estados $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ a $\ket{0}$, lo que usaremos posteriormente en los algoritmos.
+
+Ya hemos mencionado que es posible visualizar las puertas cuánticas como rotaciones en la esfera de Bloch, por ejemplo si tomamos la expresión de un estado de un qubit en polares,
+\begin{equation}
+\ket{\psi} = \cos(\theta)\ket{0} + e^{i\varphi}\sin(\theta)\ket{1},
+\end{equation}
+y le aplicamos la siguiente matriz
+\begin{equation}
+R(\omega) = \begin{bmatrix}
+	1 & 0 \\
+	0 & e^\omega
+\end{bmatrix} 
+\end{equation}
+obteniendo como resultado:
+\begin{equation}
+\ket{\psi'} = \cos(\theta)\ket{0} + e^\omega e^{i\varphi}\sin(\theta)\ket{1} = \cos(\theta)ket{0} + e^{i\varphi + \omega}\sin(\theta)\ket{1}
+\end{equation}
+de esta manera hemos conseguido rotar la esfera alrededor del eje Z, por lo que no hemos variado lo que podemos considerar como latitud, sino hemos variado su longitud. Este tipo de operaciones se denominan \textbf{cambios de fase}, ya que sólo estamos alterando el valor del parámetro $e^{i\varphi}$. Observamos que esta alteración de la fase del estado del qubit no produce cambios en cuanto a la medición del mismo, ya que la probabilidad de que un qubit colapse en un estado clásico depende en este caso únicamente del parámetro $\theta$, su latitud en la esfera de Bloch.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.65]{rotacion_fase}
+\end{figure}
+Otras rotaciones, por ejemplos si queremos rotar la espera un cierto ángulo $\omega$ respecto a un eje, tendría la siguiente expresión:
+\begin{equation}
+\begin{cases}
+R_x(\omega) = \cos(\frac{\omega}{2})I -i\sin(\frac{\omega}{2})X =
+\begin{bmatrix}
+cos(\frac{\omega}{2}) & -i\sin(\frac{\omega}{2}) \\
+-i\sin(\frac{\omega}{2}) & \cos(\frac{\omega}{2})
+\end{bmatrix} \\
+R_y(\omega) = \cos(\frac{\omega}{2})I -i\sin(\frac{\omega}{2})Y =
+\begin{bmatrix}
+	cos(\frac{\omega}{2}) & -\sin(\frac{\omega}{2}) \\
+	\sin(\frac{\omega}{2}) & \cos(\frac{\omega}{2})
+\end{bmatrix} \\
+R_z(\omega) = \cos(\frac{\omega}{2})I -i\sin(\frac{\omega}{2})Z =
+\begin{bmatrix}
+	e^{-i\omega/2} & 0 \\
+	0 & e^{i\omega/2}
+\end{bmatrix}
+\end{cases}
+\end{equation}
+También podemos realizar rotaciones respecto de un vector dado, consideramos $D = (D_x, D_y, D_z)$ un vector arbitrario de módulo 1, con las coordenadas correspondientes. La matriz de la rotación estará determinada por la siguiente expresión:
+\begin{equation}
+R_D(\omega) = \cos(\frac{\omega}{2})I -i\sin(\frac{\omega}{2})(D_x X + D_y Y + D_z Z)
+\end{equation}
+Veamos ahora, puertas cuánticas que involucren más de un qubit, que a pesar de que no podremos representarlos ya en la esfera de Bloch, podemos seguir considerando su representación matricial.
+
+Una de las puertas más importantes es la puerta \textbf{NOT controlada} o \textbf{CNOT}. Esta puerta tomará dos entradas y dará dos salidas. La primera entrada la llamaremos bit de control, es decir, controlará el bit de salida. Representaremos la puerta en la siguiente ilustración de un circuito cuántico, donde cada recta horizontal representa un cable que lleva el qubit siguiendo la lectura de izquierda a derecha.
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \lstick{\ket{x}} & \ctrl{1} & \qw & \rstick{\ket{x}}\\
+	 \lstick{\ket{y}} & \targ & \qw  & \rstick{\ket{x\oplus y}}\\
+\\ }}
+\end{figure}
+Si $\ket{x} = \ket{0}$, la salida del segundo bit $\ket{y}$ permanecerá igual. Si  $\ket{x} = \ket{1}$ entonces $\ket{y}$ se le aplicará la puerta NOT, es decir, será lo contrario. Es decir, realiza la siguiente transformación
+\begin{equation}
+\begin{cases}
+\ket{00} \rightarrow \ket{00} \\
+\ket{01} \rightarrow \ket{01} \\
+\ket{10} \rightarrow \ket{11} \\
+\ket{11} \rightarrow \ket{10}
+\end{cases}
+\end{equation}
 Esto se puede ver como que la puerta transforma un par de bits $\ket{x, y}$ en $\ket{x, x\oplus y}$, donde $\oplus$ es la operación binaria de OR excluyente, o también como la suma en módulo 2.
-
-La matriz correspondiente a esta puerta sería:
+También podemos describir la puerta CNOT con su representación matricial, considerando como base del espacio vectorial $\lbrace \ket{00}, \ket{01}, \ket{10}, \ket{11} \rbrace$,
 \begin{equation}
 \textrm{CNOT} = \begin{bmatrix}
 1 & 0 & 0 & 0 \\
@@ -699,7 +753,60 @@ La matriz correspondiente a esta puerta sería:
 0 & 0 & 1 & 0 
 \end{bmatrix}
 \end{equation}
-Observamos que claramente esta puerta es unitaria pues el producto por su adjunta que es ella misma resulta en la matriz identidad:
+Observamos que claramente esta puerta es unitaria pues el producto por su adjunta que es ella misma resulta en la matriz identidad, pues tenemos que se cumple que $CNOT^{\dagger} CNOT = I$.
+Esto también se puede entender como que la puerta CNOT es reversible por ella misma:\\
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	\nghost{0} & \ket{x} & \ & \ & \ & \ & \ket{x} & \ & \ & \ & \ket{x}  \\
+	\nghost{1} & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qw \\
+	\nghost{2} & \ket{y} & \ & \ & \ & \ & \ket{x\oplus y} & \ & \ & \ & \ & \ & \ket{x\oplus(x\oplus y)}  \\
+	\nghost{3} & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \targ & \qw & \qw & \qw \\
+\\ }}
+\end{figure}
+
+El estado de entrada es $\ket{x, y}$ que queda trasformado en $\ket{x, x\oplus y}$ y esta última en $\ket{x, x\oplus (x\oplus y)}$. Esto es $\ket{x, (x\oplus x) \oplus y} = \ket{x, 0\oplus y} = \ket{x, y}$, ya que $x\oplus x = 0$.
+
+Otra puerta reversible de mucha importancia es la de Toffoli,
+que funciona de manera similar a la puerta NOT controlada. Trabaja con 3 bits de entrada y salida, en el que aplica la puerta NOT al último bit $\ket{z}$ si y solo si los dos anteriores tienen por estado 1, $\ket{x, y} = \ket{11}$. En otras palabras lleva el $\ket{x,y,z}$ a $\ket{x,y,z\oplus(x\wedge y)}$. \\
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \lstick{\ket{x}} & \ctrl{1} & \qw & \rstick{\ket{x}}\\
+	 \lstick{\ket{y}} & \ctrl{1} & \qw & \rstick{\ket{y}}\\
+	 \lstick{\ket{z}} & \targ & \qw  & \rstick{\ket{z\oplus(x\wedge y}}\\
+\\ }}
+\end{figure}
+
+Esta puerta tiene por matriz:
+\begin{equation}
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+\end{bmatrix}
+\end{equation}
+Ya hemos visto varias puertas que son reversibles, ahora, llamaremos puertas cuánticas a aquellas aplicaciones que actúan sobre qubits, como vectores de un espacio vectorial complejo y tendrá como representación matricial, matrices unitarias.
+
+Una excepción de las puertas cuánticas sería la operación de medir un qubit, que se suelen realizar al final del circuito y que no son reversibles. Representaremos estas de la siguiente manera en el circuito, donde la doble recta horizontal, representa un cable que lleva información clásica, un bit.
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \nghost{cw} & \lstick{\ket{\psi}} & \qw & \meter & \cw & \cw\\
+\\ }}
+\end{figure}
+
+Hemos visto varios ejemplos de circuitos cuánticos con las puertas cuánticas. Vamos a centrarnos en construir circuitos más complejos combinando las puertas. Podemos tanto concatenar las puertas, realizando una operación tras otra, y operar de manera paralela con ellas, de manera simultanea a un subconjunto del sistema de qubits. Hacemos notar varias restricciones respecto al mundo clásico y es que no permitiremos bucles en los circuitos, de manera que cada circuito funcione de izquierda a derecha y sea acíclico. Además no permitiremos tanto combinar dos cableado en uno, como dividir uno en dos. Veremos en un ejemplo próximo que de hecho no podemos copiar el estado de un qubit a otro.
+
+En cuanto a concatenar las puertas en un circuito, simplemente realizaremos una operación tras otra, de manera ordenada. Si queremos tratar la operación como una matriz, esta se representará por productos de matrices de manera natural. Por ejemplo si queremos aplicar dos veces la puerta CNOT como hemos hecho antes,
 \begin{equation}
 \begin{bmatrix}
 1 & 0 & 0 & 0 \\
@@ -720,54 +827,109 @@ Observamos que claramente esta puerta es unitaria pues el producto por su adjunt
 0 & 0 & 0 & 1 
 \end{bmatrix}
 \end{equation}
-Esto también se puede entender como que la puerta CNOT es reversible por ella misma:
-(Poner circuito)
-El estado de entrada es $\ket{x, y}$ que queda trasformado en $\ket{x, x\oplus y}$ y esta última en $\ket{x, x\oplus (x\oplus y)}$. Esto es $\ket{x, (x\oplus x) \oplus y} = \ket{x, 0\oplus y} = \ket{x, y}$, ya que $x\oplus x = 0$.
+resultando lo que esperábamos, ya que la puerta CNOT es reversible por sí misma, resultando que la concatenación de ella con sigo misma es la identidad.
 
-Otra puerta reversible de mucha importancia es es la de Toffoli,
-que funciona de manera similar a la puerta NOT controlada. Trabaja con 3 bits de entrada y salida, en el que aplica la puerta NOT al último bit $\ket{z}$ si y solo si los dos anteriores tienen por estado 1, $\ket{x, y} = \ket{11}$. En otras palabras lleva el $\ket{x,y,z}$ a $\ket{x,y,z\oplus(x\wedge y)}$.
-Esta puerta tiene por matriz:
-\begin{equation}
-\begin{bmatrix}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
-\end{bmatrix}
+También podemos realizar operaciones de manera paralela a distintos bits a través de productos tensoriales entre las matrices, siempre cuidando el tamaño de las matrices. Por ejemplo, si queremos aplicar la puerta de Hadamard $H$ a ambos qubits de un sistema de dos qubits, el resultado final será igual que aplicar $(H\otimes H)$ como una puerta al sistema,
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \lstick{\ket{x}} & \gate{\mathrm{H}} & \qw \\
+	 \lstick{\ket{y}} & \gate{\mathrm{H}} & \qw \\
+\\ }}
+\end{figure} \\
+Recordemos la propiedad del producto tensorial sobre las aplicaciones con la expresión \ref{prtensorial_aplineal}, de esta manera tenemos que,
+\begin{equation} \label{matriz_tensorial}
+(H\ket{x})\otimes(H\ket{y}) = (H\otimes H)\ket{x\otimes y}
 \end{equation}
-
-Ya hemos visto varias puertas que son reversibles, ahora, llamaremos puertas cuánticas a aquellas aplicaciones que actúan sobre qubits, como vectores de un espacio vectorial complejo y tendrá como representación matricial, matrices unitarias.
-
-Otra puerta cuántica de mucha importancia es la puerta de Hadamard ya que nos permitirá poner qubit en superposición, es decir, en una configuración en la que todos los estados son equiprobables. Esta puerta tiene por matriz:
+Vamos a ver un ejemplo más de circuito en el que concatenemos la puerta CNOT con la puerta de Hadamard. Consideramos entonces el circuito:
+\begin{figure}[h]
+\centering
+\scalebox{1.0}{
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+	 	\lstick{\ket{x}} & \gate{\mathrm{H}} & \ctrl{1} & \qw & \qw\\
+	 	\lstick{\ket{y}} & \qw & \targ & \qw & \qw &\ustick{\ket{\psi'}}\\
+\\ }}
+\end{figure}\\
+Supongamos entonces que comenzaremos con el estado $\ket{00}$, para los otros casos el procedimiento es análogo. Entonces tendríamos que operar la siguiente expresión:
+\begin{equation}
+\ket{\psi'} = \textrm{CNOT}\cdot(H\otimes I)(\ket{x\otimes y})
+\end{equation}
+Hacemos notar que a pesar de que no le aplicamos ninguna puerta de manera simultanea a $\ket{y}$ para poder hacer el producto de matrices adecuadamente, es necesario aplicar el producto tensorial a la puerta de Hadamard con la identidad, que no altera el estado de $\ket{y}$.\\
+Resolvamos entonces la expresión, con el estado $\ket{00}$ en concreto. Aplicando la propiedad de la expresión \ref{matriz_tensorial} , tenemos que:
+\begin{equation}
+\ket{\psi'} = \textrm{CNOT}\cdot(H\otimes I)(\ket{00}) = \textrm{CNOT}((H\ket{0}) \otimes (I\ket{0})) = \textrm{CNOT}(\frac{\ket{0}+\ket{1}}{\sqrt{2}}\otimes\ket{0})
+\end{equation}
+Reordenando la expresión con las propiedades del producto escalar tenemos que:
+\begin{equation}
+\ket{\psi'} = \textrm{CNOT}(\frac{1}{\sqrt{2}}(\ket{00} + \ket{10}))
+\end{equation}
+y finamente, aplicando la linealidad de CNOT:
+\begin{equation}
+\ket{\psi'} = \frac{1}{\sqrt{2}}(\textrm{CNOT}\ket{00} + \textrm{CNOT}\ket{10}) = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\end{equation}
+Si recordamos de la sección anterior, hemos producido con este circuito empezando en el estado $\ket{00}$ al estado de Bell que hemos visto.\\
+Este desarrollo de naturaleza algebraica que hemos hecho, tiene su equivalente en operaciones matriciales, pues podríamos haber hecho el producto de las matrices:
+\begin{equation}
+\textrm{CNOT}\cdot(H\otimes I) = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 
+\end{bmatrix} \cdot \left( \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1 
+\end{bmatrix} \otimes
+\begin{bmatrix}
+1 & 0 \\
+0 & 1 
+\end{bmatrix}\right)
+\end{equation}
+Si operamos, obtendremos la siguiente matriz:
 \begin{equation}
 \frac{1}{\sqrt{2}}
 \begin{bmatrix}
-1 & 1 \\
-1 & -1
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & -1 & 0 \\
+0 & 1 & 0 & -1 
+\end{bmatrix} =
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 0 & -1 \\
+1 & 0 & -1 & 0
 \end{bmatrix}
 \end{equation}
-
-Una excepción de las puertas cuánticas sería la operación de medir un qubit, que se suelen realizar al final del circuito y que no son reversibles.
-
-
-
-
-\begin{comment}
-Organización
--Otro ejemplo con OR y AND.
--Solo operable con ket0 y ket1, luego relacionar con puertas cuánticas.
--Se puede concatenar operaciones que es producto de matrices.
--También de manera paralela con bits diferentes. Poner ejemplo.
--Importancia en puertas reversibles (Preguntar).
--Puertas Cuánticas, poner ejemplos y hablar de los dibujos de los circuitos.
--Hablar del qubit representado en la esfera de Bosch.
-\end{comment}
-
-
+Por tanto si operamos con $\ket{00}$, tendremos:
+\begin{equation}
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 0 & -1 \\
+1 & 0 & -1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 0 \\ 0 \\ 0
+\end{bmatrix} = 
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\ 0 \\ 0 \\ 1
+\end{bmatrix}
+\end{equation}
+que es la expresión matricial del estado de Bell
+\begin{equation}
+\frac{\ket{00} + \ket{11}}{\sqrt{2}}
+\end{equation}
 \newpage
 
 \section{Algoritmos Cuánticos}
@@ -884,7 +1046,7 @@ Finalmente medimos el qubit superior para determinar si f es constante o balance
 
 \scalebox{2.0}{
 \Qcircuit @C=1.0em @R=0.2em @!R { \\
-	 	\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{H}} & \qw & \qw & \qw\\
+	 	\nghost{{q}_{0} :  } & \lstick{{\ket{x}} :  } & \gate{\mathrm{H}} & \qw & \qw & \qw\\
 	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \gate{\mathrm{H}} & \ctrl{1} & \qw & \qw\\
 	 	\nghost{{q}_{2} :  } & \lstick{{q}_{2} :  } & \qw & \targ & \qw & \qw\\
 	 	\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{1}}} \cw & \cw & \cw & \cw\\

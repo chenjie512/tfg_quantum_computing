@@ -12,8 +12,8 @@
 \contentsline {section}{\numberline {3}Estructuras y Puertas Cu\IeC {\'a}nticas}{8}{section.3}
 \contentsline {subsection}{\numberline {3.1}Qubit}{8}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Sistema de Varios Qubits}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Puertas C\IeC {\'u}anticas}{10}{subsection.3.3}
-\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{12}{section.4}
-\contentsline {subsection}{\numberline {4.1}Algoritmo de Deutsch}{12}{subsection.4.1}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{14}{section.5}
-\contentsline {section}{\numberline {6}Bibliograf\IeC {\'\i }a}{15}{section.6}
+\contentsline {subsection}{\numberline {3.3}Circuitos y Puertas Cu\IeC {\'a}nticas}{10}{subsection.3.3}
+\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{16}{section.4}
+\contentsline {subsection}{\numberline {4.1}Algoritmo de Deutsch}{16}{subsection.4.1}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{18}{section.5}
+\contentsline {section}{\numberline {6}Bibliograf\IeC {\'\i }a}{19}{section.6}
