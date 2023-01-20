@@ -378,7 +378,7 @@ z(\ket{v}\otimes\ket{w}) = (z\ket{v})\otimes\ket{w} = \ket{v}\otimes(z\ket{w})
 
 \item Para $\ket{v} \in \mathbb{V}$ y $\ket{w_1}$, $\ket{w_2} \in \mathbb{W}$ se tiene,
 \begin{equation}
-(\ket{v}\otimes (\ket{w_1} +  \ket{w_2}) = \ket{v}\otimes\ket{w_1} + \ket{v}\otimes\ket{w_2}
+\ket{v}\otimes (\ket{w_1} +  \ket{w_2}) = \ket{v}\otimes\ket{w_1} + \ket{v}\otimes\ket{w_2}
 \end{equation}
 
 \end{itemize}
@@ -734,7 +734,7 @@ Una de las puertas más importantes es la puerta \textbf{NOT controlada} o \text
 	 \lstick{\ket{y}} & \targ & \qw  & \rstick{\ket{x\oplus y}}\\
 \\ }}
 \end{figure}
-Si $\ket{x} = \ket{0}$, la salida del segundo bit $\ket{y}$ permanecerá igual. Si  $\ket{x} = \ket{1}$ entonces $\ket{y}$ se le aplicará la puerta NOT, es decir, será lo contrario. Es decir, realiza la siguiente transformación
+Si $\ket{x} = \ket{0}$, la salida del segundo bit $\ket{y}$ permanecerá igual. Si  $\ket{x} = \ket{1}$ entonces $\ket{y}$ se le aplicará la puerta NOT, es decir, será lo opuesto. Es decir, realiza la siguiente transformación
 \begin{equation}
 \begin{cases}
 \ket{00} \rightarrow \ket{00} \\
@@ -768,7 +768,7 @@ Esto también se puede entender como que la puerta CNOT es reversible por ella m
 
 El estado de entrada es $\ket{x, y}$ que queda trasformado en $\ket{x, x\oplus y}$ y esta última en $\ket{x, x\oplus (x\oplus y)}$. Esto es $\ket{x, (x\oplus x) \oplus y} = \ket{x, 0\oplus y} = \ket{x, y}$, ya que $x\oplus x = 0$.
 
-Otra puerta reversible de mucha importancia es la de Toffoli,
+Otra puerta reversible de mucha importancia es la de \textbf{Toffoli},
 que funciona de manera similar a la puerta NOT controlada. Trabaja con 3 bits de entrada y salida, en el que aplica la puerta NOT al último bit $\ket{z}$ si y solo si los dos anteriores tienen por estado 1, $\ket{x, y} = \ket{11}$. En otras palabras lleva el $\ket{x,y,z}$ a $\ket{x,y,z\oplus(x\wedge y)}$. \\
 \begin{figure}[h]
 \centering
@@ -776,7 +776,7 @@ que funciona de manera similar a la puerta NOT controlada. Trabaja con 3 bits de
 \Qcircuit @C=1.0em @R=0.8em @!R { \\
 	 \lstick{\ket{x}} & \ctrl{1} & \qw & \rstick{\ket{x}}\\
 	 \lstick{\ket{y}} & \ctrl{1} & \qw & \rstick{\ket{y}}\\
-	 \lstick{\ket{z}} & \targ & \qw  & \rstick{\ket{z\oplus(x\wedge y}}\\
+	 \lstick{\ket{z}} & \targ & \qw  & \rstick{\ket{z\oplus(x\wedge y)}}\\
 \\ }}
 \end{figure}
 
@@ -837,7 +837,7 @@ También podemos realizar operaciones de manera paralela a distintos bits a trav
 	 \lstick{\ket{x}} & \gate{\mathrm{H}} & \qw \\
 	 \lstick{\ket{y}} & \gate{\mathrm{H}} & \qw \\
 \\ }}
-\end{figure} \\
+\end{figure}
 Recordemos la propiedad del producto tensorial sobre las aplicaciones con la expresión \ref{prtensorial_aplineal}, de esta manera tenemos que,
 \begin{equation} \label{matriz_tensorial}
 (H\ket{x})\otimes(H\ket{y}) = (H\otimes H)\ket{x\otimes y}
@@ -943,32 +943,123 @@ En general, los algoritmos cuánticos siguen un esquema común entre ellos. Esto
 
 \end{itemize}
 
+\subsection{Algoritmo de Teletransportación}
+Empezaremos viendo un algoritmo sencillo que lo único que hará será teletransportar o mover un qubit en un estado arbitrario $\ket{\varphi}$ de un sitio a otro. Esta operación nos presenta los problemas más típicos del mundo cuántico, y es que no conocemos el estado $\ket{\varphi}$ en el que se encuentra el qubit, es decir, los valores de $\alpha$ y $\beta$ de $\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$. Además de que no podemos determinar sus valores con sólo una copia del qubit, y que sólo sabemos enviar información de manera clásica en forma de bits.\\
+
+El algoritmo toma ventaja del enlazamiento entre qubits para superar los problemas. Consideramos un transmisor y un receptor, además de un par de qubits que se encuentra en el estado de Bell. Nuestro transmisor tiene el control de uno de los qubits, mientras que el receptor tiene el control del otro. El algoritmo consistirá entonces en el transmisor interactua con el qubit $\ket{\varphi}$ y su correspondiente qubit del par en estado de Bell, seguido de tomar mediciones de los dos qubits y enviar la información de los bits resultantes al receptor. Este último aplicará ciertas operaciones dependiendo de la información recibida a su qubit del par en estado de Bell, resultado en el qubit $\ket{\varphi}$.\\
+Veamos esto en el circuito y revisemos las cuentas paso a paso. Consideramos el estado inicial de entrada $\ket{\varphi_0} = \ket{\varphi}\ket{\beta_{00}}$ que es un sistema de tres qubits formados por el qubit $\ket{\varphi}$ y un par de qubits en estado de Bell.
+
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+	 	\rstick{\ket{\varphi}} & \nghost{} & \ctrl{1} & \gate{\mathrm{H}} & \meter & \cw & \controlo \cw_(0.4){\mathrm{M_1}} \cwx[2] \\
+	 	\dstick{\ket{\beta_{00}}} & \nghost{} & \targ & \qw & \meter & \controlo \cw_(0.4){\mathrm{M_2}} \cwx[1]  \\
+	 	\nghost{} & \nghost{} & \qw^(0.5){\ket{\varphi_0}} & \qw^(0.5){\ket{\varphi_1}} & \qw^(0.5){\ket{\varphi_2}} & \gate{\mathrm{Z^{M_2}}} & \gate{\mathrm{X^{M_1}}} & \qw &\rstick{\ket{\varphi}}\\}}
+\end{figure}\ \linebreak
+Ponemos el estado inicial en la expresión que nos conviene usando la propiedad distributiva respecto de la suma.
+\begin{equation}
+\begin{split}
+\ket{\varphi_0} & =
+ \ket{\varphi}\ket{\beta_{00}} =
+\left[\alpha\ket{0} + \beta\ket{1}\right] \otimes \left[ \frac{\ket{00} + \ket{11}}{\sqrt{2}} \right] \\
+& =
+\frac{1}{\sqrt{2}} \left[ \alpha\ket{0}(\ket{00}+\ket{11}) + \beta\ket{1}(\ket{00}+\ket{11}) \right]
+\end{split}
+\end{equation}
+Aplicamos la puerta CNOT a los dos primeros qubits, recordemos que la puerta CNOT cambia el estado del segundo qubit si el primero es un $1$, mientras que si el primer qubit es un $0$ dejará igual el sgundo qubit. Aprovechando entonces la linealidad de CNOT, tenemos por resultado
+\begin{equation}
+\ket{\varphi_1} = 
+\frac{1}{\sqrt{2}} \left[ \alpha\ket{0}(\ket{00}+\ket{11}) + \beta\ket{1}(\ket{10}+\ket{01}) \right]
+\end{equation}
+Aplicamos entonces la puerta de Hadamard en el primer qubit, obteniendo
+\begin{equation}
+\ket{\varphi_2} = 
+\frac{1}{\sqrt{2}} \left[ \alpha \left( \frac{\ket{0}+\ket{1}}{\sqrt{2}} \right) (\ket{00}+\ket{11}) + \beta\left( \frac{\ket{0}-\ket{1}}{\sqrt{2}} \right)(\ket{10}+\ket{01}) \right]
+\end{equation}
+Reordenamos la expresión
+\begin{equation}
+\begin{split}
+\ket{\varphi_2} = 
+\frac{1}{2} \left[ \alpha\left(\ket{000} + \ket{011} + \ket{100} + \ket{111}\right) + \beta\left(\ket{010} + \ket{001} - \ket{110} - \ket{101}\right) \right] = 
+\\
+\frac{1}{2} \left[ \ket{00}(\alpha\ket{0}+\beta\ket{1}) + \ket{01}(\alpha\ket{1}+\beta\ket{0}) + \ket{10}(\alpha\ket{0}-\beta\ket{1} + \ket{11}(\alpha\ket{1}-\beta\ket{0})) \right]
+\end{split}
+\end{equation}
+Realizamos entonces la medición de los dos primeros qubits, que por estar enlazados los qubits, el resultado también determinará el estado del tercer qubit.
+\begin{equation}
+\begin{array}{l}
+00 \longrightarrow \alpha\ket{0}+\beta\ket{1} \\
+01 \longrightarrow \alpha\ket{1}+\beta\ket{0} \\
+10 \longrightarrow \alpha\ket{0}-\beta\ket{1} \\
+11 \longrightarrow \alpha\ket{1}-\beta\ket{0}
+\end{array}
+\end{equation}
+Quedará finalmente realizar la transformación correspondiente al tercer qubit. Si el resultado de la medición es $00$ entonces no es necesario realizar ningún cambio pues tenemos que el estado del tercer qubit es $\alpha\ket{0}+\beta\ket{1} = \ket{\varphi}$. Si es $01$ tendremos que aplicar la puerta $X$ para transformar el $1$ en $0$ y el $0$ en $1$. Si es $10$ aplicaremos entonces la puerta $Z$ que cambia el signo de la segunda coordenada, el coeficiente de $\ket{1}$. Y finalmente, en el caso de $11$ aplicaremos primero la puerta $X$, seguido de la puerta $Z$.
+Esto sería equivalente a aplicar la transformación $Z^{M_1} X^{M_2}$ con $M_1$ y $M_2$ el valor de los dos primeros qubits, recuperando entonces el estado $\ket{\varphi}$ en el qubit que controla el receptor.\\
+
+Hacemos notar que hemos llevado el estado $\ket{\varphi}$ de un qubit a otro, pero no lo hemos copiado, pues el estado del primer qubit ha sido sobreescrito con las operaciones realizadas.
+Como hemos mencionado antes, el proceso de copiar el estado de un qubit a otro no es posible. Podemos ver esto en que entra en contradicción con la propiedad lineal de las aplicaciones.\\ Suponemos $C$ una aplicación correspondiente a la operación cuántica de copiar el estado de un qubit a otro. La hacemos actuar sobre un par de qubits resultando en
+\begin{equation}
+C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) = 
+\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \frac{\ket{x}+\ket{y}}{\sqrt{2}}\right)
+\end{equation}
+Sin embargo, si aplicamos la propiedad lineal de $C$, tenemos que
+\begin{equation}
+\begin{split}
+C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) 
+&=
+\frac{1}{\sqrt{2}}C\left((\ket{x}+\ket{y}) \otimes \ket{0}\right)
+=
+\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0} + \ket{y}\otimes\ket{0})
+\\&=
+\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0}) + C(\ket{y}\otimes\ket{0})
+=
+\frac{1}{\sqrt{2}} (\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})
+\\&=
+\frac{(\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})}{\sqrt{2}}
+\end{split}
+\end{equation}
+Que claramente llegamos a resultados distintos, concluyendo en que hemos encontrado una contradicción. Por tanto la aplicación $C$ no es lineal y no se puede copiar estados de qubits.
+
 \subsection{Algoritmo de Deutsch}
 
-El primer algoritmo que veremos y el más simple será el algorimto de Deutsch. Este algoritmo tratará de ver si se cumple cierta propiedad para una función $f:\{0, 1\} \rightarrow \{0, 1\}$, concretamente si es balanceada o constante.
+Veamos ahora un algoritmo simple que llamaremos como el algoritmo de Deutsch. Este algoritmo tratará de ver si se cumple cierta propiedad para una función $f:\{0, 1\} \rightarrow \{0, 1\}$, concretamente si es balanceada o constante.
 
 \begin{deff}
 Diremos que la función $f:\{0, 1\} \rightarrow \{0, 1\}$ es balanceada si $f(0) \neq f(1)$, y diremos que es constante si $f(0) = f(1)$.
 \end{deff}
-
-El algoritmo consistirá en tomar una función $f:\{0, 1\} \rightarrow \{0, 1\}$, con la sólo podemos evaluar la función y obtener la imagen y no sabemos cómo está definido la función y determinar si la función es balanceada o constante.
-
-Para ello tomaremos una puerta cuántica que evaluará la función y observamos que esta tiene que ser reversible. Consideraremos la siguiente operación unitaria $U_f$. A esta función a veces nos referiremos como oráculo, ya que nos evaluará la función indicando la imagen sin que nosotros sepamos la definición de la función.
-
-(Poner circuito)
-
-En la primera entrada $\ket{x}$ será lo que queremos evaluar, y en la segunda entrada $\ket{y}$ actuará como un qubit de control. Tras el cuál, en la primera salida $\ket{x}$ permanecerá igual y en la segunda salida tendremos $\ket{y\oplus f(x)}$.
-
+El algoritmo consistirá en tomar una función $f:\{0, 1\} \rightarrow \{0, 1\}$, que desconocemos su definición y sólo podremos evaluarla obteniendo su imagen con el objetivo de determinar si la función es balanceada o constante.\\
+En un algoritmo clásico podríamos siempre evaluar la función en todos sus valores para determinar si es balanceada o constate. Esto nos llevaría un total de dos evaluaciones de la función. Veamos si el algoritmo cuántico puede mejorar esto ya que nos permite evaluar de manera simultanea sobre todos los valores posibles.\\
+Para ello tomaremos una puerta cuántica que evaluará la función y observamos que esta tiene que ser reversible. Consideraremos la siguiente operación unitaria $U_f$. A esta función a veces nos referiremos como oráculo, ya que nos evaluará la función indicando la imagen sin que nosotros sepamos la definición de la función. Recordemos también está representado por una matriz unitaria.
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \lstick{\ket{x}} & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \rstick{\ket{x}} \\
+	 \lstick{\ket{y}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw &  \rstick{\ket{y\oplus f(x)}}\\
+\\ }}
+\end{figure}\linebreak
+En la primera entrada $\ket{x}$ será lo que queremos evaluar, y en la segunda entrada $\ket{y}$ actuará como un qubit de control. Tras el cuál, en la primera salida $\ket{x}$ permanecerá igual y en la segunda salida tendremos $\ket{y\oplus f(x)}$.\\
 Observamos que esta puerta cuántica es reversible pues:
 
-(Poner circuito)
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.8em @!R {
+	 \nghost{\ket{x}} & \qw_(0.0){\ket{x}} & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw_(-0.4){\ket{x}} & \qw & \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \qw_(1.0){\ket{x}}  \\
+	 \nghost{\ket{y}} & \qw_(0.0){\ket{y}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw & \qw_(0.0){\ket{y\oplus f(x)}} & \qw & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw_(-1.2){\ket{(y\oplus f(x))\oplus f(x)}} & \qw \\}}
+\end{figure}\ \linebreak
+El estado $\ket{x, y}$ queda trasformado en $\ket{x, y\oplus f(x)}$ y posteriormente en $\ket{x, (y\oplus f(x))\oplus f(x)} = \ket{x, y\oplus (f(x)\oplus f(x))} = \ket{x, y\oplus 0} = \ket{x, y}$, ya que $f(x)\oplus f(x) = 0$.\\
+Una vez conseguido el oráculo que nos evaluará la función en los qubits, podemos construir el circuito del algoritmo que consistirá en lo siguiente:
 
-El estado $\ket{x, y}$ queda trasformado en $\ket{x, y\oplus f(x)}$ y posteriormente en $\ket{x, (y\oplus f(x))\oplus f(x)} = \ket{x, y\oplus (f(x)\oplus f(x))} = \ket{x, y\oplus 0} = \ket{x, y}$.
-
-El circuito del algoritmo consistirá en lo siguiente:
-
-(Poner circuito)
-
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \nghost{\ket{x}} & \qw_(0.0){\ket{0}} & \gate{\mathrm{H}} & \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \gate{\mathrm{H}} & \qw & \meter \\
+	 \nghost{\ket{y}} & \qw_(0.0){\ket{1}} & \gate{\mathrm{H}} & \qw^(0.0){\ket{\varphi_1}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw^(0.0){\ket{\varphi_2}} & \qw & \qw^(0.0){\ket{\varphi_3}} & \qw \\}}
+\end{figure}\ \linebreak
 Esto en términos matriciales sería:
 \begin{equation}
 (H\oplus I) U_f (H\oplus H) \ket{0, 1} = 
@@ -998,23 +1089,25 @@ Recordemos que nuestro oráculo $U_f$ transforma $\ket{x,y}$ en $\ket{x,y\oplus 
 \frac{\ket{0,f(0)} - \ket{0,\overline{f(0)}} + \ket{1,f(1)} - \ket{1,\overline{f(1)}}}{2}
 \end{split}
 \end{equation}
-donde $\overline{f(x)}$ es el contrario de $f(x)$.
-
-Recordemos que $\ket{x,y}$ no es más que una notación de $\ket{x}\otimes\ket{y}$, por tanto aplicando la propiedad distributiva del producto tensorial por la derecha tenemos
+donde $\overline{f(x)}$ es el opuesto de $f(x)$.\\
+Hacemos ver que $\ket{x,y}$ no es más que una notación de $\ket{x}\otimes\ket{y}$, por tanto aplicando la propiedad distributiva del producto tensorial por la derecha tenemos
 \begin{equation} \label{eq45}
 \ket{\varphi_2} =
 \frac{\ket{0} \otimes \left[ \ket{f(0)} - \ket{\overline{f(0)}} \right] + \ket{1} \otimes \left[ \ket{f(1)} - \ket{\overline{f(1)}} \right]}{2}
 \end{equation}
 Observemos en un momento la expresión $\ket{f(x)} -\ket{\overline{f(x)}}$ para $x \in \lbrace 0,1 \rbrace$ y discutimos su valor según el valor de $f(x)$.
-\begin{equation}
+\begin{equation} \label{eq413}
 \ket{f(x)} - \ket{\overline{f(x)}} =
-\begin{Bmatrix}
-\ket{0} - \ket{1} & \textrm{si} & f(x) = 0 \\
-\ket{1} - \ket{0} & \textrm{si} & f(x) = 1
-\end{Bmatrix}
+\begin{cases}
+\ket{0} - \ket{1} \ \textrm{si} \ f(x) = 0 \\
+\ket{1} - \ket{0} \ \textrm{si} \ f(x) = 1
+\end{cases} =
+\begin{cases}
+\ket{0} - \ket{1} \ \textrm{si} \ f(x) = 0 \\
+-(\ket{0} - \ket{1}) \ \textrm{si} \ f(x) = 1
+\end{cases}
 \end{equation}
-que escribiremos como $(-1)^{f(x)}(\ket{0} - \ket{1})$.
-
+que escribiremos como $(-1)^{f(x)}(\ket{0} - \ket{1})$.\\
 Aplicando esto a la expresión \ref{eq45} tenemos que
 \begin{equation}
 \ket{\varphi_2} = 
@@ -1042,18 +1135,211 @@ Teniendo en cuenta que Hadamard es su propia inversa, llevará $\frac{\ket{0}+\k
 (\pm 1) \ket{1} \left[\frac{\ket{0}-\ket{1}}{2}\right] & \textrm{si } f \textrm{ es balanceada.}
 \end{cases}
 \end{equation}
-Finalmente medimos el qubit superior para determinar si f es constante o balanceada, ya que si sale $\ket{0}$ será constante y si sale $\ket{1}$ será balanceada. Observamos que el signo no afecta a la proceso de medir, pues recordemos que la probabilidad de que sea un estado depende de la norma al cuadrado.
+Finalmente medimos el qubit superior para determinar si f es constante o balanceada, ya que si sale $\ket{0}$ será constante y si sale $\ket{1}$ será balanceada. Observamos que el signo no afecta a la proceso de medir, pues recordemos que la probabilidad de que sea un estado depende de la norma al cuadrado.\\
+Observamos que hemos conseguido en una evaluación de la función determinar si la propiedad de ser balanceada o constante. Sin embargo hacemos notar que para determinar cuál de los cuatro posibles funciones es, necesitamos evaluar de nuevo la función con este algoritmo.
 
-\scalebox{2.0}{
-\Qcircuit @C=1.0em @R=0.2em @!R { \\
-	 	\nghost{{q}_{0} :  } & \lstick{{\ket{x}} :  } & \gate{\mathrm{H}} & \qw & \qw & \qw\\
-	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \gate{\mathrm{H}} & \ctrl{1} & \qw & \qw\\
-	 	\nghost{{q}_{2} :  } & \lstick{{q}_{2} :  } & \qw & \targ & \qw & \qw\\
-	 	\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{1}}} \cw & \cw & \cw & \cw\\
-\\ }}
+\newpage
 
+\subsection{Algoritmo de Deutsch-Jozsa}
+Veremos ahora el mismo problema pero generalizando la función. Consideramos ahora la función $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ que lleva cadenas de $n$ $0$ y $1$ a un único $0$ ó $1$ como imagen.\\
+\begin{deff}
+Diremos entonces que $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ es balanceada si exactamente la mitad de los elementos del dominio de la función tiene a $0$ por imagen, y la otra mitad a $1$. Diremos también que la función es constante si todos los elementos tiene como imagen el $0$ ó si todos los elementos tiene como imagen el $1$.
+\end{deff}
+El algoritmo de Deutsch-Jozsa resuelve el problema de dada una función $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ con la que podemos evaluar pero no sabemos cómo está definido, suponiendo que la función sólo puede ser balanceada o constante, tenemos que determinar cuál de estas dos propiedades cumple.\\
 
+Veamos primero como se podría resolver utilizando un método clásico. Se podría evaluar la función diferentes valores para poder determinar si es balanceada o constante. En el mejor de los casos, si tras dos evaluaciones se llega a dos imágenes distintas, podemos concluir que es balanceada pues está asegurado que cumpla una de las propiedades. En el peor de los casos se requiere evaluar la mitad de los elementos más uno, si todas las imágenes comprobadas son iguales se llega a que la función es constante, en otro caso será balanceada. Esto requiere en el pero de los casos $\frac{2^n}{2}+1$ evaluaciones de la función, veamos si con el algoritmo cuántico se puede mejorar.\\
+\linebreak
+El algoritmo consistirá como el anterior, pondremos los qubits en estado de superposición para poder evaluarlos de manera simultanea en el oráculo. Este tendrá la siguiente forma, que se podrá representar con una matriz unitaria.\\
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.8em @!R {
+	 \lstick{\ket{\mathbf{x}}} & \qw & \lstick{/^{n}} \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \lstick{/^{n}} \qw & \rstick{\ket{\mathbf{x}}} \\
+	 \lstick{\ket{y}} & \qw & \qw & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw & \qw & \rstick{\ket{y\oplus f(\mathbf{x})}}
+	 \\}}
+\end{figure}\linebreak
+donde \Qcircuit @C=1.0em @R=0.8em @!R {\nghost{} & \qw & \lstick{/^{n}} \qw & \nghost{}} indica que hay $n$ qubits y usaremos $\ket{\mathbf{x}} = \ket{x_0 x_1\dots x_{n-1}}$ para denotar la cadena binaria. En este caso, $\ket{\mathbf{x}}$ quedará igual tras el oráculo $U_f$, mientras que $\ket{y}$ será el qubit de control. Es fácil ver que, como en el algoritmo anterior, el oráculo $U_f$ es reversible por sí misma.\\
 
+Una vez obtenido el oráculo, queremos poner en superposición los $n$ qubits. Para ello usaremos la matriz de Hadamard, concretamente el producto tensorial de $n$ matrices de Hadamard. Veamos primero qué forma tiene esta matriz. Recordemos que la matriz de Hadamard tiene esta forma:
+\begin{equation}
+H = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\end{equation}\linebreak
+Observamos que el elemento de la fila $i$ columna $j$ se puede expresar como $H[i, j] = \frac{1}{\sqrt{2}}(-1)^{i\wedge j}$, con $i$ y $j$ expresado en binario y $\wedge$ es la operación AND. De esta manera, la matriz de queda escrito como:
+\begin{equation}
+H = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+(-1)^{0\wedge 0} & (-1)^{0\wedge 1} \\
+(-1)^{1\wedge 0} & (-1)^{1\wedge 1}
+\end{bmatrix}
+\end{equation}
+Calculemos ahora el producto tensorial de dos matrices de Hadamard, que lo podemos expresar en forma de potencias de matrices con el producto tensorial que denotaremos como
+\begin{equation}
+H^{\otimes 2} = H\otimes H =
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+(-1)^{0\wedge 0} & (-1)^{0\wedge 1} \\
+(-1)^{1\wedge 0} & (-1)^{1\wedge 1}
+\end{bmatrix}\otimes
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+(-1)^{0\wedge 0} & (-1)^{0\wedge 1} \\
+(-1)^{1\wedge 0} & (-1)^{1\wedge 1}
+\end{bmatrix}
+\end{equation}
+\newpage
+\begin{equation}
+H^{\otimes 2} =
+\frac{1}{\sqrt{2}} \cdot \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+(-1)^{0\wedge 0}\cdot(-1)^{0\wedge 0} & (-1)^{0\wedge 0}\cdot(-1)^{0\wedge 1} & (-1)^{0\wedge 1}\cdot(-1)^{0\wedge 0} & (-1)^{0\wedge 1}\cdot(-1)^{0\wedge 1} 
+\\
+(-1)^{0\wedge 0}\cdot(-1)^{1\wedge 0} & (-1)^{0\wedge 0}\cdot(-1)^{1\wedge 1} & (-1)^{0\wedge 1}\cdot(-1)^{1\wedge 0} & (-1)^{0\wedge 1}\cdot(-1)^{1\wedge 1} 
+\\
+(-1)^{1\wedge 0}\cdot(-1)^{0\wedge 0} & (-1)^{1\wedge 0}\cdot(-1)^{0\wedge 1} & (-1)^{1\wedge 1}\cdot(-1)^{0\wedge 0} & (-1)^{1\wedge 1}\cdot(-1)^{0\wedge 1} 
+\\
+(-1)^{1\wedge 0}\cdot(-1)^{1\wedge 0} & (-1)^{1\wedge 0}\cdot(-1)^{1\wedge 1} & (-1)^{1\wedge 1}\cdot(-1)^{1\wedge 0} & (-1)^{1\wedge 1}\cdot(-1)^{1\wedge 1}
+\end{bmatrix}
+\end{equation}
+Teniendo en cuenta que estamos interesados sólo por el signo de $(-1)^x$ que depende de la paridad de $x$, podemos considerar el producto de $(-1)^x\cdot(-1)^y$ como $(-1)^{x\oplus y}$, donde $\oplus$ es la suma módulo $2$. Entonces, la matriz sería
+\begin{equation}
+\begin{split}
+H^{\otimes 2} =
+\frac{1}{2}
+\begin{bmatrix}
+(-1)^{0\wedge 0\oplus 0\wedge 0} & (-1)^{0\wedge 0\oplus 0\wedge 1} & (-1)^{0\wedge 1\oplus 0\wedge 0} & (-1)^{0\wedge 1\oplus 0\wedge 1} 
+\\
+(-1)^{0\wedge 0\oplus 1\wedge 0} & (-1)^{0\wedge 0\oplus 1\wedge 1} & (-1)^{0\wedge 1\oplus 1\wedge 0} & (-1)^{0\wedge 1\oplus 1\wedge 1} 
+\\
+(-1)^{1\wedge 0\oplus 0\wedge 0} & (-1)^{1\wedge 0\oplus 0\wedge 1} & (-1)^{1\wedge 1\oplus 0\wedge 0} & (-1)^{1\wedge 1\oplus 0\wedge 1} 
+\\
+(-1)^{1\wedge 0\oplus 1\wedge 0} & (-1)^{1\wedge 0\oplus 1\wedge 1} & (-1)^{1\wedge 1\oplus 1\wedge 0} & (-1)^{1\wedge 1\oplus 1\wedge 1}
+\end{bmatrix}
+\\=
+\frac{1}{2}
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+1 & -1 & 1 & -1 \\
+1 & 1 & -1 & -1 \\
+1 & -1 & -1 & 1
+\end{bmatrix}
+\end{split}
+\end{equation}
+De esta manera si definimos la aplicación $\langle \ , \ \rangle : \{0, 1\}^n \times \{0, 1\}^n \longrightarrow \{0, 1\}$ de manera que dados dos cadenas binarias de longitud $n$, $\mathbf{x} = x_0 x_1\ldots x_{n-1}$ y $\mathbf{y} = y_0 y_1\ldots y_{n-1}$, se define
+\begin{equation}
+\begin{split}
+\langle \mathbf{x}, \mathbf{y} \rangle &= \langle x_0 x_1\ldots x_{n-1}, y_0 y_1\ldots y_{n-1} \rangle \\&= (x_0 \wedge y_0) \oplus (x_1 \wedge y_1) \oplus \ldots \oplus (x_{n-1} \wedge y_{n-1})
+\end{split}
+\end{equation}
+Observamos que esta aplicación es en realidad el producto escalar del espacio vectorial cuyo cuerpo es el espacio $\mathbb{Z}_2$. Por tanto, podemos expresar $H^{\otimes 2}$ como
+\begin{equation}
+\begin{bmatrix}
+(-1)^{\langle 00, 00 \rangle} & (-1)^{\langle 00, 01 \rangle} & (-1)^{\langle 00, 10 \rangle} & (-1)^{\langle 00, 11 \rangle} 
+\\
+(-1)^{\langle 01, 00 \rangle} & (-1)^{\langle 01, 01 \rangle} & (-1)^{\langle 01, 10 \rangle} & (-1)^{\langle 01, 11 \rangle} 
+\\
+(-1)^{\langle 10, 00 \rangle} & (-1)^{\langle 10, 01 \rangle} & (-1)^{\langle 10, 10 \rangle} & (-1)^{\langle 10, 11 \rangle} 
+\\
+(-1)^{\langle 11, 00 \rangle} & (-1)^{\langle 11, 01 \rangle} & (-1)^{\langle 11, 10 \rangle} & (-1)^{\langle 11, 11 \rangle}
+\end{bmatrix}
+\end{equation}
+Ahora, si queremos generalizarlo para $H^{\otimes n}$ tenemos que su elemento de la fija $i$ columna $j$ expresado los indices en binario, es
+\begin{equation}
+H^{\otimes n} = \frac{1}{\sqrt{2^n}}(-1)^{\langle i, j \rangle}
+\end{equation}
+Entonces, si consideramos un estado arbitrario $\ket{\mathbf{y}}$ que estará representado por un vector con un $1$ en la posición $\mathbf{y}$ y el resto $0$ y le aplicamos $H^{\otimes n}$, obtendremos la suma de los elementos de la columna $\mathbf{y}$ de la matriz, es decir,
+\begin{equation} \label{gHadamard}
+H^{\otimes n}\ket{\mathbf{y}} =
+\frac{1}{\sqrt{2^n}}\sum_{\mathbf{x}\in \{ 0, 1\}^n} (-1)^{\langle \mathbf{x}, \mathbf{y} \rangle} \ket{\mathbf{x}}
+\end{equation}
+Así podremos poner nuestros qubits en un estado de superposición de todos los estados posibles. Por ejemplo podemos tomar el estado $\ket{\mathbf{0}}$ y al aplicarle $H^{\otimes n}$ esta será
+\begin{equation} \label{eq427}
+H^{\otimes n}\ket{\mathbf{0}} = 
+\frac{1}{\sqrt{2^n}}\sum_{\mathbf{x}\in \{ 0, 1\}^n} (-1)^{\langle \mathbf{x}, \mathbf{0} \rangle} \ket{\mathbf{x}} =
+\frac{1}{\sqrt{2^n}}\sum_{\mathbf{x}\in \{ 0, 1\}^n} \ket{\mathbf{x}}
+\end{equation}
+ya que $\langle \mathbf{x}, \mathbf{0} \rangle = 0$, para cualquier valor $\mathbf{x}$.
+
+\newpage
+
+Una vez aclarado esto, podemos proceder a ver el circuito del algoritmo. De manera similar al algoritmo anterior, comenzaremos con $\ket{\mathbf{0}} = \ket{00\ldots 0}$ siendo una cadena de $0$ como el estado de los primeros $n$ qubits, y $\ket{1}$ el qubit de control. Aplicaremos la puerta $H^{\otimes n}$ para poner los primeros $n$ qubits en superposición.
+
+\begin{figure}[h]
+\centering
+\scalebox{1.5}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \nghost{\ket{x}} & \rstick{/^{n}} \qw_(0.0){\ket{\mathbf{0}}} & \qw & \gate{\mathrm{H}^{\otimes n}} & \qw & \lstick{/^{n}} \qw & \multigate{1}{\hspace{0.3cm}\mathrm{U_f}\hspace{0.3cm}} & \qw & \lstick{/^{n}} \qw & \gate{\mathrm{H^{\otimes n}}} & \qw & \lstick{/^{n}} \qw & \meter \\
+	 \nghost{\ket{y}} & \qw_(0.0){\ket{1}} & \qw^(0.0){\ket{\varphi_0}} & \gate{\mathrm{H}} & \qw^(0.0){\ket{\varphi_1}} & \qw & \nghost{\hspace{0.3cm}\mathrm{U_f}\hspace{0.3cm}} \qw & \qw^(0.0){\ket{\varphi_2}} & \qw & \qw & \qw^(0.0){\ket{\varphi_3}} & \qw & \qw \\}}
+\end{figure}\ \linebreak
+O en término de matrices, esto sería:
+\begin{equation}
+\left( H^{\otimes n} \otimes I \right) U_f \left( H^{\otimes n} \otimes H \right) \ket{\mathbf{0}, 1}
+\end{equation}
+Empezamos entonces con el estado $\ket{\varphi_0} = \ket{\mathbf{0}, 1}$ y le aplicamos la matriz de Hadamard, usando la expresión \ref{eq427} y reordenando por la propiedad distributiva
+\begin{equation}
+\begin{split}
+\ket{\varphi_1} &= (H^{\otimes n}\otimes H)\ket{\mathbf{0}, 1} =
+\left[H^{\otimes n}\ket{\mathbf{0}} \right] \otimes \left[ H\ket{1} \right] =
+\left[ \frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \ket{\mathbf{x}} \right] \left[ \frac{\ket{0}-\ket{1}}{\sqrt{2}} \right] \\&=
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \left[ \frac{\ket{\mathbf{x}, 0}-\ket{\mathbf{x}, 1}}{\sqrt{2}} \right]
+\end{split}
+\end{equation}
+Aplicamos $U_f$ recordando que es un aplicación lineal que lleva $\ket{\mathbf{x}, y}$ a $\ket{\mathbf{x}, y\oplus f(\mathbf{x})}$
+\begin{equation}
+\begin{split}
+\ket{\varphi_2} &= U_f
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \left[ \frac{\ket{\mathbf{x}, 0}-\ket{\mathbf{x}, 1}}{\sqrt{2}} \right]
+= 
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \left[ \frac{U_f\ket{\mathbf{x}, 0} - U_f\ket{\mathbf{x}, 1}}{\sqrt{2}} \right]
+\\ &=
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \left[ \frac{\ket{\mathbf{x}, 0\oplus f(\mathbf{x})} - \ket{\mathbf{x}, 1\oplus f(\mathbf{x})}}{\sqrt{2}} \right] =
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} \ket{\mathbf{x}} \left[ \frac{\ket{f(\mathbf{x})} - \ket{\overline{f(\mathbf{x})}}}{\sqrt{2}} \right]
+\end{split}
+\end{equation}
+donde $\overline{f(\mathbf{x})}$ es el opuesto. Recordemos ahora de expresión \ref{eq413} que podemos poner $\ket{f(\mathbf{x})} - \ket{\overline{f(\mathbf{x})}}$ como $(-1)^{f(\mathbf{x})}(\ket{0} - \ket{1})$, por tanto sustituyendo en la expresión anterior obtenemos
+\begin{equation}
+\ket{\varphi_2} =
+\left[ \frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} \ket{\mathbf{x}} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\end{equation}
+Aplicando ahora la matriz $H^{\otimes n}$ a los primeros $n$ qubits, aprovechando la expresión \ref{gHadamard} y que es lineal tenemos que
+\begin{equation}
+\begin{split}
+\ket{\varphi_3} &=
+\left[H^{\otimes n}\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} \ket{\mathbf{x}} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right] =
+\left[\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} H^{\otimes n}\ket{\mathbf{x}} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\\&=
+\left[\frac{1}{2^n} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} \sum_{\mathbf{z}\in\{ 0, 1\}^n} (-1)^{\langle \mathbf{z}, \mathbf{x} \rangle} \ket{\mathbf{z}} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\end{split} 
+\end{equation}
+Ahora juntamos las dos potencias de $(-1)$ teniendo en cuenta que estamos interesados por la paridad del exponente, usamos $\oplus$ la suma módulo $2$.
+\begin{equation}
+\ket{\varphi_3} =
+\left[\frac{ \sum_{\mathbf{x}\in\{ 0, 1\}^n} \sum_{\mathbf{z}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x}) \oplus \langle \mathbf{z}, \mathbf{x} \rangle} \ket{\mathbf{z}} } {2^n} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\end{equation}
+\newpage
+Finalmente nos queda medir los $n$ primeros qubits. Nos preguntamos cuál es la probabilidad de que esté en el estado $\ket{\mathbf{0}}$, fijando $\mathbf{z} = \mathbf{0}$. Por tanto, como $\langle \mathbf{z}, \mathbf{x} \rangle = \langle \mathbf{0}, \mathbf{x} \rangle = 0$ para todo $\mathbf{x}$, tenemos que la probabilidad es
+\begin{equation}
+\left\vert \frac{\sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})}}{2^n} \right\vert^2 
+\end{equation}
+Observamos que depende únicamente de $f(\mathbf{x})$ por lo que podemos discutir su valor según $f(\mathbf{x})$.\\
+Si $f(\mathbf{x})$ es constantemente $0$ ó $1$ tenemos que la probabilidad de estar en el estado $\ket{\mathbf{0}}$ es
+\begin{equation}
+\left\vert \frac{\sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})}}{2^n} \right\vert^2  =
+\left\vert \frac{\sum_{\mathbf{x}\in\{ 0, 1\}^n} (\pm 1)}{2^n} \right\vert^2 =
+\left\vert \frac{\pm 2^n}{2^n} \right\vert^2 = 1
+\end{equation}
+Si $f(\mathbf{x})$ es balanceada, la mitad de los términos $(-1)^{f(\mathbf{x})}$ anulan a la otra mitad y se obtiene que la probabilidad es
+\begin{equation}
+\left\vert \frac{\sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})}}{2^n} \right\vert^2  =
+\left\vert \frac{\sum_{\mathbf{x}\in\{ 0, 1\}^n} 0}{2^n} \right\vert^2 =
+\left\vert \frac{0}{2^n} \right\vert^2 = 0
+\end{equation}
+Podemos concluir que tras la medición, si encontramos el qubit en el estado $\ket{\mathbf{0}}$ la función será constante, mientras que si nos encontramos cualquier otro estado distinto de $\ket{\mathbf{0}}$ la función será balanceada. Esto se debe a que la única manera de que el estado sea $\ket{\mathbf{0}}$ es que la función sea constante.\\
+\linebreak
+Observamos entonces que el algoritmo cuántico necesita solamente una evaluación de la función, respecto a las $2^{n-1}+1$ del método clásico.
 
 \newpage
 
