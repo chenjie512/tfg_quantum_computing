@@ -691,9 +691,9 @@ R(\omega) = \begin{bmatrix}
 \end{equation}
 obteniendo como resultado:
 \begin{equation}
-\ket{\psi'} = \cos(\theta)\ket{0} + e^\omega e^{i\varphi}\sin(\theta)\ket{1} = \cos(\theta)ket{0} + e^{i\varphi + \omega}\sin(\theta)\ket{1}
+\ket{\psi'} = \cos(\theta)\ket{0} + e^\omega e^{i\varphi}\sin(\theta)\ket{1} = \cos(\theta)\ket{0} + e^{i\varphi + \omega}\sin(\theta)\ket{1}
 \end{equation}
-de esta manera hemos conseguido rotar la esfera alrededor del eje Z, por lo que no hemos variado lo que podemos considerar como latitud, sino hemos variado su longitud. Este tipo de operaciones se denominan \textbf{cambios de fase}, ya que sólo estamos alterando el valor del parámetro $e^{i\varphi}$. Observamos que esta alteración de la fase del estado del qubit no produce cambios en cuanto a la medición del mismo, ya que la probabilidad de que un qubit colapse en un estado clásico depende en este caso únicamente del parámetro $\theta$, su latitud en la esfera de Bloch.
+de esta manera hemos conseguido rotar la esfera alrededor del eje Z, por lo que no hemos variado lo que podemos considerar como latitud, sino hemos variado su longitud. Este tipo de operaciones se denominan \textbf{cambios de fase}, ya que sólo estamos alterando el valor del parámetro $e^{i\varphi}$, que denominaremos como \textbf{fase}. Observamos que esta alteración de la fase del estado del qubit no produce cambios en cuanto a la medición del mismo, ya que la probabilidad de que un qubit colapse en un estado clásico depende en este caso únicamente del parámetro $\theta$, su latitud en la esfera de Bloch, o también \textbf{amplitud}.
 
 \begin{figure}[h]
 	\centering
@@ -1050,7 +1050,8 @@ Observamos que esta puerta cuántica es reversible pues:
 	 \nghost{\ket{x}} & \qw_(0.0){\ket{x}} & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw_(-0.4){\ket{x}} & \qw & \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \qw_(1.0){\ket{x}}  \\
 	 \nghost{\ket{y}} & \qw_(0.0){\ket{y}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw & \qw_(0.0){\ket{y\oplus f(x)}} & \qw & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw_(-1.2){\ket{(y\oplus f(x))\oplus f(x)}} & \qw \\}}
 \end{figure}\ \linebreak
-El estado $\ket{x, y}$ queda trasformado en $\ket{x, y\oplus f(x)}$ y posteriormente en $\ket{x, (y\oplus f(x))\oplus f(x)} = \ket{x, y\oplus (f(x)\oplus f(x))} = \ket{x, y\oplus 0} = \ket{x, y}$, ya que $f(x)\oplus f(x) = 0$.\\
+El estado $\ket{x, y}$ queda trasformado en $\ket{x, y\oplus f(x)}$ y posteriormente en \\
+$\ket{x, (y\oplus f(x))\oplus f(x)} = \ket{x, y\oplus (f(x)\oplus f(x))} = \ket{x, y\oplus 0} = \ket{x, y}$, ya que $f(x)\oplus f(x) = 0$.\\
 Una vez conseguido el oráculo que nos evaluará la función en los qubits, podemos construir el circuito del algoritmo que consistirá en lo siguiente:
 
 \begin{figure}[h]
@@ -1300,7 +1301,7 @@ Aplicamos $U_f$ recordando que es un aplicación lineal que lleva $\ket{\mathbf{
 \end{split}
 \end{equation}
 donde $\overline{f(\mathbf{x})}$ es el opuesto. Recordemos ahora de expresión \ref{eq413} que podemos poner $\ket{f(\mathbf{x})} - \ket{\overline{f(\mathbf{x})}}$ como $(-1)^{f(\mathbf{x})}(\ket{0} - \ket{1})$, por tanto sustituyendo en la expresión anterior obtenemos
-\begin{equation}
+\begin{equation} \label{eq431}
 \ket{\varphi_2} =
 \left[ \frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} \ket{\mathbf{x}} \right] \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
 \end{equation}
@@ -1343,29 +1344,170 @@ Observamos entonces que el algoritmo cuántico necesita solamente una evaluació
 
 \newpage
 
-%Espacios de Hilbert Referencias
+\subsection{Algoritmo de Búsqueda de Grover}
+Supongamos que tenemos un conjunto de elementos y que queremos buscar aquellos que cumplen cierta propiedad. Un método muy primitivo y poco eficiente sería ir elemento a elemento y comprobar si cumplen esta propiedad. Si consideramos un conjunto de $N$ elementos esto nos llevaría en el peor de los casos $N$ operaciones a realizar, comprobando la propiedad. Estos algoritmos clásicos tiene un orden de complejidad de $O(N)$ pero podemos mejorar esto con el algoritmo de búsqueda de Grover que tiene un orden de complejidad de $O(\sqrt{N})$.\\
+\linebreak
+Vamos a abordar el problema con funciones. Identificamos los elementos del conjunto con $\mathbf{x} \in \{ 0, 1\}^n$ una cadena binaria. Suponemos por comodidad que $N = 2^n$ y para generalizar el problema suponemos también que hay una cantidad exacta de $M$ elementos que cumple la propiedad que llamaremos soluciones, con $1\leq M \leq N$. A continuación suponemos que tenemos una función $f:\{ 0, 1\}^n \longrightarrow \{ 0, 1\}$ que cumple que
+\begin{equation}
+f(\mathbf{x}) =
+\begin{cases}
+1\text{, si } \mathbf{x} \text{ es solución,} \\
+0\text{, si } \mathbf{x} \text{ no es solución.}
+\end{cases}
+\end{equation}
+Entonces, nuestro objetivo es buscar aquellas cadenas $\mathbf{x}$ que cumplen que $f(\mathbf{x}) = 1$. Para ello nos apoyaremos en $n$ qubits que pondremos en estado de superposición de todos los estados posibles
+\begin{equation}
+\ket{\psi} = \frac{1}{\sqrt{N}} \sum_{\mathbf{x}\in\{0,1\}^n} \ket{\mathbf{x}}
+\end{equation}
+con el propósito de, a través de una serie de operaciones, aumentar la probabilidad de encontrar los qubits en un estado asociado a una solución. Es decir, si consideramos el espacio vectorial con base $\lbrace \ket{\mathbf{x}} \mid \mathbf{x}\in\{0,1\}^n \rbrace$ y $\ket{\psi}$ como vector, se quiere entonces aumentar el valor de aquellas coordenadas del vector correspondientes al elemento de la base que lleve asociado una solución.\\
+\linebreak
+Veamos antes una interpretación geométrica de estas operaciones. Consideramos primero el vector $\ket{\psi}$ como suma de los vectores de la base y los dividimos en dos partes. Aquellas que son solución y aquellas que no.
+\begin{equation}
+\ket{\alpha} = \frac{1}{\sqrt{N-M}} \sum_{f(\mathbf{x}) = 0} \ket{\mathbf{x}}
+\qquad
+\ket{\beta} = \frac{1}{\sqrt{M}} \sum_{f(\mathbf{x}) = 1} \ket{\mathbf{x}}
+\end{equation}
+Consideramos los vectores que los tienen por suma y lo normalizamos. Podemos ver claramente que se puede expresar $\ket{\psi}$ en función de $\ket{\alpha}$ y $\ket{\beta}$.
+\begin{equation}
+\ket{\psi} = \sqrt{\frac{N-M}{N}}\ket{\alpha} + \sqrt{\frac{M}{N}}\ket{\beta}
+\end{equation}
+Entonces podemos poner el vector $\ket{\psi}$ en el espacio bidimensional generado por $\ket{\alpha}$ y $\ket{\beta}$ como se muestra en la imagen ref.
 
-%Corregir llaves(HECHO)
+\begin{figure}[h]
+\textbf{(Insertar imagen)}
+\end{figure}\ \linebreak
+Por tanto el objetivo se interpreta como acercar el vector $\ket{\psi}$ al eje vertical, es decir al vector $\ket{beta}$ que son la suma de todos los estados que son solución.\\
+\linebreak
+Para ello se realizarán dos operaciones. Primero se realizará una simetría respecto del eje horizontal, es decir respecto de $\ket{\alpha}$. Seguido de otra simetría pero respecto del vector $\ket{\psi}$. El resultado de estas dos simetrías es por tanto el de una rotación en el plano que llamaremos por ahora $G$. Si suponemos que $\sqrt{\frac{N-M}{N}} = \cos \frac{\theta}{2}$ y describimos el vector $\ket{\psi}$ como $\cos \frac{\theta}{2} \ket{\alpha} + \sin \frac{\theta}{2} \ket{\beta}$, entonces se puede expresar la operación final como una rotación de ángulo $\theta$, con $0<\theta\leq \frac{\pi}{2}$.\\
+\linebreak
+Por tanto como muestra la imagen ref, $G$ lleva el vector $\ket{\psi}$ a
+\begin{equation}
+G\ket{\psi} = \cos \frac{3\theta}{2}\ket{\alpha} + \sin \frac{3\theta}{2} \ket{\beta}
+\end{equation}
+Si queremos acercarnos al vector $\ket{\beta}$ bastará entonces aplicar repetidas veces $G$.
+\begin{equation}
+G^k \ket{\psi} = \cos \frac{(2k+1)\theta}{2}\ket{\alpha} + \sin \frac{(2k+1)\theta}{2} \ket{\beta}
+\end{equation}
+En cuanto al número de veces que aplicaremos $G$, es muy fácil de determinar teniendo en cuenta que $\ket{\psi} = \sqrt{\frac{N-M}{N}}\ket{\alpha} \sqrt{\frac{M}{N}}\ket{\beta}$, por lo que para llevar $\ket{\psi}$ a $\ket{\beta}$ habría que rotar con un ángulo de $\arccos \sqrt{\frac{M}{N}}$. Entonces, sea $CI(x)$ el entero más cercano a $x$, las veces que tenemos que aplicar la operación $G$ será
+\begin{equation}
+R = CI\left( \frac{\arccos \sqrt{M/N}}{\theta} \right)
+\end{equation}
+Esta expresión no da el valor exacto de las veces que hay que aplicar $G$, sin embargo podemos conseguir una expresión más simple y cómoda de trabajar con unas hipótesis adicionales. Supongamos que $M \leq \frac{N}{2}$, queremos buscar una cota superior para $R$, entonces tenemos que
+\begin{equation}
+\frac{\theta}{2} \geq \sin \frac{\theta}{2} = \sqrt{\frac{M}{N}}
+\end{equation}
+entonces,
+\begin{equation}
+R \leq \left\lceil \frac{\pi}{2\theta} \right\rceil \leq \left\lceil \frac{\pi}{4} \sqrt{\frac{N}{M}} \right\rceil
+\end{equation}
+Esto nos muestra que sólo necesitamos $R = O(\sqrt{N/M})$ iteraciones de $G$ para encontrar con una alta probabilidad la solución, que es una mejora cuadrática respecto al método clásico con una complejidad de $O(N/M)$.\\
 
-%En qubits porner la representación de la esfera de Bloch(HECHO)
+Veamos ahora cómo se traduce estas operaciones en términos de puertas cuánticas. Consideramos entonces el siguiente circuito:
 
-%Poner ejemplos de qubts multiples
+\begin{figure}[h]
+\centering
+\scalebox{1.2}{
+\Qcircuit @C=1.0em @R=0.8em @!R { \\
+	 \nghost{\ket{x}} & \rstick{/^{n}} \qw_(0.0){\ket{\mathbf{0}}} & \qw & \gate{\mathrm{H}^{\otimes n}} & \qw & \lstick{/^{n}} \qw & \multigate{1}{\hspace{0.3cm}\mathrm{U_f}\hspace{0.3cm}} & \qw & \lstick{/^{n}} \qw & \gate{\mathrm{H^{\otimes n}}} & \gate{2\ket{\mathbf{0}}\bra{\mathbf{0}} - I} & \gate{\mathrm{H^{\otimes n}}} & \qw & \lstick{/^{n}} \qw & \meter \\
+	 \nghost{\ket{y}} & \qw_(0.0){\ket{1}} & \qw^(0.0){\ket{\varphi_0}} & \gate{\mathrm{H}} & \qw^(0.0){\ket{\varphi_1}} & \qw & \nghost{\hspace{0.3cm}\mathrm{U_f}\hspace{0.3cm}} \qw & \qw^(0.0){\ket{\varphi_2}} & \qw & \qw & \qw & \qw & \qw^(0.0){\ket{\varphi_3}} & \qw & \qw \\}}
+\caption{Circuito del algoritmo de Grover con una iteración.}
+\end{figure}\ \linebreak
+Es decir, en término de matrices, sería
+\begin{equation}
+\left((H^{\otimes n} \cdot (2\ket{\mathbf{0}}\bra{\mathbf{0}} - I) \cdot H^{\otimes n}) \otimes I \right) U_f(H^{\otimes n}\otimes H)\ket{\varphi_0}
+\end{equation}
+observamos que se puede simplificar la siguiente expresión obteniendo
+\begin{equation}
+H^{\otimes n} \cdot (2\ket{\mathbf{0}}\bra{\mathbf{0}} - I) \cdot H^{\otimes n} = 2\ket{\psi}\bra{\psi} - I
+\end{equation}
+por lo que podemos llamar como iteración de Grover a la operación $G = \left( (2\ket{\psi}\bra{\psi} - I) \otimes I\right) U_f$, que es la rotación de ángulo $\theta$ que hemos visto antes.\\
+Empezamos como siempre con $n$ qubits y el qubit de control en el estado $\ket{\varphi_0} = \ket{\mathbf{0}, 1}$ y lo ponemos en estado de superposición con la puerta de Hadamard $H^{\otimes n}\otimes H$ obteniendo el estado
+\begin{equation}
+\ket{\varphi_1} = \frac{1}{\sqrt{N}}\sum_{\mathbf{x}\in\{ 0, 1\}^n}\ket{\mathbf{x}} \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\end{equation}
+A continuación le aplicamos el oráculo $U_f$ a $\ket{\varphi_1}$ y se obtiene
+\begin{equation}
+\ket{\varphi_2} = \frac{1}{\sqrt{N}} \sum_{\mathbf{x}\in\{ 0, 1\}^n} (-1)^{f(\mathbf{x})} \ket{\mathbf{x}} \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\end{equation}
+que es la misma expresión \ref{eq431} que se llega en el algoritmo anterior. Observamos que esto es cambiar el signo de aquellos vectores $\ket{\mathbf{x}}\in\{0,1\}^n$ que cumplen $f(\mathbf{x}) = 1$, es decir está haciendo la simetría respecto del eje horizontal correspondiente al vector de no soluciones $\ket{\alpha}$.\\
+\linebreak
+Finalmente realizaremos la simetría respecto del vector $\ket{\psi}$ que corresponde con la matriz unitaria $2\ket{\psi}\bra{\psi} - I$.
 
-%Poner ejemplos de circuitos
+\newpage
 
-%PONER MÁS PROPIEDADES DEL PRODUCTO TENSORIAL COMO OPERADOR(HECHO)
+\subsection{Algoritmo de Periodicidad de Simon}
+Veremos ahora el algoritmo de Simon que trata de buscar patrones que se repiten en funciones. Combinaremos en el algoritmo procedimientos cuánticos que hemos visto y también operaciones clásicas.\\
+\linebreak
+Consideramos entonces una función $f:\{0,1\}^n \longrightarrow \{0,1\}^n$, que como siempre podemos evaluar pero no conocemos su definición. Además sabemos que existe una cadena binaria $\mathbf{c} \in \{0,1\}^n$ tal que para toda cadena $\mathbf{x},\mathbf{y}\in\{0,1\}^n$ tenemos que se cumple
+\begin{equation}
+f(\mathbf{x}) = f(\mathbf{y}) \; \text{si y sólo si} \; \mathbf{x} = \mathbf{y}\oplus \mathbf{c}
+\end{equation}
+donde $\oplus$ es la suma módulo 2 aplicado dígito a dígito. Es decir, que se cumple que $f(\mathbf{y}) = f(\mathbf{y}\oplus\mathbf{c})$. Esto es que los valores de $f$ se repiten en un determinado patrón y llamaremos entonces $\mathbf{c}$ como el periodo de la función, que es el objetivo del algoritmo.\\
+\linebreak
+Sea entonces $U_f$ la matriz unitaria que define el oráculo, que lleva $\ket{\mathbf{x}, \mathbf{y}}$ a $\ket{\mathbf{x}, \mathbf{y}\oplus f(\mathbf{x})}$, que podemos ver de nuevo que es su propia inversa. 
 
-%Puerta de teleportación ejemplo en algoritmos cuánticos
+\begin{figure}[h]
+\centering
+\scalebox{1.2}{
+\Qcircuit @C=1.0em @R=0.8em @!R {
+	 \lstick{\ket{\mathbf{x}}} & \qw & \lstick{/^{n}} \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \lstick{/^{n}} \qw & \rstick{\ket{\mathbf{x}}} \\
+	 \lstick{\ket{\mathbf{y}}} & \qw & \lstick{/^{n}} \qw & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw & \lstick{/^{n}} \qw & \rstick{\ket{\mathbf{y}\oplus f(\mathbf{x})}}
+}}
+\end{figure}\ \linebreak
+Observamos que en este caso tenemos $2n$ qubits y si ponemos los últimos $n$ qubits en el estado $\ket{\mathbf{y}} = \ket{\mathbf{0}}$, nos permitiría evaluar la función con el oráculo
+\begin{equation}
+U_f\ket{\mathbf{x}, \mathbf{0}} = \ket{\mathbf{x}, \mathbf{0}\oplus f(\mathbf{x})} = \ket{\mathbf{x}, f(\mathbf{x})}
+\end{equation}
+Teniendo en cuenta esto, consideramos el siguiente circuito y veamos las operaciones paso a paso.
 
-%En algoritmo de Deutsch indicar la eficiencia
+\begin{figure}[h]
+\textbf{(Insertar circuito)}
+\end{figure}\ \linebreak
+Esto en término de matrices sería
+\begin{equation}
+(H^{\otimes n}\otimes I) U_f (H^{\otimes n}\otimes I)\ket{\mathbf{0}, \mathbf{0}}
+\end{equation}
+Comenzamos con los qubits en el estado $\ket{\varphi_0} = \ket{\mathbf{0}, \mathbf{0}}$ y lo ponemos en estado de superposición con la matriz de Hadamard. Recordamos que el resultado de la expresión \ref{eq427}, sabemos que esto es
+\begin{equation}
+\ket{\varphi_1} =
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{0,1\}^n} \ket{\mathbf{x}, \mathbf{0}}
+\end{equation}
+Aplicamos el oráculo $U_f$ y recordando que es lineal tenemos,
+\begin{equation}
+\ket{\varphi_2} =
+\frac{1}{\sqrt{2^n}} \sum_{\mathbf{x}\in\{0,1\}^n} \ket{\mathbf{x}, f(\mathbf{x})}
+\end{equation}
+Finalmente, aplicamos de nuevo la matriz de Hadamard teniendo en cuenta la expresión \ref{gHadamard} y obtenemos
+\begin{equation}
+\ket{\varphi_3} =
+\frac{ \sum_{\mathbf{x}\in\{0,1\}^n} \sum_{\mathbf{z}\in\{0,1\}^n} (-1)^{\langle \mathbf{z}, \mathbf{x} \rangle} \ket{\mathbf{x}, f(\mathbf{x})} } {2^n}
+\end{equation}
+Observamos entonces que en el sumatorio, para cada $\mathbf{x}$ y para cada $\mathbf{z}$ tenemos que $\ket{\mathbf{z}, f(\mathbf{x})}$ coincide con $\ket{\mathbf{z}, f(\mathbf{x}\oplus\mathbf{c})}$ por la periodicidad de la función. Por tanto si agrupamos los pares, sus coeficientes serán
+\begin{equation}
+\begin{split}
+\frac{(-1)^{\langle\mathbf{z}, \mathbf{x}\rangle} + (-1)^{\langle\mathbf{z}, \mathbf{x}\oplus\mathbf{c}\rangle}}{2}
+= 
+\frac{(-1)^{\langle\mathbf{z}, \mathbf{x}\rangle} + (-1)^{\langle\mathbf{z}, \mathbf{x}\rangle \oplus \langle \mathbf{z}, \mathbf{c}\rangle}}{2}
+\\=
+\frac{(-1)^{\langle\mathbf{z}, \mathbf{x}\rangle} + (-1)^{\langle\mathbf{z}, \mathbf{x}\rangle}(-1)^{ \langle \mathbf{z}, \mathbf{c}\rangle}}{2}
+=
+\frac{(-1)^{\langle\mathbf{z}, \mathbf{x}\rangle} (1 + (-1)^{ \langle \mathbf{z}, \mathbf{c}\rangle})}{2}
+\end{split}
+\end{equation}
+Entonces, si discutimos la expresión según el valor de $\langle \mathbf{z}, \mathbf{c} \rangle$ tenemos que si $\langle \mathbf{z}, \mathbf{c} \rangle = 1$, la expresión anterior se anula. Si $\langle \mathbf{z}, \mathbf{c} \rangle = 0$ obtenemos el valor $\pm 1$. Por tanto si medimos los $n$ primeros qubits tras el circuito, obtendremos las cadena binarias $\mathbf{z}$ que cumplen que $\langle \mathbf{z}, \mathbf{c} \rangle = 0$. Lo que nos queda por hacer es sólamente plantear una ecuación lineal con las cadenas resultantes para obtener $\mathbf{c}$.
 
-%Traducir entagled
+
+
+\newpage
+%nº veces que se ejecuta G con M \leq N/2
+
+%Simetría respecto de ket\psi
+
+%Duda sobre medir varias veces en el algoritmo de Grover
+
 
 \section{Conclusión}
 
-%e must clarify what we mean by “simulate.” In the classical world, we say that one circuit Circ simulates another circuit Circ	 if for any possible inputs, the output for Circ will be the same for Circ	
-
-%Things in the quantum world are a tad more complicated. Because of the probabilistic nature of quantum computation, the outputs of a circuit are always probabilistic. So we have to reformulate what we mean when we talk about simulate. We shall not worry about this here.
 
 \newpage
 

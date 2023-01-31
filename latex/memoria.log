@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.2)  20 JAN 2023 19:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.2)  27 JAN 2023 18:15
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -511,12 +511,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
  [2] [3]
 [4] [5] [6] [7]
-<./imagen/qubit_vector.png, id=200, 330.23375pt x 339.2675pt>
+<./imagen/qubit_vector.png, id=210, 330.23375pt x 339.2675pt>
 File: ./imagen/qubit_vector.png Graphic file (type png)
 <use ./imagen/qubit_vector.png>
 Package pdftex.def Info: ./imagen/qubit_vector.png  used on input line 469.
 (pdftex.def)             Requested size: 99.07088pt x 101.78102pt.
-<./imagen/esfera_bloch.png, id=201, 425.59pt x 487.8225pt>
+<./imagen/esfera_bloch.png, id=211, 425.59pt x 487.8225pt>
 File: ./imagen/esfera_bloch.png Graphic file (type png)
 <use ./imagen/esfera_bloch.png>
 Package pdftex.def Info: ./imagen/esfera_bloch.png  used on input line 495.
@@ -530,13 +530,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: Command \textordmasculine invalid in math mode on input line 657
 .
 
-<./imagen/rotacion_bloch.png, id=236, 449.2785pt x 217.41225pt>
+<./imagen/rotacion_bloch.png, id=246, 449.2785pt x 217.41225pt>
 File: ./imagen/rotacion_bloch.png Graphic file (type png)
 <use ./imagen/rotacion_bloch.png>
 Package pdftex.def Info: ./imagen/rotacion_bloch.png  used on input line 660.
 (pdftex.def)             Requested size: 292.02756pt x 141.31627pt.
 [11 <./imagen/rotacion_bloch.png>]
-<./imagen/rotacion_fase.png, id=250, 192.11775pt x 198.14024pt>
+<./imagen/rotacion_fase.png, id=260, 192.11775pt x 198.14024pt>
 File: ./imagen/rotacion_fase.png Graphic file (type png)
 <use ./imagen/rotacion_fase.png>
 Package pdftex.def Info: ./imagen/rotacion_fase.png  used on input line 700.
@@ -559,79 +559,133 @@ Underfull \hbox (badness 10000) in paragraph at lines 997--1000
  []
 
 <xymatrix 4x4 258> [17] <xymatrix 9x2 826>
-Underfull \hbox (badness 10000) in paragraph at lines 1052--1055
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1056
 []
  []
 
-
-Overfull \hbox (66.57523pt too wide) in paragraph at lines 1052--1055
-\OT1/cmr/m/n/10 El es-ta-do $[]$ que-da tras-for-ma-do en $[]$ y pos-te-rior-me
-n-te en $[] = [] =
- []
-
 <xymatrix 9x3 986>
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1065
 []
  []
 
 [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
 
  []
 
 <xymatrix 7x2 478> <xymatrix 4x1 86>
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1162
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1162
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1162
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1170--1172
+Underfull \hbox (badness 10000) in paragraph at lines 1171--1173
 
  []
 
 [20] [21] <xymatrix 13x3 1298>
-Underfull \hbox (badness 10000) in paragraph at lines 1276--1278
+Underfull \hbox (badness 10000) in paragraph at lines 1277--1279
 []
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1339--1343
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1344
 
  []
 
-[23] [24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1383.
- [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1383.
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1351
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1361--1365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1384
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1384
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1384
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 1402--1404
+
+ []
+
+<xymatrix 15x3 1572>
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1416
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1435
+
+ []
+
+[25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1442
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1444--1448
+
+ []
+
+<xymatrix 7x2 478>
+Underfull \hbox (badness 10000) in paragraph at lines 1456--1458
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1465--1467
+[]
+ []
+
+[27] [28] [29]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1525.
+ [30]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1525.
  (memoria.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1383.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1383.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1525.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1525.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: 68F45BB2190143B0D1B89C61CC7ED491;1369.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1383.
+(rerunfilecheck)             Checksum: 0C36C8330EA7CE22FED77EB2442D2A85;1539.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1525.
  ) 
 Here is how much of TeX's memory you used:
- 9954 strings out of 492970
- 135220 string characters out of 3135849
- 327156 words of memory out of 3000000
- 13508 multiletter control sequences out of 15000+200000
+ 9991 strings out of 492970
+ 135628 string characters out of 3135849
+ 333407 words of memory out of 3000000
+ 13517 multiletter control sequences out of 15000+200000
  16946 words of font info for 64 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,26n,46p,1405b,1142s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,26n,46p,1405b,1146s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
@@ -651,9 +705,9 @@ msfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb>
-Output written on memoria.pdf (25 pages, 457609 bytes).
+Output written on memoria.pdf (30 pages, 482264 bytes).
 PDF statistics:
- 473 PDF objects out of 1000 (max. 8388607)
- 174 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 533 PDF objects out of 1000 (max. 8388607)
+ 202 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 
