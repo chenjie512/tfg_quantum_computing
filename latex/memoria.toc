@@ -19,5 +19,6 @@
 \contentsline {subsection}{\numberline {4.3}Algoritmo de Deutsch-Jozsa}{20}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Algoritmo de B\IeC {\'u}squeda de Grover}{24}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Algoritmo de Periodicidad de Simon}{27}{subsection.4.5}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{29}{section.5}
-\contentsline {section}{\numberline {6}Bibliograf\IeC {\'\i }a}{30}{section.6}
+\contentsline {subsection}{\numberline {4.6}Algoritmo de Factorizaci\IeC {\'o}n de Shor}{29}{subsection.4.6}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{34}{section.5}
+\contentsline {section}{\numberline {6}Bibliograf\IeC {\'\i }a}{35}{section.6}

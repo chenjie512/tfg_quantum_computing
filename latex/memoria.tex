@@ -21,12 +21,14 @@
 
 %Nuevos entornos
 \newtheorem{deff}{Definición}[section]
+\newtheorem{teo}{Teorema}[section]
 
 %Enumeración
 \numberwithin{equation}{section}
 
 %Nuevo comandos
 \newcommand\norm[1]{\lVert#1\rVert}
+\newcommand{\modd}{\: mod \:}
 
 \title{Computación Cuántica}
 \author{Chenjie Huang}
@@ -1495,6 +1497,248 @@ Observamos entonces que en el sumatorio, para cada $\mathbf{x}$ y para cada $\ma
 \end{split}
 \end{equation}
 Entonces, si discutimos la expresión según el valor de $\langle \mathbf{z}, \mathbf{c} \rangle$ tenemos que si $\langle \mathbf{z}, \mathbf{c} \rangle = 1$, la expresión anterior se anula. Si $\langle \mathbf{z}, \mathbf{c} \rangle = 0$ obtenemos el valor $\pm 1$. Por tanto si medimos los $n$ primeros qubits tras el circuito, obtendremos las cadena binarias $\mathbf{z}$ que cumplen que $\langle \mathbf{z}, \mathbf{c} \rangle = 0$. Lo que nos queda por hacer es sólamente plantear una ecuación lineal con las cadenas resultantes para obtener $\mathbf{c}$.
+
+\newpage
+
+\subsection{Algoritmo de Factorización de Shor}
+El problema de factorizar un número compuesto tiene su interés en la criptografía, ya que este se basa en que no hay un algoritmo eficiente que resuelva el problema. Sin embargo la computación cuántica nos ofrece un algoritmo que permite descomponer un número compuesto en sus factores primos de manera exponencialmente más rápido que el mejor algoritmo clásico que se conoce hasta la fecha.\\
+\linebreak
+Antes de entrar en detalle con el algoritmo veremos una herramienta que es esencial para el proceso de este algoritmo, además de otros también. Se trata de la Transformada Cuántica de Fourier, que nos permite aproximar el valor de la fase de un estado de un qubit, algo realmente importante que nos permite resolver por ejemplo el problema de encontrar el orden de un elemento y también al problema de factorizar un número compuesto.\\
+
+Veamos primero en detalle la transformada cuántica de Fourier. Recordemos primero la transformada discreta de Fourier, que lleva un vector de complejos $(x_0, \ldots, x_{N-1})$ a otro de misma dimensión $y_0, \ldots, y_{N-1}$ definido cada componente como
+\begin{equation}
+y_k = \frac{1}{\sqrt{N}} \sum_{j=0}^{N-1} x_j e^{2\pi i j k /N}
+\end{equation}
+Por tanto queremos que la transformada cuántica de Fourier actúe sobre una base ortonormal $\{ \ket{j} \mid 0 \leq j \leq N-1 \}$ de manera que a cada elemento de la base
+\begin{equation}
+\ket{j} \longrightarrow \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} e^{2\pi i j k /N} \ket{k}
+\end{equation}
+Entonces, si se toma un vector arbitrario, la transformada cuántica de Fourier lo llevará a
+\begin{equation}
+\sum_{j=0}^{N-1} x_j \ket{j}
+\longrightarrow
+\sum_{k=0}^{N-1} y_k \ket{k}
+\end{equation}
+donde las amplitudes $y_k$ son la transformada discreta de Fourier aplicado a $x_j$. Esto es la definición general que podemos dar sobre la transformada cuántica de Fourier, sin embargo hay una expresión con la que nos resultará más cómoda trabajar posteriormente. Además nos permitirá demostrar fácilmente que la transformada cuántica de Fourier no es sólo lineal sino también unitaria, que es importante que cumpla esto último.\\
+\linebreak
+Tomamos a partir de ahora $N = 2^n$ para $n$ entero, y la base ortonormal $\{\ket{0}, \ldots, \ket{2^n-1}\}$ representado el estado de $n$ qubits. Entonces para cada $\ket{j}$ podemos escribirlo en su representación binaria con $j \equiv j_1 j_2 \ldots j_n$ de manera que $j = j_1 2^{n-1} + j_2 2^{n-2} + \ldots + j_n 2^0$. Consideraremos también la notación binaria para fracciones $0.j_1 j_2 \ldots j_m$ para representar el valor $j_1 2^{-1} + j_2 2^{-2} + \ldots + j_m ^{-m}$.
+Tomamos entonces un elemento de la base $\ket{j}$ y le aplicamos la transformada cuántica de Fourier 
+\begin{equation}
+\begin{split}
+\ket{j} &\rightarrow 
+\frac{1}{\sqrt{2^n}}\sum_{k=0}^{2^n-1} e^{2\pi i j k /2^n} \ket{k}
+\\ &=
+\frac{1}{\sqrt{2^n}} \sum_{k_1=0}^{1} \ldots \sum_{k_n=0}^{1} e^{2\pi i j \left( \sum_{l=1}^{n} k_l 2^{-l} \right)} \ket{k_1\ldots k_n}
+\end{split}
+\end{equation}
+donde hemos sustituido $k$ por su expresión en binario $k_1\ldots k_n$ y $\frac{k}{2^n} = \frac{k_1 2^{n-1} + k_2 2^{n-2} k_n 2^0}{2^n} = \sum_{l=1}^{n} k_l 2^{-l}$. Separamos ahora cada vector por el producto tensorial y simplicamos la expresión
+\begin{equation}
+\begin{split}
+\ket{j} &\rightarrow
+\frac{1}{\sqrt{2^n}} \sum_{k_1=0}^{1} \ldots \sum_{k_n=0}^{1} \left( \prod_{l=1}^{n} e^{2\pi i j k_l 2^{-l}} \right) \ket{k_1\ldots k_n}
+\\ &=
+\frac{1}{\sqrt{2^n}} \sum_{k_1=0}^{1} \ldots \sum_{k_n=0}^{1} \bigotimes_{l=1}^{n} e^{2\pi i j k_l 2^{-l}} \ket{k_l}
+\\ &=
+\frac{1}{\sqrt{2^n}} \bigotimes_{l=1}^{n} \left[ \sum_{k_l=0}^{1} e^{2\pi i j k_l 2^{-l}} \ket{k_l} \right]
+\\ &=
+\frac{1}{\sqrt{2^n}} \bigotimes_{l=1}^{n} \left[ \ket{0} + e^{2\pi i j 2^{-l}} \ket{1} \right]
+\end{split}
+\end{equation}
+Vamos a analizar por un momento en detalle el valor de $e^{2\pi i j 2^{-l}}$. Si tomamos por ejemplo el valor de $l=1$ y expresamos $j$ en binario tenemos que $\frac{j}{2^1} = \frac{j_1 2^{n-1} + j_2 2^{n-2} + \ldots + j_n 2^{0}}{2} = j_1 2^{n-2} + j_2 2^{n-3} + \ldots + j_{n-1} 2^{0} + j_n 2^{-1}$ lo que podemos separar $e^{2\pi i j 2^{-l}} = e^{2\pi i \left( j_1 2^{n-2} + j_2 2^{n-3} + \ldots + j_{n-1} 2^{0} \right)} \cdot e^{2\pi i j_n 2^{-1}}$. Ahora teniendo en cuenta que $\left( j_1 2^{n-2} + j_2 2^{n-3} + \ldots + j_{n-1} 2^{0} \right)$ es un número entero, tenemos que $e^{2\pi i j 2^{-l}} = e^{2\pi i} \cdot e^{2\pi i j_n 2^{-1}} = 1 \cdot e^{2\pi i 0.j_n}$ donde hemos expresado $j_n 2^{-1}$ con su expresión binaria para fracciones.\\
+Entonces en general para un valor en concreto de $l = m$ podemos expresar $e^{2\pi i j 2^{-m}} = e^{2\pi i 0.j_{n-m+1}\cdots j_{n}}$.
+\begin{equation}
+\begin{split}
+\ket{j} &\rightarrow
+\frac{1}{\sqrt{2^n}} \bigotimes_{l=1}^{n} \left[ \ket{0} + e^{2\pi i j 2^{-l}} \ket{1} \right]
+\\ &=
+\frac{\left( \ket{0} + e^{2\pi i 0.j_n}\ket{1} \right) \left( \ket{0} + e^{2\pi i 0.j_{n-1}j_n}\ket{1} \right) \cdots \left( \ket{0} + e^{2\pi i 0.j_1 j_2 \ldots j_n}\ket{1} \right)}{\sqrt{2^n}}
+\end{split}
+\end{equation}
+Esta última expresión nos resultará de mucha utilidad a pesar de que a primera vista parece incómodo para trabajar. Esto nos permitirá construir un circuito de manera muy intuitiva para aplicar la transformada cuántica de Fourier. Para ello consideramos primero la puerta $R_k$ cuya matriz es
+\begin{equation}
+R_k =
+\begin{bmatrix}
+1 & 0 \\
+0 & e^{2\pi i/2^k}
+\end{bmatrix}
+\end{equation}
+
+\begin{figure}[h] \label{fig_qft}
+\textbf{(insertar circuito)}
+\end{figure}\ \linebreak
+Comenzaremos con el estado $\ket{j_1 j_2 \ldots j_n}$. Si le aplicamos la puerta de Hadamard al primero estado, podemos expresar este como
+\begin{equation}
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1}\ket{1} \right)
+\ket{j_2 \ldots j_n}
+\end{equation}
+ya que el valor de $e^{2\pi i 0.j_1}$ es
+\begin{equation}
+\begin{cases}
+j_1 = 0 \longrightarrow e^{2\pi i \cdot 0} = e^0 = 1 \\
+j_1 = 1 \longrightarrow e^{2\pi i \cdot 0.\text{1}} = e^{2\pi i \cdot 2^{-1}} = e^{\pi i} = -1
+\end{cases}
+\end{equation}
+Le aplicamos a continuación la puerta controlada $R_2$ al qubit actual como qubit objetivo, y el qubit en el estado $\ket{j_2}$ como control.
+Esto es
+\begin{equation}
+\begin{cases}
+j_2 = 0 \longrightarrow \frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1} \ket{1} \right)
+=
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1 0} \ket{1} \right) \\
+j_2 = 1 \longrightarrow
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1}\cdot e^{2\pi i/2^2} \ket{1} \right)
+=
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1 1}\cdot \ket{1} \right)
+\end{cases}
+\end{equation}
+Por tanto, tenemos el estado
+\begin{equation}
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1 j_2}\ket{1} \right)
+\ket{j_2 \ldots j_n}
+\end{equation}
+Continuamos aplicando las puertas controladas $R_3$ hasta $R_n$ que añade un nuevo bit a la fase del estado, acabando finalmente en
+\begin{equation}
+\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i 0.j_1 j_2\ldots j_n}\ket{1} \right)
+\ket{j_2 \ldots j_n}
+\end{equation}
+De manera análoga realizamos el mismo proceso con el resto de qubits lo que nos permite obtener el estado final
+\begin{equation}
+\frac{1}{\sqrt{2^n}}
+\left( \ket{0} + e^{2\pi i 0.j_1 j_2\ldots j_n}\ket{1} \right)
+\left( \ket{0} + e^{2\pi i 0.j_2\ldots j_n}\ket{1} \right)
+\ldots
+\left( \ket{0} + e^{2\pi i 0.j_n}\ket{1} \right)
+\end{equation}
+Finalmente realizamos una operación de intercambio con la puerta de intercambio para obtener el orden adecuado y de esta manera obtenemos la transformada cuántica de Fourier
+\begin{equation}
+\frac{1}{\sqrt{2^n}}
+\left( \ket{0} + e^{2\pi i 0.j_n}\ket{1} \right)
+\left( \ket{0} + e^{2\pi i 0.j_{n-1} j_n}\ket{1} \right)
+\ldots
+\left( \ket{0} + e^{2\pi i 0.j_1 j_2\ldots j_n}\ket{1} \right)
+\end{equation}
+Con esto terminamos en el estado que buscábamos además de demostrar que la transformada cuántica de Fourier es unitaria pues está compuesto de operaciones unitarias.\\
+
+Ahora veremos que la transformación cuántica de Fourier es esencial para el proceso de la estimación de la fase. Este último consiste en considerar una aplicación unitaria $U$ que tiene un autovector $\ket{u}$ con autovalor $e^{2\pi \varphi}$ donde se desconoce el valor de $\varphi$. Tenemos el objetivo de estimar el valor de $\varphi$ y para ello dispondremos de el oráculo que nos permitirá realizar la operación controlada de $U^{2^j}$.\\
+Comenzaremos con dos registros de qubits, o dos conjuntos de qubits. El primero registro tendrá $t$ qubits en el estado $\ket{\mathbf{0}}$ con $t$ el número de bits que contendrá la aproximación de $\varphi$.\\
+En el segundo registro se hallarán los qubits en el estado $\ket{u}$ con el número de qubits necesarios para almacenar $\ket{u}$. Entonces, la estimación de fase consistirá en dos partes. Primero le aplicaremos el circuito siguiente.
+
+\begin{figure}[h]
+\textbf{(insertar circuito)}
+\end{figure}\ \linebreak
+Primero aplicaremos la puerta de Hadamard que llevará a cada qubit al estado
+\begin{equation}
+\frac{\ket{0} + \ket{1}}{\sqrt{2}}
+\end{equation}
+Se le aplicará posteriormente las puertas controladas $U^{2^j}$ con $0\leq j \leq 2^{t-1}$. Si tomamos los qubits afectados por la primera puerta controlada $U^{2^0} = U$ tendremos
+\begin{equation}
+\begin{split}
+^CU \left( \frac{\ket{0} + \ket{1}}{\sqrt{2}} \ket{u} \right) 
+&= 
+^CU \left( \frac{\ket{0, u} + \ket{1, u}}{\sqrt{2}} \right)
+=
+\frac{1}{\sqrt{2}} \left( ^CU\ket{0, u} + ^CU\ket{1, u} \right)
+\\ &=
+\frac{1}{\sqrt{2}} \left( \ket{0, u} + e^{2\pi i \varphi}\ket{1, u} \right)
+=
+\frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i \left(2^0 \varphi\right)} \ket{1} \right) \ket{u}
+\end{split}
+\end{equation}
+Por tanto, deducimos de las demás puertas, el estado final de los qubits del primer registro serán
+\begin{equation}
+\frac{1}{\sqrt{2^t}}
+\left( \ket{0} + e^{2\pi i 2^{t-1}\varphi} \ket{1} \right)
+\left( \ket{0} + e^{2\pi i 2^{t-2}\varphi} \ket{1} \right)
+\ldots
+\left( \ket{0} + e^{2\pi i 2^{0}\varphi} \ket{1} \right)
+\end{equation}
+Por último aplicaremos la inversa de la transformada cuántica de Fourier, que consiste en darle la vuelta al circuito de la Figura \ref{fig_qft}. Supongamos que la mejor aproximación de $\varphi$ en $t$ bits es $\varphi  \simeq 0.\varphi_1 \ldots \varphi_t$, entonces reescribiendo la expresión anterior del estado en binario tendremos
+\begin{equation}
+\frac{1}{\sqrt{2^t}}
+\left( \ket{0} + e^{2\pi i 0.\varphi_t} \ket{1} \right)
+\left( \ket{0} + e^{2\pi i 0.\varphi_{t-1}\varphi_t} \ket{1} \right)
+\ldots
+\left( \ket{0} + e^{2\pi i 0.\varphi_1\varphi_2\ldots\varphi_t} \ket{1} \right)
+\end{equation}
+Esta expresión es exactamente la transformada cuántica de Fourier de $\ket{\varphi_1\ldots\varphi_t}$, por tanto aplicando la inversa obtendremos los valores de $\varphi  \simeq 0.\varphi_1 \ldots \varphi_t$. Para ello mediremos los $t$ qubits del primer registro obteniendo una buena aproximación del valor de $\varphi$.\\
+
+Esta herramienta nos resolverá el problema de encontrar el orden de un elemento y también al problema de factorizar un número compuesto, que son equivalentes entre sí. Veremos primero el problema de encontrar el orden de un elemento y veremos posteriormente que el problema de factorización lo podremos transformar en un problema de encontrar el orden.\\
+\linebreak
+Consideremos entonces dos enteros positivos $x$ y $N$ tal que $x<N$ sin factores comunes, llamaremos entonces al \textit{orden} de $x \modd N$ al menor entero positivo tal que $x^r =  1\modd N$. Entonces, el algoritmo cuántico para encontrar el orden es simplemente aplicar el algoritmo de estimación de fase con el operador unitario
+\begin{equation}
+U\ket{y} = \ket{x y \modd N}
+\end{equation}
+con $y \in \{0, 1\}^L$ siendo $L$ el número de qubits necesarios para representar $N$ en binario. Consideramos entonces el estado
+\begin{equation}
+\ket{u_s} =
+\frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r}\ket{x^k \modd N}
+\end{equation}
+con $0\leq s \leq r-1$, que son autovectores de $U$, ya que
+\begin{equation}
+\begin{split}
+U\ket{u_s} &=
+U\left( \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r}\ket{x^k \modd N} \right) =
+\frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r} U \ket{x^k \modd N}
+\\ &=
+\frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r}\ket{x^{k+1} \modd N}
+\end{split}
+\end{equation}
+Desarrollamos la expresión y sacando factor común obtenemos
+\begin{equation}
+\begin{split}
+U\ket{u_s} &=
+\frac{1}{\sqrt{r}} \left(
+e^{\frac{-2\pi is}{r}0} \ket{x^1 \modd N} +
+e^{\frac{-2\pi is}{r}1} \ket{x^2 \modd N} + \ldots +
+e^{\frac{-2\pi is}{r}(r-1)} \ket{x^r \modd N} \right)
+\\ &=
+e^{2\pi is/r} \left[
+\frac{1}{\sqrt{r}} \left(
+e^{\frac{-2\pi is}{r}1} \ket{x^1 \modd N} +
+e^{\frac{-2\pi is}{r}2} \ket{x^2 \modd N} + \ldots +
+e^{\frac{-2\pi is}{r}r} \ket{x^r \modd N} \right) \right]
+\end{split}
+\end{equation}
+Teniendo en cuenta ahora que $e^{-2\pi is} = 1 = e^0$ y que $x^r = 1 \modd N = x^0 \modd N$, tenemos que
+\begin{equation}
+\begin{split}
+U\ket{u_s} &=
+e^{2\pi is/r} \left[
+\frac{1}{\sqrt{r}} \left(
+e^{\frac{-2\pi is}{r}1} \ket{x^1 \modd N} +
+e^{\frac{-2\pi is}{r}2} \ket{x^2 \modd N} + \ldots +
+e^{\frac{-2\pi is}{r}0} \ket{x^0 \modd N} \right) \right]
+\\ &=
+e^{2\pi is/r} \left[ \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r}\ket{x^k \modd N} \right]
+= e^{2\pi is/r} \ket{u_s}
+\end{split}
+\end{equation}
+Por tanto aplicando el algoritmo de estimación fase, obtendremos una aproximación del valor de $\varphi \simeq s/r$, del que podemos obtener fácilmente el valor de $r$.\\
+
+Una vez que sabemos hallar el orden de un elemento, usaremos esta herramienta y dos teoremas para resolver el problema de factorización.
+
+\begin{teo}
+Supongamos que $N$ es un número compuesto representado en $L$ bits y $x$ es la solución no trivial de $x^2 = 1 \modd N$ con $1\leq x\leq N$, es decir que $x \neq \pm 1 \modd N$. Entonces se da que al menos uno de $gcd(x-1, N)$ y $gcd(x+1, N)$ es un factor primo no trivial de $N$.
+\end{teo}
+
+\begin{teo}
+Consideramos $N = p_{1}^{\alpha^1}\ldots p_{m}^{\alpha^m}$ la factorización prima de un número compuesto impar positivo. Sea $x$ un entero elegido uniformente aleatorio, tal que $1 \leq x \leq N-1$ y $x$ es coprimo con $N$. Sea $r$ el orden de $x \modd N$. Entonces la probabilidad
+\begin{equation}
+P(r \text{ es par y } x^{r/2} \neq -1 \modd N) \geq 1 - \frac{1}{2^m}
+\end{equation}
+\end{teo}
+Entonces el algoritmo consiste en los siguientes pasos:
+\begin{itemize}
+\item[1.]Si $N$ es par, devolvemos el factor $2$.
+
+\item[2.]Determinar si se cumple $N = a^b$ para enteros $a\geq 1$ y $b \geq 2$. Devolver el factor $a$ en caso positivo.
+
+\item[3.]Elegir aleatoriamente $x$ entre $1$ y $N-1$. Si $gcd(x,N)>1$ entonces devolvemos el factor $gcd(x,N)$.
+
+\item[4.]Aplicamos el algoritmo para encontrar el orden $r$ de $x \modd N$.
+
+\item[5.]Si $r$ es par y $x^{r/2}\neq -1 \modd N$, comprobar si $gcd(x^{r/2}-1, N)$ y $gcd(x^{r/2}+1, N)$ son factores no triviales devolviendo el el factor resultante. En caso contrario el algoritmo falla.
+\end{itemize}
 
 
 
