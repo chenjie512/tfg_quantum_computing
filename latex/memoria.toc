@@ -1,24 +1,24 @@
 \babel@toc {spanish}{}
 \contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Objetivos}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Metodolog\IeC {\'\i }a}{2}{subsection.1.2}
-\contentsline {section}{\numberline {2}Preliminares}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Espacios Vectoriales}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Bases y dimensi\IeC {\'o}n}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Aplicaciones lineales y forma matricial}{3}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Producto Escalar y Espacios de Hilbert}{4}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Matrices Adjuntas o Hermitianas}{6}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Producto Tensorial}{6}{subsection.2.6}
-\contentsline {section}{\numberline {3}Estructuras y Puertas Cu\IeC {\'a}nticas}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Qubit}{8}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Sistema de Varios Qubits}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Circuitos y Puertas Cu\IeC {\'a}nticas}{10}{subsection.3.3}
-\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{16}{section.4}
-\contentsline {subsection}{\numberline {4.1}Algoritmo de Teletransportaci\IeC {\'o}n}{16}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Algoritmo de Deutsch}{17}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Algoritmo de Deutsch-Jozsa}{20}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Algoritmo de B\IeC {\'u}squeda de Grover}{24}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Algoritmo de Periodicidad de Simon}{27}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Algoritmo de Factorizaci\IeC {\'o}n de Shor}{29}{subsection.4.6}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{34}{section.5}
-\contentsline {section}{\numberline {6}Bibliograf\IeC {\'\i }a}{35}{section.6}
+\contentsline {subsection}{\numberline {1.2}Metodolog\IeC {\'\i }a}{3}{subsection.1.2}
+\contentsline {section}{\numberline {2}Preliminares}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Espacios Vectoriales}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Bases y dimensi\IeC {\'o}n}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Aplicaciones lineales y forma matricial}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Producto Escalar y Espacios de Hilbert}{6}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Matrices Adjuntas o Hermitianas}{7}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Producto Tensorial}{8}{subsection.2.6}
+\contentsline {section}{\numberline {3}Estructuras y Puertas Cu\IeC {\'a}nticas}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Qubit}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Sistema de Varios Qubits}{11}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Circuitos y Puertas Cu\IeC {\'a}nticas}{12}{subsection.3.3}
+\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{18}{section.4}
+\contentsline {subsection}{\numberline {4.1}Algoritmo de Teletransportaci\IeC {\'o}n}{18}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Algoritmo de Deutsch}{19}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Algoritmo de Deutsch-Jozsa}{22}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Algoritmo de B\IeC {\'u}squeda de Grover}{26}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Algoritmo de Periodicidad de Simon}{29}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Algoritmo de Factorizaci\IeC {\'o}n de Shor}{31}{subsection.4.6}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{38}{section.5}
+\contentsline {subsection}{\numberline {5.1}Abstract}{38}{subsection.5.1}
