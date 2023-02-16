@@ -5,4 +5,12 @@ N.~S. Yanofsky and M.~A. Mannucci, {\em Quantum computing for computer
   scientists}.
 \newblock Cambridge University Press, 2008.
 
+\bibitem{nielsen2001quantum}
+M.~A. Nielsen and I.~L. Chuang, ``Quantum computation and quantum
+  information,'' {\em Phys. Today}, vol.~54, no.~2, p.~60, 2001.
+
+\bibitem{chen2023github}
+C.~Huang, ``{Repositorio GitHub}.''
+  \url{https://github.com/chenjie512/tfg_quantum_computing.git}, 2023.
+
 \end{thebibliography}
