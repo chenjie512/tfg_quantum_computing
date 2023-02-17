@@ -6,7 +6,7 @@ Indicaremos los archivos en concreto de las implementaciónes:
   > Algoritmo de Deutsch
 - [*test_deutsch_jozsa.ipynb*]
   > Algoritmo de Deutsch-Jozsa
-  - [*test_Grover.ipynb*]
+- [*test_Grover.ipynb*]
   > Algoritmo de Búsqueda de Grover
-  - [*test_Simon.ipynb*]
+- [*test_Simon.ipynb*]
   > Algoritmo de Simon
