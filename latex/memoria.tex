@@ -44,15 +44,94 @@
 %Documento
 
 \begin{document}
-\maketitle
+
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Complutense de Madrid \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias Matemáticas \par}
+\vspace{0.5cm}
+
+\includegraphics[width=0.5\textwidth]{escudo_ucm}
+
+\vspace{0.5cm}
+{\scshape\Large Trabajo de Fin de Grado \par}
+
+\vspace{0.5cm}
+
+{\scshape\Huge Introducción a la computación cuántica y los algoritmos cuánticos \par}
+\vspace{2cm}
+
+\vfill
+{\Large Tutor: Luis Fernando Llana Díaz \par}
+
+{\Large Autor: Chenjie Huang\par}
+
+{\Large Grado en Matemáticas\par}
+
+\vfill
+{\Large Curso 2022/2023 \par}
+\end{titlepage}
+
+\newpage
+
+\thispagestyle{empty}
+\
+
+\newpage
+\begin{center}
+\textbf{\Large Resumen}
+\end{center}
+\vspace{0.5cm}
+
+La computación cuántica es el campo de estudio que combina la física, las matemáticas y la computación. Se Aprovecha del fenómeno de la superposición cuántica, en la cuál un objeto está en varios estados diferentes de manera simultánea. Con este fenómeno somos capaces de diseñar un sistema cuántico donde el principal objeto será el bit cuántico o qubit. En vez de los estados básicos $0$ y $1$, este puede estar en una superposición de los estados $\ket{0}$ y $\ket{1}$.\\
+El estado de un qubit está representado por un vector de un espacio vectorial, siendo la superposición de los estados una combinación lineal de los elementos de la base
+\begin{equation}
+\ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
+\end{equation}
+Podemos medir este qubit para determinar su estado, en dicho proceso el qubit colapsará en uno de los estados clásicos $0$ ó $1$.\\
+Construiremos sistemas más grandes de qubits con el producto tensorial del espacio vectorial para representar sus estados. También podremos manipular los estados con puertas cuánticas, que funciona como una puerta lógica, y estarán representados con una aplicación lineal sobre el espacio vectorial. Esto lleva asociado una matriz que se le pedirá ser unitaria, es decir, el producto por su adjunta sea la matriz identidad.\\
+\linebreak
+Con estas herramientas podremos construir un algoritmo cuántico básico consistente en:
+\begin{itemize}
+\item Comenzaremos normalmente poniendo los qubits del sistema en un estado de superposición.
+
+\item Después, aplicaremos sobre estos qubits una puerta cuántica representado por una matriz unitaria.
+
+\item Finalmente, mediremos los estados de los qubits, para deducir una conclusión con los resultados.
+\end{itemize}
+Hay algoritmos más complejos que involucran más puertas cuánticas más complejas.\\
+
+\begin{center}
+\textbf{\Large Abstract}
+\end{center}
+\vspace{0.5cm}
+
+The quantum computing is the field of study that combines physics, mathematics and computer science. It exploits the quantum mechanical phenomena called quantum superposition in which a object is simultaneously at different states. With this phenomena, we can design a quantum sistem where the main object is the quantum bit or qubit. Instead of the basic states $0$ and $1$ of a bit, it can be in a superposition of the states $\ket{0}$ and $\ket{1}$.\\
+This state of a qubit is represented by a vector in a vectorial space, so the superposition of states is just a lineal combination of the elements of a vectorial basis
+\begin{equation}
+\ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
+\end{equation}
+We can measure this qubit to determine their state, in which the qubit collapse into one of the classical states $0$ or $1$.\\
+We form bigger sistem of qubits by performing their tensor product as a vector to represent their states. We can also manipulate states with quantum gates, which functions as a classical logic gate, and we represent them with lineal aplications on the vectorial space. This comes with their corresponding matrix association, which only requirements is that they must be unitary, that is, the product with their adjoint is the indentity matrix.\\
+\linebreak
+With all the tool, we can make basic quantum algorithm in which:
+\begin{itemize}
+\item We usually start by putting the qubits into superposition of many states.
+
+\item This is followed by acting on this qubits in superposition with some unitary operations.
+
+\item Then we measure the qubits to determine their state and reach some sort of conclusion with the results.
+\end{itemize}
+There is more complex algorithm which involves more complex operations.
+
+
+\newpage
 
 \tableofcontents
 
 \newpage
 
-\thispagestyle{empty}
-
-\newpage
 
 \section{Introducción}
 
@@ -60,9 +139,9 @@ La computación cuántica es un área de estudio reciente y en desarrollo que im
 \linebreak
 La mecánica cuántica, base de nuestro campo que es la computación cuántica, es de las ciencias con más éxito pero a la vez desconocida. Empezando su desarrollo teórico en el siglo pasado, seguido de su su aplicación por los científicos en la observación y entendimiento de los fundamentos de las partículas y sus comportamientos, resultando incluso en el desarrollo de un modelo físico que es la física de partículas. A pesar de su aplicaciones para explicar un amplio rango de fenómenos de la naturaleza, un leve cambio en esta idea de aplicar los sistemas cuánticos en los fenómenos naturales para darles explicación da lugar a la idea de no limitarse a observar, sino a diseñar estos sistemas cuánticos. Como resultado de esto, surge un interés de nuevo por la mecánica cuántica, sobretodo en planteamiento de cuestiones que llegan a combinar otros campos de estudio como la computación y la teoría de la información.\\
 \linebreak
-Como veremos en detalle en poco, la idea tras la computación cuántica es aprovechar el fenómeno de la superposición cuántica, descrito en la teoría de la mecánica cuántica. Este fenómeno describe partículas que pueden estar en diferentes estados de manera simultanea, que determinaremos un estado fijo en la partícula en cuanto la observemos. Además permite interacciones con el elemento en varios estados de manera también simultanea. A pesar de que se desconoce la naturaleza y el porqué de este fenómeno, no podemos negar que esto ocurre e incluso dando lugar efectos sobre fenómenos reales. Podemos destacar en cuestión el experimento de la doble rendija, en el que pone en manifiesto el fenómeno de la superposición de varios estados, cuando el estado de un mismo elemento interacciona con otro estado de manera que a veces llega a "anularlo". A esto se le conoce como interferencia, y podemos poner en similitud un ejemplo de dos guijarros tirados a un charco de agua y cómo se forma ondas en la superficie de manera que a veces se llegan a cancelar unas a otras, mientras que otras veces se llegan a reforzar una a la otra.\\
+Como veremos en detalle en poco, la idea tras la computación cuántica es aprovechar el fenómeno de la superposición cuántica, descrito en la teoría de la mecánica cuántica. Este fenómeno describe partículas que pueden estar en diferentes estados de manera simultanea, que determinaremos un estado fijo en la partícula en cuanto la observemos. Además permite interacciones con el elemento en varios estados de manera también simultanea. A pesar de que se desconoce la naturaleza y el porqué de este fenómeno, no podemos negar que esto ocurre e incluso dando lugar efectos sobre fenómenos reales. Podemos destacar en cuestión el experimento de la doble rendija, en el que pone en manifiesto el fenómeno de la superposición de varios estados, cuando el estado de un mismo elemento interacciona con otro estado de manera que a veces llega a anularlo. A esto se le conoce como interferencia, y podemos poner en similitud un ejemplo de dos guijarros tirados a un charco de agua y cómo se forma ondas en la superficie de manera que a veces se llegan a cancelar unas a otras, mientras que otras veces se llegan a reforzar una a la otra.\\
 \linebreak
-En vista de la computación clásica, tenemos su elemento base que es el bit, un elemento con dos estados posibles y nos permite realizar operaciones sencillas pero y si las combinamos estas da lugar a numerosas tareas complejas que puede realizar un ordenador hoy en día. La computación cuántica intentará mejorar esto introduciendo el qubit ó \textit{quantum bit}, que en vez de considerar dos estados posibles, consideraremos cualquier combinación de ellas en superposición dando lugar a infinitas combinaciones. Esto nos abrirá numerosas puertas en la computación, permitiendo por ejemplo la evaluación simultanea de una función sobre diferentes elementos, o más bien estados. Lo que nos da lugar a tareas que podremos realizar que se consideraban imposibles ya sea por su complejidad como por el tiempo requerido. Y no problemas sin importancia, pues uno de los temas que veremos es sobre la factorización de números, que es clave en la encriptografía, presente en más lugares de nuestra vida diaria de la que creemos.
+En vista de la computación clásica, tenemos su elemento base que es el bit, un elemento con dos estados posibles y nos permite realizar operaciones sencillas pero y si las combinamos estas da lugar a numerosas tareas complejas que puede realizar un ordenador hoy en día. La computación cuántica intentará mejorar esto introduciendo el qubit ó \textit{quantum bit}, que en vez de considerar dos estados posibles, consideraremos cualquier combinación de ellas en superposición dando lugar a infinitas combinaciones. Esto nos abrirá numerosas puertas en la computación, permitiendo por ejemplo la evaluación simultanea de una función sobre diferentes elementos, o más bien estados. Lo que nos da lugar a tareas que podremos realizar que se consideraban imposibles ya sea por su complejidad como por el tiempo requerido. Y no problemas sin importancia, pues uno de los temas que veremos es sobre la factorización de números, que es clave en la criptografía, presente en más lugares de nuestra vida diaria de la que creemos.
 
 \subsection{Objetivos}
 
@@ -72,13 +151,12 @@ Como hemos mencionado antes, no entraremos en detalle en las cuestiones físicas
 
 \subsection{Metodología}
 
-Por tanto, con este objetivo en mente, se procederá de la siguiente manera. Se realizará la lectura de materia propuesto por el tutor en forma de dos libros. Uno de naturaleza más sencilla para dar una idea inicial al alumno, mientra que el otro de carácter más complejo servirá para entrar en detalles de cuestiones más complicadas además de a modo de consulta.\\
+Por tanto, con este objetivo en mente, se procederá de la siguiente manera. Se realizará la lectura de materia propuesto por el tutor en forma de dos libros. Uno de naturaleza más sencilla para dar una idea inicial al alumno, el libro de Yanofsky\cite{yanofsky2008quantum}. Mientra que el otro, el libro de Nielsen \cite{nielsen2001quantum} que es de carácter más complejo, servirá para entrar en detalles de cuestiones más complicadas.\\
 \linebreak
 Se procederá entonces a la exposición y desarrollo de los conceptos que se han estudiado de los dos libros en las siguientes del documento. Esto conlleva claramente el entendimiento de estos conceptos y para ello se han realizado de manera constante numerosas tutorías ya sea para una duda puntual como para reafirmar y reforzar la idea presente en los libro. También ha servido estas tutorías como guía para organizar el trabajo y cómo llevarlo a cabo.\\
 \linebreak
-Además de la presentación en los contenidos de este documento, se ha procedido a la implementación de los algoritmos en Qiskit, un software que permite de manera relativamente sencilla programar los algoritmos cuánticos. Se han ejecutado simulaciones de los algoritmos además de algunas pruebas en un ordenador cuántico real. No mostraremos los códigos del algoritmo en este documento, sino los presentaremos en un repositorio abierto de GitHub.\\
-\linebreak
-Sin más preámbulos comenzaremos con el desarrollo del trabajo teórico.
+Además de la presentación en los contenidos de este documento, se ha procedido a la implementación de los algoritmos en Qiskit, un software que permite de manera relativamente sencilla programar los algoritmos cuánticos. Se han ejecutado simulaciones de los algoritmos además de algunas pruebas en un ordenador cuántico real. No mostraremos los códigos del algoritmo en este documento, sino los presentaremos en un repositorio abierto de GitHub \cite{chen2023github}. El enlace se encuentra en la bibliografía de este documento junto a los dos libros mencionados.\\
+
 
 \newpage
 
@@ -453,10 +531,42 @@ Conocemos el concepto de bit, que es un elemento de un sistema con dos estados p
 Con $\alpha$ y $\beta$ números complejos que cumplen que $|\alpha|^2 + |\beta|^2 = 1$.
 \end{deff}
 Se entiende fácilmente el estado de un qubit como un vector del espacio vectorial complejo de dimensión 2, restringido a la circunferencia unidad, donde los estados $\ket{0}$ y $\ket{1}$ son los elementos de la base ortonormal del espacio con $\alpha$ y $\beta$ como coordenadas del vector de norma 1.
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=.3]{qubit_vector}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp931798172156461] 
+\draw   (198,152.5) .. controls (198,90.92) and (247.92,41) .. (309.5,41) .. controls (371.08,41) and (421,90.92) .. (421,152.5) .. controls (421,214.08) and (371.08,264) .. (309.5,264) .. controls (247.92,264) and (198,214.08) .. (198,152.5) -- cycle ;
+%Straight Lines [id:da9642706265204986] 
+\draw  [dash pattern={on 0.84pt off 2.51pt}]  (198,152.5) -- (421,152.5) ;
+%Straight Lines [id:da48160384496840947] 
+\draw  [dash pattern={on 0.84pt off 2.51pt}]  (309.5,264) -- (309.5,41) ;
+%Straight Lines [id:da8747207133103256] 
+\draw    (309.5,152.5) -- (419,152.5) ;
+\draw [shift={(421,152.5)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da7616528840577454] 
+\draw    (309.5,152.5) -- (390.28,76.17) ;
+\draw [shift={(391.73,74.8)}, rotate = 136.62] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da30485545720038276] 
+\draw    (309.5,152.5) -- (309.5,43) ;
+\draw [shift={(309.5,41)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (402,59.93) node [anchor=north west][inner sep=0.75pt]    {$|\varphi \rangle $};
+% Text Node
+\draw (299.33,5.93) node [anchor=north west][inner sep=0.75pt]    {$|1\rangle $};
+% Text Node
+\draw (429.33,144.6) node [anchor=north west][inner sep=0.75pt]    {$|0\rangle $};
+
+
+\end{tikzpicture}
 \end{figure}
+
 Podemos determinar el estado de un bit clásico a la hora de examinarlo, pero en el caso del qubit, no podemos determinar el estado cuántico de un qubit en superposición, es decir, no podemos hallar el valor de $\alpha$ y $\beta$. Lo que sí podemos hacer es \textbf{medir} el qubit, determinar si colapsa en el estado $\ket{0}$ con probabilidad $|\alpha|^2$ ó en el estado $\ket{1}$ con probabilidad $|\beta|^2$. En otra palabras, el proceso de medir un qubit, nos devuelve como salida un estado clásico al que colapsa y deja de estar en superposición de varios estados de manera simultanea.\\
 \linebreak
 Veamos ahora otra representación geométrica del qubit que puede resultar útil. Consideramos un qubit en estado de superposición.
@@ -480,8 +590,8 @@ Considerando $\theta$ y $\varphi$ como coordenadas de un punto en una esfera tri
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=.3]{esfera_bloch}
-	\caption{Esfera de Bloch.}
+	\includegraphics[scale=0.7]{esfera_bloch}
+	\caption{Esfera de Bloch. Fuente: Yanofsky \cite{yanofsky2008quantum}}
 \end{figure}
 
 
@@ -646,7 +756,7 @@ Otra manera de visualizar estas puertas es como rotaciones de $180º$ sobre la e
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.65]{rotacion_bloch}
-	\caption{Rotación sobre el eje Y en la esfera de Bloch.}
+	\caption{Rotación sobre el eje Y en la esfera de Bloch. Fuente: Yanofsky \cite{yanofsky2008quantum}}
 \end{figure}\\
 Una puerta cuántica de mucha importancia es la puerta de Hadamard ya que nos permitirá poner qubit en una configuración en la que todos los estados son equiprobables. Esta puerta tiene por matriz:
 \begin{equation}
@@ -685,6 +795,7 @@ de esta manera hemos conseguido rotar la esfera alrededor del eje Z, por lo que 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.65]{rotacion_fase}
+	\caption{Fuente: Yanofsky \cite{yanofsky2008quantum}}
 \end{figure}
 
 Otras rotaciones, por ejemplos si queremos rotar la espera un cierto ángulo $\omega$ respecto a un eje, tendría la siguiente expresión:
@@ -929,6 +1040,19 @@ En general, los algoritmos cuánticos siguen un esquema común entre ellos. Esto
 \item Y finalmente se medirán los qubits correspondientes y según el algoritmo, se repetirá este proceso varias veces y se compararán los resultados.
 
 \end{itemize}
+
+Vamos ahora a estudiar más en profundidad unos algoritmos en concreto e implementaremos algunos de ellos en qiskit. Estos ficheros se encuentran en la carpeta \textit{./qiskit/} del repositorio. Concretamente implantaremos los siguientes algoritmos:
+\begin{itemize}
+\item Algoritmo de Deutsch.(\textit{./qiskit/test\_deutsch.ipynb})
+
+\item Algoritmo de Deutsch-Jozsa.(\textit{./qiskit/test\_deutsch\_jozsa.ipynb})
+
+\item Algoritmo de Grover.(\textit{./qiskit/test\_grover.ipynb})
+
+\item Algoritmo de Simon.(\textit{./qiskit/test\_simon.ipynb})
+\end{itemize}
+Recordemos que con todos los algoritmos hemos ejecutado una simulación en un ordenador clásico. A excepción del algoritmo de Deutsch-Jozsa y el algoritmo de Grover que lo hemos ejecutado en un ordenador cuántico real.
+
 
 \subsection{Algoritmo de Teletransportación}
 Empezaremos viendo un algoritmo sencillo que lo único que hará será teletransportar o mover un qubit en un estado arbitrario $\ket{\varphi}$ de un sitio a otro. Esta operación nos presenta los problemas más típicos del mundo cuántico, y es que no conocemos el estado $\ket{\varphi}$ en el que se encuentra el qubit, es decir, los valores de $\alpha$ y $\beta$ de $\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$. Además de que no podemos determinar sus valores con sólo una copia del qubit, y que sólo sabemos enviar información de manera clásica en forma de bits.\\
@@ -1358,13 +1482,13 @@ Consideramos los vectores que los tienen por suma y lo normalizamos. Podemos ver
 \begin{equation}
 \ket{\psi} = \sqrt{\frac{N-M}{N}}\ket{\alpha} + \sqrt{\frac{M}{N}}\ket{\beta}
 \end{equation}
-Entonces podemos poner el vector $\ket{\psi}$ en el espacio bidimensional generado por $\ket{\alpha}$ y $\ket{\beta}$ como se muestra en la figura 3.
+Entonces podemos poner el vector $\ket{\psi}$ en el espacio bidimensional generado por $\ket{\alpha}$ y $\ket{\beta}$ como se muestra en la figura.
 
-\begin{figure}[h] \label{figGrover}
+\begin{figure}[!h] \label{figGrover}
 \centering
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.7,xscale=0.7]
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.6,xscale=0.6]
 %uncomment if require: \path (0,322); %set diagram left start at 0, and has height of 322
 
 %Shape: Axis 2D [id:dp5288380819499159] 
@@ -1477,9 +1601,53 @@ a\ket{\psi} - b\ket{\omega}
 \end{equation}
 Por tanto se ve que es una simetría respecto del vector $\ket{\psi}$. Además podemos ver que $\ket{\psi}\bra{\psi}$ es una proyección sobre $\ket{\psi}$.
 
-\begin{figure}[b]
+\begin{figure}[!h]
 \centering
-\includegraphics[scale=0.7]{simetria_grover}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,322); %set diagram left start at 0, and has height of 322
+
+%Shape: Axis 2D [id:dp5288380819499159] 
+\draw  (169.2,241.7) -- (410.24,241.7)(192.62,25.6) -- (192.62,264.07) (403.24,236.7) -- (410.24,241.7) -- (403.24,246.7) (187.62,32.6) -- (192.62,25.6) -- (197.62,32.6)  ;
+%Straight Lines [id:da8922674117582208] 
+\draw    (192.62,241.7) -- (365.84,181.27) ;
+\draw [shift={(367.73,180.61)}, rotate = 160.77] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8868994576415257] 
+\draw    (192.62,241.7) -- (334.55,300.51) ;
+\draw [shift={(336.4,301.27)}, rotate = 202.51] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da42654071851324526] 
+\draw  [dash pattern={on 0.84pt off 2.51pt}]  (272.4,98.61) -- (336.4,301.27) ;
+%Straight Lines [id:da053541002133335125] 
+\draw    (192.62,241.7) -- (271.43,100.36) ;
+\draw [shift={(272.4,98.61)}, rotate = 119.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da1877872551975237] 
+\draw    (192.62,241.7) -- (306.51,201.93) ;
+\draw [shift={(308.4,201.27)}, rotate = 160.75] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da12344946871649554] 
+\draw    (308.4,201.27) -- (422.29,161.51) ;
+\draw [shift={(424.18,160.85)}, rotate = 160.75] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8947714698521929] 
+\draw  [dash pattern={on 0.84pt off 2.51pt}]  (424.18,160.85) -- (336.4,301.27) ;
+%Straight Lines [id:da7524338999392948] 
+\draw  [dash pattern={on 0.84pt off 2.51pt}]  (272.4,98.61) -- (424.18,160.85) ;
+
+% Text Node
+\draw (416.4,231) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle |\alpha \rangle $};
+% Text Node
+\draw (160.4,21.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle |\beta \rangle $};
+% Text Node
+\draw (338.67,153.93) node [anchor=north west][inner sep=0.75pt]    {$|\psi \rangle $};
+% Text Node
+\draw (341,281.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle |u\rangle =a|\psi \rangle +b|\omega \rangle $};
+% Text Node
+\draw (212,72) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle ( 2|\psi \rangle \langle \psi |-I) |u\rangle =a|\psi \rangle -b|\omega \rangle $};
+% Text Node
+\draw (426.18,164.25) node [anchor=north west][inner sep=0.75pt]    {$2a|\psi \rangle $};
+
+
+\end{tikzpicture}
 \end{figure}
 
 
@@ -1618,6 +1786,7 @@ R_k =
 \begin{figure}[h] \label{fig_qft}
 \centering
 \includegraphics[scale=0.65]{qft}
+\caption{Fuente: Nielsen \cite{nielsen2001quantum}}
 \end{figure}\ \linebreak
 Comenzaremos con el estado $\ket{j_1 j_2 \ldots j_n}$. Si le aplicamos la puerta de Hadamard al primero estado, podemos expresar este como
 \begin{equation}
@@ -1679,6 +1848,7 @@ En el segundo registro se hallarán los qubits en el estado $\ket{u}$ con el nú
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{orden}
+\caption{Fuente: Nielsen \cite{nielsen2001quantum}}
 \end{figure}\ \linebreak
 Primero aplicaremos la puerta de Hadamard que llevará a cada qubit al estado
 \begin{equation}
@@ -1873,38 +2043,13 @@ Teniendo en cuenta entonces el área de estudio, podemos decir que ha sido muy i
 Sin embargo, lamentamos la falta de tanto tiempo como conocimientos para entrar en detalles más profundos y complejos, ya sea en cuestiones de la mecánica cuántica que es de vital importancia, o de cualquier cuestión propia de la computación cuántica que no hemos entrado en detalle. Damos de ejemplo la existencia de puertas universales, como en la última parte donde se desarrollan ideas de la teoría de números. A pesar de todos esto, hacemos notar que ambos libros ofrece fuentes de información para los temas más complejos, ya sea referenciados o en el propio libro.\\
 \linebreak
 Además también queremos mencionar sobre las implementaciones de los algoritmos. Debido tanto a la falta de conocimientos y también a la falta de recursos las implementaciones están realizadas con un número bajo de qubits por la naturaleza de las simulaciones, donde un número elevado de qubits conlleva un incremento exponencial en el uso de los recursos. Y también queremos hacer notar, quizás lo único que podríamos concluir en este trabajo, es que en las pocas ejecuciones del algoritmo en un ordenador cuántico real hemos visto cómo de erróneo estaba el resultado obtenido. Esto nos muestra que la implementación de los ordenadores cuánticos siguen en desarrollo, teniendo que esperar a estos para poder ver una implementación real de los algoritmos y que sea funcional.\\
-\linebreak
-Finalmente acabaremos con el breve resumen en inglés que se nos pide para el trabajo.
 
-\subsection{Abstract}
-As we said earlier, in this section we will write a brief abstract about the paper as a summary of the concepts learnt.\\
-\linebreak
-The quantum computing is the field of study that combines physics, mathematics and computer science. It exploits the quantum mechanical phenomena called quantum superposition in which a object is simultaneously at different states. With this phenomena, we can design a quantum sistem where the main object is the quantum bit or qubit. Instead of the basic states $0$ and $1$ of a bit, it can be in a superposition of the states $\ket{0}$ and $\ket{1}$.\\
-\linebreak
-This state of a qubit is represented by a vector in a vectorial space, so the superposition of states is just a lineal combination of the elements of a vectorial basis
-\begin{equation}
-\ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
-\end{equation}
-We can measure this qubit to determine their state, in which the qubit collapse into one of the classical states $0$ or $1$.\\
-\linebreak
-We form bigger sistem of qubits by performing their tensor product as a vector to represent their states. We can also manipulate states with quantum gates, which functions as a classical logic gate, and we represent them with lineal aplications on the vectorial space. This comes with their corresponding matrix association, which only requirements is that they must be unitary, that is the product with their adjoint is the indentity matrix.\\
-\linebreak
-With all the tool, we can make basic quantum algorithm in which:
-\begin{itemize}
-\item We usually start by putting the qubits into superposition of many states.
-
-\item This is followed by acting on this qubits in superposition with some unitary operations.
-
-\item Then we measure the qubits to determine their state and reach some sort conclusion with the results.
-\end{itemize}
-There is more complex algorithm which involves more complex operations.
+\newpage
 
 
-%\newpage
 \nocite{*}
 
 \bibliographystyle{ieeetr}
 \bibliography{../../biblio}
 
-%C:\Users\Chenjie\Repositorios\tfg_quantum_computing\latex
 \end{document}
