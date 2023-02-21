@@ -1055,7 +1055,31 @@ Recordemos que con todos los algoritmos hemos ejecutado una simulación en un or
 
 
 \subsection{Algoritmo de Teletransportación}
-Empezaremos viendo un algoritmo sencillo que lo único que hará será teletransportar o mover un qubit en un estado arbitrario $\ket{\varphi}$ de un sitio a otro. Esta operación nos presenta los problemas más típicos del mundo cuántico, y es que no conocemos el estado $\ket{\varphi}$ en el que se encuentra el qubit, es decir, los valores de $\alpha$ y $\beta$ de $\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$. Además de que no podemos determinar sus valores con sólo una copia del qubit, y que sólo sabemos enviar información de manera clásica en forma de bits.\\
+
+Veamos ahora un algoritmo sencillo que nos presenta cómo trabajar y construir un circuito cuántico. Recordemos que la asignación entre qubits ó copiar el estado de un qubit a otro no es posible ya que nos es una operación reversible. Esto lo vemos en que la operación sobrescribiría el estado de un qubit, lo que al desconocer el estado sobrescrito, no nos permitiría revertir la operación. Otra manera de verlo sería ver que la aplicación no sería unitaria. Suponemos $C$ una aplicación correspondiente a la operación cuántica de copiar el estado de un qubit a otro. La hacemos actuar sobre un par de qubits resultando en
+\begin{equation}
+C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) = 
+\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \frac{\ket{x}+\ket{y}}{\sqrt{2}}\right)
+\end{equation}
+Sin embargo, si aplicamos la propiedad lineal de $C$, que es unitaria, tenemos que
+\begin{equation}
+\begin{split}
+C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) 
+&=
+\frac{1}{\sqrt{2}}C\left((\ket{x}+\ket{y}) \otimes \ket{0}\right)
+=
+\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0} + \ket{y}\otimes\ket{0})
+\\&=
+\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0}) + C(\ket{y}\otimes\ket{0})
+=
+\frac{1}{\sqrt{2}} (\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})
+\\&=
+\frac{(\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})}{\sqrt{2}}
+\end{split}
+\end{equation}
+Que claramente llegamos a resultados distintos, concluyendo en que hemos encontrado una contradicción. Por tanto la aplicación $C$ no es lineal y por tanto no es unitaria.\\
+\linebreak
+Hemos visto que la operación de asignación no está permitida, sin embargo sí que podemos transportar el estado de un qubit a otro. Esta operación nos presenta los problemas más típicos del mundo cuántico, y es que no conocemos el estado $\ket{\varphi}$ en el que se encuentra el qubit, es decir, los valores de $\alpha$ y $\beta$ de $\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$. Además de que no podemos determinar sus valores con sólo una copia del qubit, y que sólo sabemos enviar información de manera clásica en forma de bits.\\
 
 El algoritmo toma ventaja del enlazamiento entre qubits para superar los problemas. Consideramos un transmisor y un receptor, además de un par de qubits que se encuentra en el estado de Bell. Nuestro transmisor tiene el control de uno de los qubits, mientras que el receptor tiene el control del otro. El algoritmo consistirá entonces en el transmisor interactua con el qubit $\ket{\varphi}$ y su correspondiente qubit del par en estado de Bell, seguido de tomar mediciones de los dos qubits y enviar la información de los bits resultantes al receptor. Este último aplicará ciertas operaciones dependiendo de la información recibida a su qubit del par en estado de Bell, resultado en el qubit $\ket{\varphi}$.\\
 Veamos esto en el circuito y revisemos las cuentas paso a paso. Consideramos el estado inicial de entrada $\ket{\varphi_0} = \ket{\varphi}\ket{\beta_{00}}$ que es un sistema de tres qubits formados por el qubit $\ket{\varphi}$ y un par de qubits en estado de Bell.
@@ -1109,29 +1133,7 @@ Realizamos entonces la medición de los dos primeros qubits, que por estar enlaz
 Quedará finalmente realizar la transformación correspondiente al tercer qubit. Si el resultado de la medición es $00$ entonces no es necesario realizar ningún cambio pues tenemos que el estado del tercer qubit es $\alpha\ket{0}+\beta\ket{1} = \ket{\varphi}$. Si es $01$ tendremos que aplicar la puerta $X$ para transformar el $1$ en $0$ y el $0$ en $1$. Si es $10$ aplicaremos entonces la puerta $Z$ que cambia el signo de la segunda coordenada, el coeficiente de $\ket{1}$. Y finalmente, en el caso de $11$ aplicaremos primero la puerta $X$, seguido de la puerta $Z$.
 Esto sería equivalente a aplicar la transformación $Z^{M_1} X^{M_2}$ con $M_1$ y $M_2$ el valor de los dos primeros qubits, recuperando entonces el estado $\ket{\varphi}$ en el qubit que controla el receptor.\\
 
-Hacemos notar que hemos llevado el estado $\ket{\varphi}$ de un qubit a otro, pero no lo hemos copiado, pues el estado del primer qubit ha sido sobreescrito con las operaciones realizadas.
-Como hemos mencionado antes, el proceso de copiar el estado de un qubit a otro no es posible. Podemos ver esto en que entra en contradicción con la propiedad lineal de las aplicaciones.\\ Suponemos $C$ una aplicación correspondiente a la operación cuántica de copiar el estado de un qubit a otro. La hacemos actuar sobre un par de qubits resultando en
-\begin{equation}
-C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) = 
-\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \frac{\ket{x}+\ket{y}}{\sqrt{2}}\right)
-\end{equation}
-Sin embargo, si aplicamos la propiedad lineal de $C$, tenemos que
-\begin{equation}
-\begin{split}
-C\left(\frac{\ket{x}+\ket{y}}{\sqrt{2}} \otimes \ket{0}\right) 
-&=
-\frac{1}{\sqrt{2}}C\left((\ket{x}+\ket{y}) \otimes \ket{0}\right)
-=
-\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0} + \ket{y}\otimes\ket{0})
-\\&=
-\frac{1}{\sqrt{2}} C(\ket{x}\otimes\ket{0}) + C(\ket{y}\otimes\ket{0})
-=
-\frac{1}{\sqrt{2}} (\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})
-\\&=
-\frac{(\ket{x}\otimes\ket{x}) + (\ket{y}\otimes\ket{y})}{\sqrt{2}}
-\end{split}
-\end{equation}
-Que claramente llegamos a resultados distintos, concluyendo en que hemos encontrado una contradicción. Por tanto la aplicación $C$ no es lineal y no se puede copiar estados de qubits.
+
 
 \subsection{Algoritmo de Deutsch}
 
@@ -1259,7 +1261,7 @@ Diremos entonces que $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ es balanceada si ex
 \end{deff}
 El algoritmo de Deutsch-Jozsa resuelve el problema de dada una función $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ con la que podemos evaluar pero no sabemos cómo está definido, suponiendo que la función sólo puede ser balanceada o constante, tenemos que determinar cuál de estas dos propiedades cumple.\\
 
-Veamos primero como se podría resolver utilizando un método clásico. Se podría evaluar la función diferentes valores para poder determinar si es balanceada o constante. En el mejor de los casos, si tras dos evaluaciones se llega a dos imágenes distintas, podemos concluir que es balanceada pues está asegurado que cumpla una de las propiedades. En el peor de los casos se requiere evaluar la mitad de los elementos más uno, si todas las imágenes comprobadas son iguales se llega a que la función es constante, en otro caso será balanceada. Esto requiere en el pero de los casos $\frac{2^n}{2}+1$ evaluaciones de la función, veamos si con el algoritmo cuántico se puede mejorar.\\
+Veamos primero como se podría resolver utilizando un método clásico. Se podría evaluar la función diferentes valores para poder determinar si es balanceada o constante. En el mejor de los casos, si tras dos evaluaciones se llega a dos imágenes distintas, podemos concluir que es balanceada pues está asegurado que cumpla una de las propiedades. En el peor de los casos se requiere evaluar la mitad de los elementos más uno, si todas las imágenes comprobadas son iguales se llega a que la función es constante, en otro caso será balanceada. Esto requiere en el pero de los casos $\frac{2^n}{2}+1$ evaluaciones de la función. Lo que lleva un orden de complejidad $O(2^n)$. Veamos si con el algoritmo cuántico se puede mejorar.\\
 \linebreak
 El algoritmo consistirá como el anterior, pondremos los qubits en estado de superposición para poder evaluarlos de manera simultanea en el oráculo. Este tendrá la siguiente forma, que se podrá representar con una matriz unitaria.\\
 \begin{figure}[h]
@@ -1662,7 +1664,9 @@ f(\mathbf{x}) = f(\mathbf{y}) \; \text{si y sólo si} \; \mathbf{x} = \mathbf{y}
 \end{equation}
 donde $\oplus$ es la suma módulo 2 aplicado dígito a dígito. Es decir, que se cumple que $f(\mathbf{y}) = f(\mathbf{y}\oplus\mathbf{c})$. Esto es que los valores de $f$ se repiten en un determinado patrón y llamaremos entonces $\mathbf{c}$ como el periodo de la función, que es el objetivo del algoritmo.\\
 \linebreak
-Sea entonces $U_f$ la matriz unitaria que define el oráculo, que lleva $\ket{\mathbf{x}, \mathbf{y}}$ a $\ket{\mathbf{x}, \mathbf{y}\oplus f(\mathbf{x})}$, que podemos ver de nuevo que es su propia inversa. 
+Si se quiere resolver de manera clásica, se procedería a evaluar f en diferentes cadenas, hasta encontrar $\mathbf{x_1}$ y $\mathbf{x_2}$ de manera que $f(\mathbf{x_1}) = f(\mathbf{x_2})$. Entonces se tendría que $\mathbf{x_1} = \mathbf{x_2}\oplus \mathbf{c}$ y operando tendríamos que $\mathbf{x_1} \oplus \mathbf{x_2} = \mathbf{x_2}\oplus \mathbf{c} \oplus \mathbf{x_2} = \mathbf{c}$. Entonces si la función es dos a uno, tendríamos que evaluar la mitad de todas las cadenas para no repetir. Si evaluamos más de la mitad sin encontrar una pareja, sabemos entonces que $f$ es una función uno a uno y que $\mathbf{c} = \mathbf{0}$. Por tanto en el peor de los casos se requieren $\dfrac{2^n}{2}+1$ evaluaciones, dando un orden complejidad de $O(2^n)$.\\
+\linebreak
+Veamos pues si el algoritmo cuántico puede mejorar el orden de complejidad. Sea entonces $U_f$ la matriz unitaria que define el oráculo, que lleva $\ket{\mathbf{x}, \mathbf{y}}$ a $\ket{\mathbf{x}, \mathbf{y}\oplus f(\mathbf{x})}$, que podemos ver de nuevo que es su propia inversa. 
 
 \begin{figure}[h]
 \centering
@@ -1716,7 +1720,9 @@ Observamos entonces que en el sumatorio, para cada $\mathbf{x}$ y para cada $\ma
 \frac{(-1)^{\langle\mathbf{z}, \mathbf{x}\rangle} (1 + (-1)^{ \langle \mathbf{z}, \mathbf{c}\rangle})}{2}
 \end{split}
 \end{equation}
-Entonces, si discutimos la expresión según el valor de $\langle \mathbf{z}, \mathbf{c} \rangle$ tenemos que si $\langle \mathbf{z}, \mathbf{c} \rangle = 1$, la expresión anterior se anula. Si $\langle \mathbf{z}, \mathbf{c} \rangle = 0$ obtenemos el valor $\pm 1$. Por tanto si medimos los $n$ primeros qubits tras el circuito, obtendremos las cadena binarias $\mathbf{z}$ que cumplen que $\langle \mathbf{z}, \mathbf{c} \rangle = 0$. Lo que nos queda por hacer es sólamente plantear una ecuación lineal con las cadenas resultantes para obtener $\mathbf{c}$.
+Entonces, si discutimos la expresión según el valor de $\langle \mathbf{z}, \mathbf{c} \rangle$ tenemos que si $\langle \mathbf{z}, \mathbf{c} \rangle = 1$, la expresión anterior se anula. Si $\langle \mathbf{z}, \mathbf{c} \rangle = 0$ obtenemos el valor $\pm 1$. Por tanto si medimos los $n$ primeros qubits tras el circuito, obtendremos las cadena binarias $\mathbf{z}$ que cumplen que $\langle \mathbf{z}, \mathbf{c} \rangle = 0$. Lo que nos queda por hacer es sólamente plantear una ecuación lineal con las cadenas resultantes para obtener $\mathbf{c}$.\\
+\linebreak
+Por tanto necesitamos ejecutar el circuito varias veces para obtener $n$ cadenas de diferentes $\mathbf{z_i}$ tal que $\langle \mathbf{z_i}, \mathbf{c} \rangle = 0$ para poder resolver la ecuación lineal que se presenta. Por tanto el orden de complejidad del algoritmo sería de $O(n)$.
 
 \newpage
 
@@ -1751,7 +1757,7 @@ Tomamos entonces un elemento de la base $\ket{j}$ y le aplicamos la transformada
 \frac{1}{\sqrt{2^n}} \sum_{k_1=0}^{1} \ldots \sum_{k_n=0}^{1} e^{2\pi i j \left( \sum_{l=1}^{n} k_l 2^{-l} \right)} \ket{k_1\ldots k_n}
 \end{split}
 \end{equation}
-donde hemos sustituido $k$ por su expresión en binario $k_1\ldots k_n$ y $\frac{k}{2^n} = \frac{k_1 2^{n-1} + k_2 2^{n-2} k_n 2^0}{2^n} = \sum_{l=1}^{n} k_l 2^{-l}$. Separamos ahora cada vector por el producto tensorial y simplicamos la expresión
+donde hemos sustituido $k$ por su expresión en binario $k_1\ldots k_n$ y $\frac{k}{2^n} = \frac{k_1 2^{n-1} + k_2 2^{n-2} k_n 2^0}{2^n} = \sum_{l=1}^{n} k_l 2^{-l}$. Separamos ahora cada vector por el producto tensorial y simplificamos la expresión
 \begin{equation}
 \begin{split}
 \ket{j} &\rightarrow
@@ -1782,6 +1788,7 @@ R_k =
 0 & e^{2\pi i/2^k}
 \end{bmatrix}
 \end{equation}
+Observamos que esto es simplemente la matriz de una rotación en la fase.
 
 \begin{figure}[h] \label{fig_qft}
 \centering
@@ -1840,6 +1847,8 @@ Finalmente realizamos una operación de intercambio con la puerta de intercambio
 \left( \ket{0} + e^{2\pi i 0.j_1 j_2\ldots j_n}\ket{1} \right)
 \end{equation}
 Con esto terminamos en el estado que buscábamos además de demostrar que la transformada cuántica de Fourier es unitaria pues está compuesto de operaciones unitarias.\\
+\linebreak
+La complejidad del algoritmo o de la operación dependerá entonces del número de puertas u operaciones del circuito. Se aplica entonces primero una puerta de Hadamard seguido de $n-1$ puertas controladas de rotación para el primer qubit, con un total de $n$ puertas para el primer qubit. Esto le sigue también una puerta de Hadamard en el segundo qubits seguido de otras $n-2$ puertas controladas, con un total de $n + (n-1)$ puertas para el primer y segundo qubit. Podemos ver entonces que esto nos llevará un total de $n +(n-1) + \ldots +1 = n(n+1)/2$ puetas. No nos olvidamos de las operaciones de intercambio requiriendo al menos $n/2$ operaciones. Por tanto la complejidad de la transformada cuántica de Fourier es de $O(n^2)$.
 
 Ahora veremos que la transformación cuántica de Fourier es esencial para el proceso de la estimación de la fase. Este último consiste en considerar una aplicación unitaria $U$ que tiene un autovector $\ket{u}$ con autovalor $e^{2\pi \varphi}$ donde se desconoce el valor de $\varphi$. Tenemos el objetivo de estimar el valor de $\varphi$ y para ello dispondremos de el oráculo que nos permitirá realizar la operación controlada de $U^{2^j}$.\\
 Comenzaremos con dos registros de qubits, o dos conjuntos de qubits. El primero registro tendrá $t$ qubits en el estado $\ket{\mathbf{0}}$ con $t$ el número de bits que contendrá la aproximación de $\varphi$.\\
@@ -1938,6 +1947,8 @@ e^{2\pi is/r} \left[ \frac{1}{\sqrt{r}} \sum_{k=0}^{r-1} e^{-2\pi isk/r}\ket{x^k
 \end{split}
 \end{equation}
 Por tanto aplicando el algoritmo de estimación fase, obtendremos una aproximación del valor de $\varphi \simeq s/r$, del que podemos obtener fácilmente el valor de $r$.\\
+\linebreak
+En cuanto al orden del algoritmo podemos ver que la primera parte nos lleva $t$ puertas de Hadamard y $t$ puertas controladas. Y hemos visto anteriormente que revertiendo el circuito anterior obtenemos la inversa de la transformada cuántica de Fourier, con un orden de $O(t^2)$, lo que nos lleva a que el algoritmo de encontrar el orden de un elemento tiene un orden de $O(t^2)$.
 
 Una vez que sabemos hallar el orden de un elemento, usaremos esta herramienta y dos teoremas para resolver el problema de factorización. La idea es reducir el problema de factorización en el problema de encontrar el orden de un elemento. Vamos a desarrollar primero algunos conceptos necesarios de teoría de números.\\
 \linebreak
