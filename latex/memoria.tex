@@ -89,7 +89,7 @@ El estado de un qubit está representado por un vector de un espacio vectorial, 
 \begin{equation}
 \ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
 \end{equation}
-Podemos medir este qubit para determinar su estado, en dicho proceso el qubit colapsará en uno de los estados clásicos $0$ ó $1$.\\
+donde se cumple que $\alpha^2 + \beta^2 = 1$. Podemos medir este qubit para determinar su estado, en dicho proceso el qubit colapsará en uno de los estados clásicos $0$ ó $1$.\\
 Construiremos sistemas más grandes de qubits con el producto tensorial del espacio vectorial para representar sus estados. También podremos manipular los estados con puertas cuánticas, que funciona como una puerta lógica, y estarán representados con una aplicación lineal sobre el espacio vectorial. Esto lleva asociado una matriz que se le pedirá ser unitaria, es decir, el producto por su adjunta sea la matriz identidad.\\
 \linebreak
 Con estas herramientas podremos construir un algoritmo cuántico básico consistente en:
@@ -100,7 +100,6 @@ Con estas herramientas podremos construir un algoritmo cuántico básico consist
 
 \item Finalmente, mediremos los estados de los qubits, para deducir una conclusión con los resultados.
 \end{itemize}
-Hay algoritmos más complejos que involucran más puertas cuánticas más complejas.\\
 
 \begin{center}
 \textbf{\Large Abstract}
@@ -112,18 +111,17 @@ This state of a qubit is represented by a vector in a vectorial space, so the su
 \begin{equation}
 \ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
 \end{equation}
-We can measure this qubit to determine their state, in which the qubit collapse into one of the classical states $0$ or $1$.\\
+where $\alpha^2 + \beta^2 = 1$. We can measure this qubit to determine their state, in which the qubit collapse into one of the classical states $0$ or $1$.\\
 We form bigger sistem of qubits by performing their tensor product as a vector to represent their states. We can also manipulate states with quantum gates, which functions as a classical logic gate, and we represent them with lineal aplications on the vectorial space. This comes with their corresponding matrix association, which only requirements is that they must be unitary, that is, the product with their adjoint is the indentity matrix.\\
 \linebreak
-With all the tool, we can make basic quantum algorithm in which:
+With these, we can make basic quantum algorithms in which:
 \begin{itemize}
 \item We usually start by putting the qubits into superposition of many states.
 
-\item This is followed by acting on this qubits in superposition with some unitary operations.
+\item Then we apply some unitary operations.
 
-\item Then we measure the qubits to determine their state and reach some sort of conclusion with the results.
+\item Then we measure the qubits.
 \end{itemize}
-There is more complex algorithm which involves more complex operations.
 
 
 \newpage
@@ -1257,7 +1255,7 @@ Observamos que hemos conseguido en una evaluación de la función determinar si 
 \subsection{Algoritmo de Deutsch-Jozsa}
 Veremos ahora el mismo problema pero generalizando la función. Consideramos ahora la función $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ que lleva cadenas de $n$ $0$ y $1$ a un único $0$ ó $1$ como imagen.\\
 \begin{deff}
-Diremos entonces que $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ es balanceada si exactamente la mitad de los elementos del dominio de la función tiene a $0$ por imagen, y la otra mitad a $1$. Diremos también que la función es constante si todos los elementos tiene como imagen el $0$ ó si todos los elementos tiene como imagen el $1$.
+Diremos entonces que $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ es balanceada si exactamente la mitad de los elementos del dominio de la función tiene a $0$ por imagen, y la otra mitad a $1$. Diremos también que la función es constante si todos los elementos tiene como imagen el $\mathbf{0}$ ó si todos los elementos tiene como imagen el $\mathbf{1}$ como cadena.
 \end{deff}
 El algoritmo de Deutsch-Jozsa resuelve el problema de dada una función $f:\{0, 1\}^n \longrightarrow \{0, 1\}$ con la que podemos evaluar pero no sabemos cómo está definido, suponiendo que la función sólo puede ser balanceada o constante, tenemos que determinar cuál de estas dos propiedades cumple.\\
 
