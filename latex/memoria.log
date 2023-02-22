@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.2)  21 FEB 2023 23:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.2)  22 FEB 2023 23:38
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -762,14 +762,14 @@ G,.JBIG2,.JB2,.eps]
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(92.47145pt, 448.13092pt, 56.9055pt)
+* h-part:(L,W,R)=(78.24507pt, 441.01773pt, 78.24507pt)
 * v-part:(T,H,B)=(85.35826pt, 667.21713pt, 92.47145pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=448.13092pt
+* \textwidth=441.01773pt
 * \textheight=667.21713pt
-* \oddsidemargin=20.20146pt
-* \evensidemargin=20.20146pt
+* \oddsidemargin=5.97508pt
+* \evensidemargin=5.97508pt
 * \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -792,7 +792,7 @@ G,.JBIG2,.JB2,.eps]
 File: ./imagen/escudo_ucm.png Graphic file (type png)
 <use ./imagen/escudo_ucm.png>
 Package pdftex.def Info: ./imagen/escudo_ucm.png  used on input line 55.
-(pdftex.def)             Requested size: 224.06546pt x 253.1994pt.
+(pdftex.def)             Requested size: 220.50887pt x 249.1728pt.
 [1
 
 {C:/Users/Chenjie/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./imagen/
@@ -807,7 +807,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--118
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
 
  []
 
@@ -819,389 +819,390 @@ LaTeX Info: Redefining \% on input line 1.
 \openout7 = `memoria.toc'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 136--143
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--143
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--143
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--149
+Underfull \hbox (badness 10000) in paragraph at lines 147--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--149
+Underfull \hbox (badness 10000) in paragraph at lines 147--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 153--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 153--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 153--158
 
  []
 
 [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 206--212
+Underfull \hbox (badness 10000) in paragraph at lines 207--213
 
  []
 
 [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 348--354
+Underfull \hbox (badness 10000) in paragraph at lines 345--351
 
  []
 
 [8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 568--571
-
- []
-
 <./imagen/esfera_bloch.png, id=242, 202.95825pt x 222.8325pt>
 File: ./imagen/esfera_bloch.png Graphic file (type png)
 <use ./imagen/esfera_bloch.png>
-Package pdftex.def Info: ./imagen/esfera_bloch.png  used on input line 591.
+Package pdftex.def Info: ./imagen/esfera_bloch.png  used on input line 577.
 (pdftex.def)             Requested size: 142.0698pt x 155.98167pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--602
+Underfull \hbox (badness 10000) in paragraph at lines 584--588
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 652--654
+Underfull \hbox (badness 10000) in paragraph at lines 638--640
 
  []
 
 [13 <./imagen/esfera_bloch.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 663--667
+Underfull \hbox (badness 10000) in paragraph at lines 649--653
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--673
+Underfull \hbox (badness 10000) in paragraph at lines 656--659
 
  []
 
 [14]
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 753
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 739
 .
 
-<./imagen/rotacion_bloch.png, id=277, 449.2785pt x 217.41225pt>
+<./imagen/rotacion_bloch.png, id=276, 449.2785pt x 217.41225pt>
 File: ./imagen/rotacion_bloch.png Graphic file (type png)
 <use ./imagen/rotacion_bloch.png>
-Package pdftex.def Info: ./imagen/rotacion_bloch.png  used on input line 756.
+Package pdftex.def Info: ./imagen/rotacion_bloch.png  used on input line 742.
 (pdftex.def)             Requested size: 292.02756pt x 141.31627pt.
 [15 <./imagen/rotacion_bloch.png>]
-<./imagen/rotacion_fase.png, id=291, 192.11775pt x 198.14024pt>
+<./imagen/rotacion_fase.png, id=290, 192.11775pt x 198.14024pt>
 File: ./imagen/rotacion_fase.png Graphic file (type png)
 <use ./imagen/rotacion_fase.png>
-Package pdftex.def Info: ./imagen/rotacion_fase.png  used on input line 795.
+Package pdftex.def Info: ./imagen/rotacion_fase.png  used on input line 781.
 (pdftex.def)             Requested size: 124.87505pt x 128.78961pt.
- <xymatrix 4x4 212>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[16 <./imagen/rotacion_fase.png>] <xymatrix 13x6 1018> <xymatrix 4x5 330>
-Underfull \hbox (badness 10000) in paragraph at lines 866--879
+ <xymatrix 4x4 212> [16 <./imagen/rotacion_fase.png>] <xymatrix 13x6 1018> <xym
+atrix 4x5 330>
+Underfull \hbox (badness 10000) in paragraph at lines 852--865
 
  []
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 892--894
+Underfull \hbox (badness 10000) in paragraph at lines 878--880
 
  []
 
 <xymatrix 6x3 231>
-Underfull \hbox (badness 10000) in paragraph at lines 895--906
+Underfull \hbox (badness 10000) in paragraph at lines 881--892
 
  []
 
 <xymatrix 3x4 292>
-Underfull \hbox (badness 10000) in paragraph at lines 925--938
-
- []
-
-<xymatrix 6x4 421> [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1077--1081
+Underfull \hbox (badness 10000) in paragraph at lines 911--924
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1077--1081
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<xymatrix 6x4 421> [18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1067
 
  []
 
-[20] <xymatrix 9x4 1051>
-Underfull \hbox (badness 10000) in paragraph at lines 1092--1094
+
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1067
+
+ []
+
+[21] <xymatrix 9x4 1051>
+Underfull \hbox (badness 10000) in paragraph at lines 1078--1080
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1119
 
  []
 
-[21] <xymatrix 4x4 258> <xymatrix 9x2 826>
-Underfull \hbox (badness 10000) in paragraph at lines 1163--1167
+[22] [23] <xymatrix 4x4 258> <xymatrix 9x2 826>
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1153
 []
  []
 
 <xymatrix 9x3 986>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1174--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1162
 []
  []
 
-[22] [23] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1256--1257
+[24] [25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1243
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1260--1261
+Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
 
  []
 
 <xymatrix 7x2 478> <xymatrix 4x1 86>
-Underfull \hbox (badness 10000) in paragraph at lines 1262--1274
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1262--1274
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1262--1274
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1284
+Underfull \hbox (badness 10000) in paragraph at lines 1268--1270
 
  []
 
-[25] [26] <xymatrix 13x3 1298>
-Underfull \hbox (badness 10000) in paragraph at lines 1388--1390
+[27] [28] <xymatrix 13x3 1298>
+Underfull \hbox (badness 10000) in paragraph at lines 1375--1377
 []
- []
-
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 1451--1455
-
- []
-
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 1459--1462
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1472--1476
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1523--1529
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1523--1529
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1523--1529
-
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1547--1549
+Underfull \hbox (badness 10000) in paragraph at lines 1438--1442
 
- []
-
-<xymatrix 15x3 1572>
-Underfull \hbox (badness 10000) in paragraph at lines 1559--1561
-[]
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1576--1581
+Underfull \hbox (badness 10000) in paragraph at lines 1446--1449
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1459--1463
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1510--1516
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1510--1516
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1510--1516
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 1657--1660
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1536
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1668
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1668
-
- []
-
-<xymatrix 7x2 478>
-Underfull \hbox (badness 10000) in paragraph at lines 1676--1678
-[]
- []
-
-<xymatrix 12x3 1161>
-Underfull \hbox (badness 10000) in paragraph at lines 1689--1691
+<xymatrix 15x3 1572>
+Underfull \hbox (badness 10000) in paragraph at lines 1546--1548
 []
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1720--1724
+Underfull \hbox (badness 10000) in paragraph at lines 1563--1568
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1728--1731
+Underfull \hbox (badness 10000) in paragraph at lines 1644--1647
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1728--1731
+Underfull \hbox (badness 10000) in paragraph at lines 1649--1655
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1745--1750
+Underfull \hbox (badness 10000) in paragraph at lines 1649--1655
 
+ []
+
+<xymatrix 7x2 478>
+Underfull \hbox (badness 10000) in paragraph at lines 1663--1665
+[]
+ []
+
+<xymatrix 12x3 1161>
+Underfull \hbox (badness 10000) in paragraph at lines 1676--1678
+[]
  []
 
 [34]
-<./imagen/qft.png, id=471, 692.5875pt x 190.91325pt>
+Underfull \hbox (badness 10000) in paragraph at lines 1707--1711
+
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1715--1718
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1715--1718
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1737
+
+ []
+
+[36]
+<./imagen/qft.png, id=480, 692.5875pt x 190.91325pt>
 File: ./imagen/qft.png Graphic file (type png)
 <use ./imagen/qft.png>
-Package pdftex.def Info: ./imagen/qft.png  used on input line 1793.
+Package pdftex.def Info: ./imagen/qft.png  used on input line 1780.
 (pdftex.def)             Requested size: 450.17653pt x 124.09213pt.
 
-Overfull \hbox (2.04561pt too wide) in paragraph at lines 1793--1794
+Overfull \hbox (9.1588pt too wide) in paragraph at lines 1780--1781
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1795--1797
+Underfull \hbox (badness 10000) in paragraph at lines 1782--1784
 []
  []
 
-[35 <./imagen/qft.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1846--1850
+[37 <./imagen/qft.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1833--1837
 
  []
 
-<./imagen/orden.png, id=483, 451.08525pt x 298.716pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1833--1837
+
+ []
+
+<./imagen/orden.png, id=492, 451.08525pt x 298.716pt>
 File: ./imagen/orden.png Graphic file (type png)
 <use ./imagen/orden.png>
-Package pdftex.def Info: ./imagen/orden.png  used on input line 1857.
+Package pdftex.def Info: ./imagen/orden.png  used on input line 1844.
 (pdftex.def)             Requested size: 315.75752pt x 209.09976pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1859--1861
+Underfull \hbox (badness 10000) in paragraph at lines 1846--1848
 []
  []
 
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1893--1895
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 1880--1882
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1896--1899
+Underfull \hbox (badness 10000) in paragraph at lines 1883--1886
 
  []
 
-[37 <./imagen/orden.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1946--1950
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1951--1954
+[39 <./imagen/orden.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1933--1937
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1961--1964
+Underfull \hbox (badness 10000) in paragraph at lines 1938--1941
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1970--1974
+Underfull \hbox (badness 10000) in paragraph at lines 1948--1951
 
  []
 
-[38] [39] [40]
-Underfull \hbox (badness 10000) in paragraph at lines 2047--2055
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1957--1961
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2047--2055
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2047--2055
+[41] [42]
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2041
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2047--2055
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2041
 
  []
 
-[41] (memoria.bbl) [42]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2064.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2064.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2041
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2041
+
+ []
+
+[43] (memoria.bbl) [44]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2050.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2050.
  (memoria.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2064.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2064.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2050.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2050.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
 (rerunfilecheck)             Checksum: D30CC262F077051D452D4C9A29540EBE;1575.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2064.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2050.
  ) 
 Here is how much of TeX's memory you used:
- 20184 strings out of 492970
- 350018 string characters out of 3135849
- 520457 words of memory out of 3000000
+ 20186 strings out of 492970
+ 350032 string characters out of 3135849
+ 521455 words of memory out of 3000000
  23447 multiletter control sequences out of 15000+200000
  13678 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1227,9 +1228,9 @@ cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on memoria.pdf (43 pages, 1029203 bytes).
+Output written on memoria.pdf (45 pages, 1030708 bytes).
 PDF statistics:
- 676 PDF objects out of 1000 (max. 8388607)
- 256 named destinations out of 1000 (max. 500000)
+ 684 PDF objects out of 1000 (max. 8388607)
+ 258 named destinations out of 1000 (max. 500000)
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

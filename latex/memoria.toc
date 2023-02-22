@@ -13,11 +13,11 @@
 \contentsline {subsection}{\numberline {3.1}Qubit}{12}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Sistema de Varios Qubits}{13}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Circuitos y Puertas Cu\IeC {\'a}nticas}{14}{subsection.3.3}
-\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{20}{section.4}
-\contentsline {subsection}{\numberline {4.1}Algoritmo de Teletransportaci\IeC {\'o}n}{20}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Algoritmo de Deutsch}{22}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Algoritmo de Deutsch-Jozsa}{25}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Algoritmo de B\IeC {\'u}squeda de Grover}{29}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Algoritmo de Periodicidad de Simon}{32}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Algoritmo de Factorizaci\IeC {\'o}n de Shor}{34}{subsection.4.6}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{41}{section.5}
+\contentsline {section}{\numberline {4}Algoritmos Cu\IeC {\'a}nticos}{21}{section.4}
+\contentsline {subsection}{\numberline {4.1}Algoritmo de Teletransportaci\IeC {\'o}n}{21}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Algoritmo de Deutsch}{24}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Algoritmo de Deutsch-Jozsa}{27}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Algoritmo de B\IeC {\'u}squeda de Grover}{31}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Algoritmo de Periodicidad de Simon}{34}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Algoritmo de Factorizaci\IeC {\'o}n de Shor}{36}{subsection.4.6}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{43}{section.5}

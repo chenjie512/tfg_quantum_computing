@@ -22,7 +22,7 @@
 %\usepackage{enumerate}
 %\usepackage{blindtext}
 
-\usepackage[left=3.25cm,top=3cm,right=2cm,bottom=3.25cm]{geometry}
+\usepackage[left=2.75cm,top=3cm,right=2.75cm,bottom=3.25cm]{geometry}
 
 %Nuevos entornos
 \newtheorem{deff}{Definición}[section]
@@ -59,7 +59,7 @@
 
 \vspace{0.5cm}
 
-{\scshape\Huge Introducción a la computación cuántica y los algoritmos cuánticos \par}
+{\scshape\Huge Introducción a la Computación Cuántica, Algoritmos e Implementación \par}
 \vspace{2cm}
 
 \vfill
@@ -84,37 +84,38 @@
 \end{center}
 \vspace{0.5cm}
 
-La computación cuántica es el campo de estudio que combina la física, las matemáticas y la computación. Se Aprovecha del fenómeno de la superposición cuántica, en la cuál un objeto está en varios estados diferentes de manera simultánea. Con este fenómeno somos capaces de diseñar un sistema cuántico donde el principal objeto será el bit cuántico o qubit. En vez de los estados básicos $0$ y $1$, este puede estar en una superposición de los estados $\ket{0}$ y $\ket{1}$.\\
+La computación cuántica es el campo de estudio que combina la física, las matemáticas y la computación. Se aprovecha del fenómeno de la superposición cuántica, en la cuál un objeto está en varios estados diferentes de manera simultánea. Con este fenómeno somos capaces de diseñar un sistema cuántico donde el principal objeto será el bit cuántico o qubit. En vez de los estados básicos $0$ y $1$, este puede estar en una superposición de los estados $\ket{0}$ y $\ket{1}$.\\
 El estado de un qubit está representado por un vector de un espacio vectorial, siendo la superposición de los estados una combinación lineal de los elementos de la base
 \begin{equation}
 \ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
 \end{equation}
 donde se cumple que $\alpha^2 + \beta^2 = 1$. Podemos medir este qubit para determinar su estado, en dicho proceso el qubit colapsará en uno de los estados clásicos $0$ ó $1$.\\
-Construiremos sistemas más grandes de qubits con el producto tensorial del espacio vectorial para representar sus estados. También podremos manipular los estados con puertas cuánticas, que funciona como una puerta lógica, y estarán representados con una aplicación lineal sobre el espacio vectorial. Esto lleva asociado una matriz que se le pedirá ser unitaria, es decir, el producto por su adjunta sea la matriz identidad.\\
+Construiremos sistemas más grandes de qubits con el producto tensorial del espacio vectorial para representar sus estados. También podremos manipular los estados con puertas cuánticas, que funciona como puertas lógicas, y estarán representados con una aplicación lineal sobre el espacio vectorial. Esto lleva asociado una matriz que se le pedirá ser unitaria, es decir, el producto por su adjunta sea la matriz identidad.\\
 \linebreak
 Con estas herramientas podremos construir un algoritmo cuántico básico consistente en:
 \begin{itemize}
 \item Comenzaremos normalmente poniendo los qubits del sistema en un estado de superposición.
 
-\item Después, aplicaremos sobre estos qubits una puerta cuántica representado por una matriz unitaria.
+\item Después, aplicaremos sobre estos qubits una puerta cuántica representada por una matriz unitaria.
 
 \item Finalmente, mediremos los estados de los qubits, para deducir una conclusión con los resultados.
 \end{itemize}
 
+\vspace{0.25cm}
 \begin{center}
 \textbf{\Large Abstract}
 \end{center}
 \vspace{0.5cm}
 
-The quantum computing is the field of study that combines physics, mathematics and computer science. It exploits the quantum mechanical phenomena called quantum superposition in which a object is simultaneously at different states. With this phenomena, we can design a quantum sistem where the main object is the quantum bit or qubit. Instead of the basic states $0$ and $1$ of a bit, it can be in a superposition of the states $\ket{0}$ and $\ket{1}$.\\
+The quantum computing is the field of study that combines physics, mathematics and computer science. It exploits the quantum mechanical phenomena called quantum superposition in which an object is simultaneously at different states. With this phenomena, we can design a quantum sistem where the main object is the quantum bit or qubit. Instead of the basic states $0$ and $1$ of bits, it can be in a superposition of the states $\ket{0}$ and $\ket{1}$.\\
 This state of a qubit is represented by a vector in a vectorial space, so the superposition of states is just a lineal combination of the elements of a vectorial basis
 \begin{equation}
 \ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
 \end{equation}
-where $\alpha^2 + \beta^2 = 1$. We can measure this qubit to determine their state, in which the qubit collapse into one of the classical states $0$ or $1$.\\
-We form bigger sistem of qubits by performing their tensor product as a vector to represent their states. We can also manipulate states with quantum gates, which functions as a classical logic gate, and we represent them with lineal aplications on the vectorial space. This comes with their corresponding matrix association, which only requirements is that they must be unitary, that is, the product with their adjoint is the indentity matrix.\\
+where $\alpha^2 + \beta^2 = 1$. We can measure this qubit to determine its state, in which the qubit will collapse into one of the classical states $0$ or $1$.\\
+We form bigger sistem of qubits by performing their tensor product as a vector to represent their states. We can also manipulate states with quantum gates, which function as a classical logic gate, and we represent them as lineal aplications on the vectorial space. This comes with their corresponding matrix association, its only requirement is that they must be unitary, that is, the product with their adjoint is the indentity matrix.\\
 \linebreak
-With these, we can make basic quantum algorithms in which:
+With these assumptions, we can make basic quantum algorithms in which:
 \begin{itemize}
 \item We usually start by putting the qubits into superposition of many states.
 
@@ -135,40 +136,40 @@ With these, we can make basic quantum algorithms in which:
 
 La computación cuántica es un área de estudio reciente y en desarrollo que implica otras grandes áreas de estudio como la computación, la física y la matemática. Dicho estudio se centra en los curiosos fenómenos y aspectos de la física cuántica, todo con el objetivo de expandir los límites de la computación. Esto nos ha permitido dar algunas soluciones innovadoras a problemas complejos de la computación sin resolver y desde un punto de vista totalmente nuevo.\\
 \linebreak
-La mecánica cuántica, base de nuestro campo que es la computación cuántica, es de las ciencias con más éxito pero a la vez desconocida. Empezando su desarrollo teórico en el siglo pasado, seguido de su su aplicación por los científicos en la observación y entendimiento de los fundamentos de las partículas y sus comportamientos, resultando incluso en el desarrollo de un modelo físico que es la física de partículas. A pesar de su aplicaciones para explicar un amplio rango de fenómenos de la naturaleza, un leve cambio en esta idea de aplicar los sistemas cuánticos en los fenómenos naturales para darles explicación da lugar a la idea de no limitarse a observar, sino a diseñar estos sistemas cuánticos. Como resultado de esto, surge un interés de nuevo por la mecánica cuántica, sobretodo en planteamiento de cuestiones que llegan a combinar otros campos de estudio como la computación y la teoría de la información.\\
+La mecánica cuántica, base de nuestro campo que es la computación cuántica, es de las ciencias con más éxito pero a la vez desconocida. Empieza su desarrollo teórico en el siglo pasado, seguido de su su aplicación por los científicos en la observación y entendimiento de los fundamentos de las partículas y sus comportamientos, resultando incluso en el desarrollo de un modelo físico que es la física de partículas. A pesar de sus aplicaciones para explicar un amplio rango de fenómenos de la naturaleza, un leve cambio en esta filosofía de aplicar los sistemas cuánticos en los fenómenos naturales para darles explicación da lugar a la idea de no limitarse a observar, sino a diseñar estos sistemas cuánticos. Como resultado de esto, surge un interés de nuevo por la mecánica cuántica, sobre todo en planteamiento de cuestiones que llegan a combinar otros campos de estudio como la computación y la teoría de la información.\\
 \linebreak
-Como veremos en detalle en poco, la idea tras la computación cuántica es aprovechar el fenómeno de la superposición cuántica, descrito en la teoría de la mecánica cuántica. Este fenómeno describe partículas que pueden estar en diferentes estados de manera simultanea, que determinaremos un estado fijo en la partícula en cuanto la observemos. Además permite interacciones con el elemento en varios estados de manera también simultanea. A pesar de que se desconoce la naturaleza y el porqué de este fenómeno, no podemos negar que esto ocurre e incluso dando lugar efectos sobre fenómenos reales. Podemos destacar en cuestión el experimento de la doble rendija, en el que pone en manifiesto el fenómeno de la superposición de varios estados, cuando el estado de un mismo elemento interacciona con otro estado de manera que a veces llega a anularlo. A esto se le conoce como interferencia, y podemos poner en similitud un ejemplo de dos guijarros tirados a un charco de agua y cómo se forma ondas en la superficie de manera que a veces se llegan a cancelar unas a otras, mientras que otras veces se llegan a reforzar una a la otra.\\
+Como veremos en detalle a continuación, la idea tras la computación cuántica es aprovechar el fenómeno de la superposición cuántica, descrito en la teoría de la mecánica cuántica. Este fenómeno describe partículas que pueden estar en diferentes estados de manera simultánea, que determinaremos un estado fijo en la partícula en cuanto la observemos. Además, permite interacciones con el elemento en varios estados de manera también simultánea. A pesar de que se desconoce la naturaleza y el por qué de este fenómeno, no podemos negar que esto ocurre e incluso da lugar efectos sobre fenómenos reales. Podemos destacar en cuestión el experimento de la doble rendija, en el que pone de manifiesto el fenómeno de la superposición de varios estados, cuando el estado de un mismo elemento interacciona con otro estado de manera que a veces producen efectos inexplicables con la física clásica. A esto se le conoce como interferencia, y podemos poner en similitud un ejemplo de dos guijarros tirados a un charco de agua y cómo se forman ondas en la superficie de manera que a veces se cancelan unas a otras en ciertos puntos, mientras que otras veces se refuerzan la una a la otra.\\
 \linebreak
-En vista de la computación clásica, tenemos su elemento base que es el bit, un elemento con dos estados posibles y nos permite realizar operaciones sencillas pero y si las combinamos estas da lugar a numerosas tareas complejas que puede realizar un ordenador hoy en día. La computación cuántica intentará mejorar esto introduciendo el qubit ó \textit{quantum bit}, que en vez de considerar dos estados posibles, consideraremos cualquier combinación de ellas en superposición dando lugar a infinitas combinaciones. Esto nos abrirá numerosas puertas en la computación, permitiendo por ejemplo la evaluación simultanea de una función sobre diferentes elementos, o más bien estados. Lo que nos da lugar a tareas que podremos realizar que se consideraban imposibles ya sea por su complejidad como por el tiempo requerido. Y no problemas sin importancia, pues uno de los temas que veremos es sobre la factorización de números, que es clave en la criptografía, presente en más lugares de nuestra vida diaria de la que creemos.
+Desde el punto de vista de la computación clásica, tenemos el elemento base que es el bit, un elemento con dos estados posibles y nos permite realizar operaciones sencillas. Si las combinamos, estas da lugar a las numerosas tareas complejas que puede realizar un ordenador hoy en día. La computación cuántica intentará mejorar esto introduciendo el qubit ó \textit{quantum bit}, que en vez de considerar dos estados posibles, considera cualquier combinación de ellas en superposición dando lugar a infinitas posibilidades. Esto nos abrirá numerosas puertas en la computación, permitiendo por ejemplo la evaluación simultánea de una función sobre diferentes elementos, o estados. Esto nos da lugar a tareas que se consideraban imposibles ya sea por su complejidad como por el tiempo requerido. Y no problemas sin importancia, pues uno de los temas que veremos es sobre la factorización de números, que es clave en la criptografía que está presente en más lugares de nuestra vida diaria de la que creemos.
 
 \subsection{Objetivos}
 
-Este trabajo de fin de grado tiene por propósito introducir al estudiante en este campo de estudio con una popularidad creciente en los últimos años. A pesar de tocar varios detalles del área que involucra conocimientos del campo de la física, de la computación y de la matemática, se ha centrado en estas dos últimas con especial interés en la matemática recogiendo nociones sobre espacios vectoriales y productos tensoriales, que será la base matemáticas para luego elaborar los algoritmos.\\
+Este trabajo de fin de grado tiene por propósito introducir al estudiante en este campo de estudio con una popularidad creciente en los últimos años. A pesar de tocar varios detalles del área que involucra conocimientos del campo de la física, de la computación y de la matemática, se ha centrado en estas dos últimas con especial interés en la matemática recogiendo nociones sobre espacios vectoriales y productos tensoriales, que será la base para elaborar los algoritmos.\\
 \linebreak
-Como hemos mencionado antes, no entraremos en detalle en las cuestiones físicas, no es el interés de este trabajo, sino nos centraremos con las matemáticas en la que se basa el modelo físico, dando las representaciones físicas de los elementos matemáticos que estudiaremos con sólo el fin de proporcionar otro punto de visto. Pero en el fondo, lo trataremos como un objeto matemático a la hora de trabajar.\\
+Como hemos mencionado antes, no entraremos en detalle en las cuestiones físicas, sino que nos centraremos con los aspectos matemáticos en la que se basa el modelo físico. Daremos representaciones físicas de los elementos que estudiaremos con el fin de proporcionar otro punto de vista. Sin embargo, trataremos estos elementos como un objeto matemático a la hora de trabajar.\\
 
 \subsection{Metodología}
 
-Por tanto, con este objetivo en mente, se procederá de la siguiente manera. Se realizará la lectura de materia propuesto por el tutor en forma de dos libros. Uno de naturaleza más sencilla para dar una idea inicial al alumno, el libro de Yanofsky\cite{yanofsky2008quantum}. Mientra que el otro, el libro de Nielsen \cite{nielsen2001quantum} que es de carácter más complejo, servirá para entrar en detalles de cuestiones más complicadas.\\
+Con este objetivo en mente, se procederá de la siguiente manera. Se realizará la lectura del material propuesto por el tutor, concretamente revisaremos dos libros. Uno de naturaleza más sencilla para dar una idea inicial, el libro de Yanofsky\cite{yanofsky2008quantum}. El otro, escrito por Nielsen \cite{nielsen2001quantum}, es de carácter más complejo y servirá para entrar en detalles de cuestiones más profundas.\\
 \linebreak
-Se procederá entonces a la exposición y desarrollo de los conceptos que se han estudiado de los dos libros en las siguientes del documento. Esto conlleva claramente el entendimiento de estos conceptos y para ello se han realizado de manera constante numerosas tutorías ya sea para una duda puntual como para reafirmar y reforzar la idea presente en los libro. También ha servido estas tutorías como guía para organizar el trabajo y cómo llevarlo a cabo.\\
+Se continua con la exposición y desarrollo de los conceptos que se han estudiado en los dos libros. Esto conlleva claramente el entendimiento de estos conceptos y además se han realizado de manera constante numerosas tutorías ya sea para dudas puntuales como para reafirmar y reforzar los conocimientos de los libros. También han servido estas tutorías como guía para organizar el trabajo y cómo llevarlo a cabo.\\
 \linebreak
-Además de la presentación en los contenidos de este documento, se ha procedido a la implementación de los algoritmos en Qiskit, un software que permite de manera relativamente sencilla programar los algoritmos cuánticos. Se han ejecutado simulaciones de los algoritmos además de algunas pruebas en un ordenador cuántico real. No mostraremos los códigos del algoritmo en este documento, sino los presentaremos en un repositorio abierto de GitHub \cite{chen2023github}. El enlace se encuentra en la bibliografía de este documento junto a los dos libros mencionados.\\
+Además de la presentación en los contenidos de este documento, se ha implementado los algoritmos en Qiskit, un software que permite de manera relativamente sencilla programar los algoritmos cuánticos. Se han ejecutado simulaciones de los algoritmos además de algunas pruebas en un ordenador cuántico real. No mostraremos los códigos del algoritmo en este documento, sino que se presentarán en un repositorio abierto de GitHub \cite{chen2023github}. El enlace se encuentra en la bibliografía de este documento junto a los dos libros mencionados.\\
 
 
 \newpage
 
 \section{Preliminares}
 
-La Teoría Cuántica se apoya principalmente sobre álgebra lineal, concretamente sobre el espacio vectorial complejo de dimensión finita $\mathbb{C}^n$.
-En esta sección que servirá como preliminares como indica el título, nos centraremos en la teoría de álgebra lineal sobre el espacio vectorial complejo.\\
-El objetivo es conseguir que este apartado sirva a modo de fundamento y bases para secciones posteriores y también de consulta posteriormente.
+La teoría cuántica se apoya principalmente sobre álgebra lineal, concretamente sobre los espacios vectoriales complejos de dimensión finita $\mathbb{C}^n$.
+Esta sección, que servirá como preliminares, nos centraremos en la teoría de álgebra lineal sobre el espacio vectorial complejo.\\
+El objetivo es conseguir que este apartado recoja los fundamentos y bases para secciones posteriores.
 
 \subsection{Espacios Vectoriales}
 
 \begin{deff}
 
-Un espacio vectorial sobre un cuerpo $\mathbb{K}$ es un conjunto no vacío $\mathbb{V}$, cuyo elementos llamaremos vectores, y llevan asociado dos operaciones, 
+Un espacio vectorial sobre un cuerpo $\mathbb{K}$ es un conjunto no vacío $\mathbb{V}$, cuyo elementos llamaremos vectores, y llevan asociados dos operaciones, 
 \begin{itemize}
 
 \item La Suma, $\textbf{+}: \mathbb{V} \times \mathbb{V} \longrightarrow \mathbb{V}$
@@ -176,7 +177,7 @@ Un espacio vectorial sobre un cuerpo $\mathbb{K}$ es un conjunto no vacío $\mat
 \item El Producto por un escalar, $\textbf{$\cdot$}:\mathbb{K} \times \mathbb{V} \longrightarrow \mathbb{V}$
 
 \end{itemize}
-tal que $(\mathbb{V},+)$ cumple las propiedades de formar un \textbf{grupo abeliano} y el producto por un escalar $\cdot$ cumpla las propiedades de:
+tal que $(\mathbb{V},+)$ es un \textbf{grupo abeliano} y el producto por un escalar $\cdot$ cumple las siguientes propiedades:
 \begin{itemize}
 
 \item Existencia de elemento neutro:
@@ -206,7 +207,7 @@ tal que $(\mathbb{V},+)$ cumple las propiedades de formar un \textbf{grupo abeli
 En el caso de que el cuerpo de escalares sea el de los complejos $\mathbb{C}$, se le denominará \textbf{espacio vectorial complejo}, siendo estas de gran interés para nuestro campo de estudio que es la mecánica cuántica.
 A partir de ahora usaremos $\mathbb{C}$ como cuerpo de escalares del espacio vectorial junto a la notación estándar de mecánica cuántica para referirnos a los elementos básicos de la álgebra lineal.\\
 \linebreak
-Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{v}$, donde usaremos $\ket{\cdot}$ para indicar que es un vector del espacio, denominado \textbf{\textit{ket}}.\\
+Denotaremos al vector en un espacio vectorial $\mathbb{V}$ como $\ket{v}$, donde usaremos $\ket{\cdot}$ para indicar que se trata de un vector del espacio, denominado \textbf{\textit{ket}}.\\
 En cuanto al elemento neutro del espacio vectorial, el vector cero, lo denotaremos excepcionalmente como $\mathbf{0}$. Veremos posteriormente que usaremos $\ket{0}$ para referirnos a algo completamente diferente.\\
 Centrándonos más en $\mathbb{C}^n$, el espacio vectorial complejo cuyo elementos son $n$-tuplas $(z_1, z_2, \ldots z_n)$, usaremos a veces la notación de vector columna:
 $$\begin{bmatrix}
@@ -228,17 +229,17 @@ a_1\ket{v_1} + a_2\ket{v_2} + \ldots + a_n\ket{v_n} = 0
 Además diremos que son \textbf{linealmente independientes} si no son linealmente dependientes. Es decir, si existe una combinación lineal de ellos, entonces los coeficientes son todos nulos.
 \end{deff}
 
-\begin{deff} Llamaremos entonces al conjunto $B = \{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ \textbf{base} del espacio $\mathbb{V}$ si:
+\begin{deff} Llamaremos al conjunto $B = \{ \ket{v_1},\ket{v_2}, \ldots, \ket{v_n} \}$ \textbf{base} del espacio $\mathbb{V}$ si:
 \begin{itemize}
-\item $B$ es linealmente independiente.
+\item los vectores de $B$ son linealmente independientes.
 
 \item $\forall \ket{v} \in \mathbb{V}$, $\ket{v}$ puede ser escrito como combinación lineal de vectores de $B$.
 \end{itemize}
 \end{deff}
 
-Además podemos asegurar la existencia de este conjunto para todo espacio vectorial. Y también de que el número de elementos de dos bases distintas del mismo espacio vectorial coincide y nos referiremos a este número como \textbf{dimensión} del espacio $\mathbb{V}$.
+Además podemos asegurar la existencia de este conjunto para todo espacio vectorial. Además dos bases distintas del mismo espacio vectorial tienen el mismo número de elementos y nos referiremos a este número como \textbf{dimensión} del espacio $\mathbb{V}$.
 \\
-Como hemos hecho mención antes, nuestro interés se halla en espacios vectoriales de dimensión finita, por tanto haremos omiso de las cuestiones relacionadas con espacios de dimensión infinita.
+Como hemos mencionado antes, nuestro interés se halla en espacios vectoriales de dimensión finita, por tanto no entraremos en detalle con las cuestiones relacionadas con espacios de dimensión infinita.
 
 \subsection{Aplicaciones lineales y forma matricial}
 
@@ -317,7 +318,7 @@ z_1 \\ z_2 \\ \vdots \\ z_m
 \end{itemize}
 donde $a,b \in \mathbb{C}$, $\ket{u}, \ket{v}, \ket{w} \in \mathbb{V}$ y $\bar{a} \in \mathbb{C}$ es el conjugado complejo del elemento $a$.
 \end{deff}
-La notación estándar del producto escalar en mecánica cuántica no es $(\ket{u}, \ket{v})$, sino $\braket{u|v}$, donde $\ket{u}$ y $\ket{v}$ son vectores de $\mathbb{V}$ y $\bra{u}$ denota el vector dual al vector $\ket{u}$, también conocido como \textbf{bra}. El dual es una aplicación lineal cuya definición es $\bra{u}(\ket{v}) := \braket{u|v} = (\ket{u},\ket{v})$. A partir de ahora, usaremos más esta notación.
+La notación estándar del producto escalar en mecánica cuántica no es $(\ket{u}, \ket{v})$, sino $\braket{u|v}$, donde $\ket{u}$ y $\ket{v}$ son vectores de $\mathbb{V}$ y $\bra{u}$ denota el vector dual al vector $\ket{u}$, también conocido como \textbf{bra}. El dual es una aplicación lineal cuya definición es $\bra{u}(\ket{v}) := \braket{u|v} = (\ket{u},\ket{v})$. A partir de ahora, usaremos esta notación.
 
 \begin{deff}Diremos que dos vectores $\ket{u}$ y $\ket{v}$ son \textbf{ortogonales} si su producto escalar es 0.
 \\
@@ -328,9 +329,9 @@ Además definiremos como \textbf{norma} del vector como
 y diremos que $\ket{v}$ es unitario o normalizado si $\norm{\ket{v}} = 1$.
 \end{deff}
 
-\begin{deff}Por tanto diremos que un conjunto, $\ket{i} \in \mathbb{V}$ de vectores es \textbf{ortonormal} si son vectores unitarios y además son ortogonales entre sí. Es decir,
+\begin{deff}Diremos que un conjunto, $\{\ket{i}\}_{i\in I}$ de vectores, para $I$ un conjunto arbitrario de indices, es \textbf{ortonormal} si son vectores unitarios y además son ortogonales entre sí. Es decir,
 \begin{equation}
-\forall \ket{i},\ket{j} \in \mathbb{V} \:
+\forall \ket{i},\ket{j} \;
 \braket{i|j} = \delta_{ij} = \left\{ 
 \begin{array}{lcc}
 1 & si & i = j \\
@@ -339,14 +340,10 @@ y diremos que $\ket{v}$ es unitario o normalizado si $\norm{\ket{v}} = 1$.
 \end{equation}
 \end{deff}
 
-Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un producto escalar. Trabajaremos a partir de ahora en un espacio vectorial complejo de dimensión finita y con un producto escalar. Dicho espacio es denominado usualmente como \textbf{espacio de Hilbert}.
+Un espacio vectorial euclídeo no es más que un espacio vectorial dotado de un producto escalar. Trabajaremos a partir de ahora en un espacio vectorial complejo de dimensión finita con un producto escalar. Dicho espacio es denominado usualmente como \textbf{espacio de Hilbert}.
 
-%\begin{deff}\textbf{Espacio de Hilbert}
-%(falta)(y buscar referencia)
-%\end{deff}
-
-En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente a espacio euclídeo.
-No entraremos en detalles en el caso de que la dimensión sea infinita, ya que para hablar de espacio de Hilbert sería necesario que se cumplan alguna propiedad extra. Nos centraremos en el caso de la dimensión finita cuando hablemos de espacio de Hilbert.\\
+En nuestro caso por la finitud de la dimensión, un espacio de Hilbert es equivalente al espacio euclídeo.
+No entraremos en detalles en el caso de que la dimensión sea infinita, ya que para hablar de espacio de Hilbert sería necesario que se cumplan algunas propiedades adicionales. Nos centraremos en el caso de la dimensión finita cuando hablemos de espacio de Hilbert.\\
 \linebreak
 Podemos ver ahora que el producto escalar en un espacio de Hilbert tiene una representación matricial muy útil.
 Consideramos $\ket{u} = \sum_i u_i\ket{i}$ y $\ket{v} = \sum_j v_j\ket{j}$ con $\ket{i}, \ket{j}$ vectores de una base ortonormal $\{ \ket{1}, \ket{2}, \ldots, \ket{n} \}$.
@@ -453,7 +450,7 @@ El espacio de la imagen sigue siendo un espacio vectorial y de hecho, si tomamos
 \begin{equation}
 \lbrace \ket{v_i}\otimes\ket{w_j} \mid 1\leq i \leq m, 1\leq j \leq n \rbrace
 \end{equation}
-es una base de $\mathbb{V}\otimes\mathbb{W}$. Y por tanto, la dimensión como espacio vectorial de $\mathbb{V}\otimes\mathbb{W}$ es $m\cdot n$ siendo $m$ y $n$ la dimensión de $\mathbb{V}$ y $\mathbb{W}$ respectivamente.
+es una base de $\mathbb{V}\otimes\mathbb{W}$. La dimensión como espacio vectorial de $\mathbb{V}\otimes\mathbb{W}$ es $m\cdot n$ siendo $m$ y $n$ la dimensión de $\mathbb{V}$ y $\mathbb{W}$ respectivamente.
 \\
 Las aplicaciones lineales del espacio $\mathbb{V}\otimes\mathbb{W}$ que consideraremos serán aquellas resultantes del producto tensorial de dos aplicaciones lineales del espacio de los factores, de manera que cumplan
 \begin{equation} \label{prtensorial_aplineal}
@@ -461,7 +458,7 @@ Las aplicaciones lineales del espacio $\mathbb{V}\otimes\mathbb{W}$ que consider
 \end{equation}
 De hecho, toda aplicación lineal de $\mathbb{V}\otimes\mathbb{W}$ se puede representar como combinación lineal de aplicaciones de $\mathbb{V}$ y $\mathbb{W}$ con el producto tensorial, actuando como espacio resultante del producto tensorial del espacio de los endomorfismos.
 \\
-En cuanto a la práctica resulta muy cómodo trabajar con la representación matricial de estas aplicaciones y el producto de Kronecker. Pues si consideramos $A$ una matriz $m\times n$ y $B$ una matriz $p\times q$, su producto tensorial sería:
+En cuanto a la práctica resulta muy cómodo trabajar con la representación matricial de estas aplicaciones y el producto de Kronecker. Si consideramos $A$ una matriz $m\times n$ y $B$ una matriz $p\times q$, su producto tensorial sería:
 \begin{equation}
 A\otimes B =
 \begin{bmatrix}
@@ -500,17 +497,6 @@ v_nw_1 \\ v_nw_2 \\ \vdots \\ v_nw_n
 \end{bmatrix}
 \end{equation}
 
-%Aplicaciones lineales y matrices[x]
-
-%Bases[x]
-
-%Producto escalar[x]
-
-%Autovalores y autovectores puede ser.[Por ahora no]
-
-%Matrices Adjuntas o Hermitian(buscar traducción)
-
-%Producto tensorial
 
 \newpage
 
@@ -565,13 +551,13 @@ Se entiende fácilmente el estado de un qubit como un vector del espacio vectori
 \end{tikzpicture}
 \end{figure}
 
-Podemos determinar el estado de un bit clásico a la hora de examinarlo, pero en el caso del qubit, no podemos determinar el estado cuántico de un qubit en superposición, es decir, no podemos hallar el valor de $\alpha$ y $\beta$. Lo que sí podemos hacer es \textbf{medir} el qubit, determinar si colapsa en el estado $\ket{0}$ con probabilidad $|\alpha|^2$ ó en el estado $\ket{1}$ con probabilidad $|\beta|^2$. En otra palabras, el proceso de medir un qubit, nos devuelve como salida un estado clásico al que colapsa y deja de estar en superposición de varios estados de manera simultanea.\\
+Podemos determinar el estado de un bit clásico a la hora de examinarlo, pero en el caso del qubit, no podemos determinar el estado cuántico de un qubit en superposición, es decir, no podemos hallar el valor de $\alpha$ y $\beta$. Lo que sí podemos hacer es \textbf{medir} el qubit, determinar si colapsa en el estado $\ket{0}$ con probabilidad $|\alpha|^2$ ó en el estado $\ket{1}$ con probabilidad $|\beta|^2$. En otra palabras, el proceso de medir un qubit, nos devuelve como salida un estado clásico al que colapsa con cierta probabilidad.
 \linebreak
 Veamos ahora otra representación geométrica del qubit que puede resultar útil. Consideramos un qubit en estado de superposición.
 \begin{equation}
 \ket{\psi} = c_0\ket{0} + c_1\ket{1} 
 \end{equation}
-con $\|c_0|^2 + |c_1|^2 = 1$. Reescribimos la expresión en coordenadas en forma exponencial de un número complejo,
+con $|c_0|^2 + |c_1|^2 = 1$. Reescribimos la expresión en coordenadas en forma exponencial de un número complejo,
 \begin{equation}
 \ket{\psi} = r_0 e^{i\varphi_0}\ket{0} + r_1 e^{i\varphi_1}\ket{1}
 \end{equation}
@@ -584,7 +570,7 @@ Tomando ahora coordenadas polares $r_0 = \cos(\theta)$, $r_1 = \sin(\theta)$ y e
 \begin{equation}
 \ket{\psi} = \cos(\theta)\ket{0} + e^{i\varphi}\sin(\theta)\ket{1}
 \end{equation}
-Considerando $\theta$ y $\varphi$ como coordenadas de un punto en una esfera tridimensional, podemos ver el estado del qubit como un punto en la superficie de dicha esfera, siendo los polos los estados $\ket{0}$ y $\ket{1}$. Esta esfera recibe el nombre de \textbf{esfera de Bloch} y veremos en poco que con ella podemos representar operaciones de qubits como rotaciones de la esfera.
+Considerando $\theta$ y $\varphi$ como coordenadas de un punto en una esfera tridimensional, podemos ver el estado del qubit como un punto en la superficie de dicha esfera. Los polos serían los estados $\ket{0}$, $\ket{1}$ y $\theta$, $\varphi$ la latitud y la longitud respectivamente. Esta esfera recibe el nombre de \textbf{esfera de Bloch} y veremos en poco que con ella podemos representar operaciones de qubits como rotaciones de la esfera.
 
 \begin{figure}[h]
 	\centering
@@ -661,7 +647,7 @@ Un ejemplo importante de un sistema de dos qubits es el \textbf{estado de Bell} 
 \begin{equation}
 \frac{\ket{00} + \ket{11}}{\sqrt{2}}
 \end{equation}
-que nos muestra una propiedad importante de los sistemas de varios qubits a la hora de hacer mediciones. Si medimos el primer qubit tendrá una probabilidad de $(\frac{1}{\sqrt{2}})^2 = \frac{1}{2}$ de estar en el estado $\ket{0}$ y una probabilidad de $\frac{1}{2}$ de estar en el estado $\ket{1}$. Esto dejará el sistema en el estado $\ket{\psi'} = \ket{00}$ ó $\ket{\psi'} = \ket{11}$. En cualquier caso tenemos que ambas situaciones, tras medir el primer qubit, si medimos el segundo este coincidirá con el primero. Es decir, que ambos qubits está enlazados.\\
+que nos muestra una propiedad importante de los sistemas de varios qubits a la hora de hacer mediciones. Si medimos el primer qubit tendrá una probabilidad de $(\frac{1}{\sqrt{2}})^2 = \frac{1}{2}$ de estar en el estado $\ket{0}$ y una probabilidad de $\frac{1}{2}$ de estar en el estado $\ket{1}$. Esto dejará el sistema en el estado $\ket{\psi'} = \ket{00}$ ó $\ket{\psi'} = \ket{11}$. En cualquier caso tenemos que ambas situaciones, tras medir el primer qubit, si medimos el segundo este coincidirá con el primero siempre. Es decir, la acción de medir el primer qubit influye también al segundo qubit hasta el punto de colapsar su estado de superposición a un estado clásico. Diremos que ambos qubits está enlazados.\\
 \linebreak
 Nos fijamos un momento en la dimensión del espacio vectorial que representa nuestro sistema. Supongamos que tenemos un número de un tamaño considerable de qubits, $n=500$. Si quisiéramos simular este sistema en un ordenador clásico realizando las operaciones matriciales necesarias en la computación, tendríamos que para un estado del sistema almacenar $2^{500}$ coordenadas complejas del vector además de trabajar con matrices de tamaño $2^{500}$. Esto claramente no es factible hoy en día resultando en una de los problemas en cuanto a la computación cuántica.
 
@@ -900,7 +886,7 @@ Una excepción de las puertas cuánticas sería la operación de medir un qubit,
 	 \nghost{cw} & \lstick{\ket{\psi}} & \qw & \meter & \cw & \cw\\
 \\ }}
 \end{figure}\\
-Hemos visto varios ejemplos de circuitos cuánticos con las puertas cuánticas. Vamos a centrarnos en construir circuitos más complejos combinando las puertas. Podemos tanto concatenar las puertas, realizando una operación tras otra, y operar de manera paralela con ellas, de manera simultanea a un subconjunto del sistema de qubits. Hacemos notar varias restricciones respecto al mundo clásico y es que no permitiremos bucles en los circuitos, de manera que cada circuito funcione de izquierda a derecha y sea acíclico. Además no permitiremos tanto combinar dos cableado en uno, como dividir uno en dos. Veremos en un ejemplo próximo que de hecho no podemos copiar el estado de un qubit a otro.\\
+Hemos visto varios ejemplos de circuitos cuánticos con las puertas cuánticas. Vamos a centrarnos en construir circuitos más complejos combinando las puertas. Podemos concatenar las puertas realizando una operación tras otra y operar de manera paralela con ellas, de manera simultánea a un subconjunto del sistema de qubits. Hacemos notar varias restricciones respecto al mundo clásico y es que no permitiremos bucles en los circuitos, de manera que cada circuito funcione de izquierda a derecha y sea acíclico. Además no permitiremos tanto combinar dos cableado en uno, como dividir uno en dos. Veremos en un ejemplo próximo que de hecho no podemos copiar el estado de un qubit a otro.\\
 \linebreak
 En cuanto a concatenar las puertas en un circuito, simplemente realizaremos una operación tras otra, de manera ordenada. Si queremos tratar la operación como una matriz, esta se representará por productos de matrices de manera natural. Por ejemplo si queremos aplicar dos veces la puerta CNOT como hemos hecho antes,
 \begin{equation}
@@ -925,7 +911,7 @@ En cuanto a concatenar las puertas en un circuito, simplemente realizaremos una 
 \end{equation}
 resultando lo que esperábamos, ya que la puerta CNOT es reversible por sí misma, resultando que la concatenación de ella con sigo misma es la identidad.\\
 \linebreak
-También podemos realizar operaciones de manera paralela a distintos bits a través de productos tensoriales entre las matrices, siempre cuidando el tamaño de las matrices. Por ejemplo, si queremos aplicar la puerta de Hadamard $H$ a ambos qubits de un sistema de dos qubits, el resultado final será igual que aplicar $(H\otimes H)$ como una puerta al sistema,
+También podemos realizar operaciones de manera paralela a distintos bits a través de productos tensoriales entre las matrices, siempre cuidando su dimensión. Por ejemplo, si queremos aplicar la puerta de Hadamard $H$ a ambos qubits de un sistema de dos qubits, el resultado final será igual que aplicar $(H\otimes H)$ como una puerta al sistema,
 \begin{figure}[h]
 \centering
 \scalebox{1.0}{
@@ -951,10 +937,10 @@ Supongamos entonces que comenzaremos con el estado $\ket{00}$, para los otros ca
 \begin{equation}
 \ket{\psi'} = \textrm{CNOT}\cdot(H\otimes I)(\ket{x\otimes y})
 \end{equation}
-Hacemos notar que a pesar de que no le aplicamos ninguna puerta de manera simultanea a $\ket{y}$ para poder hacer el producto de matrices adecuadamente, es necesario aplicar el producto tensorial a la puerta de Hadamard con la identidad, que no altera el estado de $\ket{y}$.\\
-Resolvamos entonces la expresión, con el estado $\ket{00}$ en concreto. Aplicando la propiedad de la expresión \ref{matriz_tensorial} , tenemos que:
+Hacemos notar que a pesar de que no le aplicamos ninguna puerta de manera simultánea a $\ket{y}$ para poder hacer el producto de matrices adecuadamente, es necesario aplicar el producto tensorial a la puerta de Hadamard con la identidad, que no altera el estado de $\ket{y}$.\\
+Resolvamos entonces la expresión, con el estado $\ket{00}$ en concreto. Aplicando la propiedad de la expresión \ref{matriz_tensorial}, tenemos que:
 \begin{equation}
-\ket{\psi'} = \textrm{CNOT}\cdot(H\otimes I)(\ket{00}) = \textrm{CNOT}((H\ket{0}) \otimes (I\ket{0})) = \textrm{CNOT}(\frac{\ket{0}+\ket{1}}{\sqrt{2}}\otimes\ket{0})
+\ket{\psi'} = \textrm{CNOT}\cdot(H\otimes I)(\ket{00}) = \textrm{CNOT}((H\ket{0}) \otimes (I\ket{0})) = \textrm{CNOT}\left(\frac{\ket{0}+\ket{1}}{\sqrt{2}}\otimes\ket{0}\right)
 \end{equation}
 Reordenando la expresión con las propiedades del producto escalar tenemos que:
 \begin{equation}
@@ -1131,7 +1117,7 @@ Realizamos entonces la medición de los dos primeros qubits, que por estar enlaz
 Quedará finalmente realizar la transformación correspondiente al tercer qubit. Si el resultado de la medición es $00$ entonces no es necesario realizar ningún cambio pues tenemos que el estado del tercer qubit es $\alpha\ket{0}+\beta\ket{1} = \ket{\varphi}$. Si es $01$ tendremos que aplicar la puerta $X$ para transformar el $1$ en $0$ y el $0$ en $1$. Si es $10$ aplicaremos entonces la puerta $Z$ que cambia el signo de la segunda coordenada, el coeficiente de $\ket{1}$. Y finalmente, en el caso de $11$ aplicaremos primero la puerta $X$, seguido de la puerta $Z$.
 Esto sería equivalente a aplicar la transformación $Z^{M_1} X^{M_2}$ con $M_1$ y $M_2$ el valor de los dos primeros qubits, recuperando entonces el estado $\ket{\varphi}$ en el qubit que controla el receptor.\\
 
-
+\newpage
 
 \subsection{Algoritmo de Deutsch}
 
@@ -1141,7 +1127,7 @@ Veamos ahora un algoritmo simple que llamaremos como el algoritmo de Deutsch. Es
 Diremos que la función $f:\{0, 1\} \rightarrow \{0, 1\}$ es balanceada si $f(0) \neq f(1)$, y diremos que es constante si $f(0) = f(1)$.
 \end{deff}
 El algoritmo consistirá en tomar una función $f:\{0, 1\} \rightarrow \{0, 1\}$, que desconocemos su definición y sólo podremos evaluarla obteniendo su imagen con el objetivo de determinar si la función es balanceada o constante.\\
-En un algoritmo clásico podríamos siempre evaluar la función en todos sus valores para determinar si es balanceada o constate. Esto nos llevaría un total de dos evaluaciones de la función. Veamos si el algoritmo cuántico puede mejorar esto ya que nos permite evaluar de manera simultanea sobre todos los valores posibles.\\
+En un algoritmo clásico podríamos siempre evaluar la función en todos sus valores para determinar si es balanceada o constate. Esto nos llevaría un total de dos evaluaciones de la función. Veamos si el algoritmo cuántico puede mejorar esto ya que nos permite evaluar de manera simultánea sobre todos los valores posibles.\\
 Para ello tomaremos una puerta cuántica que evaluará la función y observamos que esta tiene que ser reversible. Consideraremos la siguiente operación unitaria $U_f$. A esta función a veces nos referiremos como oráculo, ya que nos evaluará la función indicando la imagen sin que nosotros sepamos la definición de la función. Recordemos también está representado por una matriz unitaria.
 \begin{figure}[h]
 \centering
@@ -1165,12 +1151,12 @@ El estado $\ket{x, y}$ queda trasformado en $\ket{x, y\oplus f(x)}$ y posteriorm
 $\ket{x, (y\oplus f(x))\oplus f(x)} = \ket{x, y\oplus (f(x)\oplus f(x))} = \ket{x, y\oplus 0} = \ket{x, y}$, ya que $f(x)\oplus f(x) = 0$.\\
 Una vez conseguido el oráculo que nos evaluará la función en los qubits, podemos construir el circuito del algoritmo que consistirá en lo siguiente:
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
 \scalebox{1.5}{
 \Qcircuit @C=1.0em @R=0.8em @!R { \\
-	 \nghost{\ket{x}} & \qw_(0.0){\ket{0}} & \gate{\mathrm{H}} & \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \gate{\mathrm{H}} & \qw & \meter \\
-	 \nghost{\ket{y}} & \qw_(0.0){\ket{1}} & \gate{\mathrm{H}} & \qw^(0.0){\ket{\varphi_1}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw^(0.0){\ket{\varphi_2}} & \qw & \qw^(0.0){\ket{\varphi_3}} & \qw \\}}
+	 \nghost{} & \qw_(0.0){\ket{0}} & \gate{\mathrm{H}} & \qw & \multigate{1}{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} & \qw & \gate{\mathrm{H}} & \qw & \meter \\
+	 \nghost{} & \qw_(0.0){\ket{1}} & \gate{\mathrm{H}} & \qw^(0.0){\ket{\varphi_1}} & \nghost{\hspace{0.2cm}\mathrm{U_f}\hspace{0.2cm}} \qw & \qw^(0.0){\ket{\varphi_2}} & \qw & \qw^(0.0){\ket{\varphi_3}} & \qw \\}}
 \end{figure}\ \linebreak
 Esto en términos matriciales sería:
 \begin{equation}
@@ -1261,7 +1247,7 @@ El algoritmo de Deutsch-Jozsa resuelve el problema de dada una función $f:\{0, 
 
 Veamos primero como se podría resolver utilizando un método clásico. Se podría evaluar la función diferentes valores para poder determinar si es balanceada o constante. En el mejor de los casos, si tras dos evaluaciones se llega a dos imágenes distintas, podemos concluir que es balanceada pues está asegurado que cumpla una de las propiedades. En el peor de los casos se requiere evaluar la mitad de los elementos más uno, si todas las imágenes comprobadas son iguales se llega a que la función es constante, en otro caso será balanceada. Esto requiere en el pero de los casos $\frac{2^n}{2}+1$ evaluaciones de la función. Lo que lleva un orden de complejidad $O(2^n)$. Veamos si con el algoritmo cuántico se puede mejorar.\\
 \linebreak
-El algoritmo consistirá como el anterior, pondremos los qubits en estado de superposición para poder evaluarlos de manera simultanea en el oráculo. Este tendrá la siguiente forma, que se podrá representar con una matriz unitaria.\\
+El algoritmo consistirá como el anterior, pondremos los qubits en estado de superposición para poder evaluarlos de manera simultánea en el oráculo. Este tendrá la siguiente forma, que se podrá representar con una matriz unitaria.\\
 \begin{figure}[h]
 \centering
 \scalebox{1.5}{
@@ -1348,6 +1334,7 @@ De esta manera si definimos la aplicación $\langle \ , \ \rangle : \{0, 1\}^n \
 \end{equation}
 Observamos que esta aplicación es en realidad el producto escalar del espacio vectorial cuyo cuerpo es el espacio $\mathbb{Z}_2$. Por tanto, podemos expresar $H^{\otimes 2}$ como
 \begin{equation}
+\frac{1}{2}
 \begin{bmatrix}
 (-1)^{\langle 00, 00 \rangle} & (-1)^{\langle 00, 01 \rangle} & (-1)^{\langle 00, 10 \rangle} & (-1)^{\langle 00, 11 \rangle} 
 \\
@@ -1362,7 +1349,7 @@ Ahora, si queremos generalizarlo para $H^{\otimes n}$ tenemos que su elemento de
 \begin{equation}
 H^{\otimes n} = \frac{1}{\sqrt{2^n}}(-1)^{\langle i, j \rangle}
 \end{equation}
-Entonces, si consideramos un estado arbitrario $\ket{\mathbf{y}}$ que estará representado por un vector con un $1$ en la posición $\mathbf{y}$ y el resto $0$ y le aplicamos $H^{\otimes n}$, obtendremos la suma de los elementos de la columna $\mathbf{y}$ de la matriz, es decir,
+Entonces, consideramos un estado arbitrario $\ket{\mathbf{y}}$ que estará representado por un vector con un $1$ en la posición $\mathbf{y}$ y el resto $0$. Le aplicamos $H^{\otimes n}$ y obtendremos la suma de los elementos de la columna $\mathbf{y}$ de la matriz, es decir,
 \begin{equation} \label{gHadamard}
 H^{\otimes n}\ket{\mathbf{y}} =
 \frac{1}{\sqrt{2^n}}\sum_{\mathbf{x}\in \{ 0, 1\}^n} (-1)^{\langle \mathbf{x}, \mathbf{y} \rangle} \ket{\mathbf{x}}
@@ -1704,7 +1691,7 @@ Aplicamos el oráculo $U_f$ y recordando que es lineal tenemos,
 Finalmente, aplicamos de nuevo la matriz de Hadamard teniendo en cuenta la expresión \ref{gHadamard} y obtenemos
 \begin{equation}
 \ket{\varphi_3} =
-\frac{ \sum_{\mathbf{x}\in\{0,1\}^n} \sum_{\mathbf{z}\in\{0,1\}^n} (-1)^{\langle \mathbf{z}, \mathbf{x} \rangle} \ket{\mathbf{x}, f(\mathbf{x})} } {2^n}
+\frac{ \sum_{\mathbf{x}\in\{0,1\}^n} \sum_{\mathbf{z}\in\{0,1\}^n} (-1)^{\langle \mathbf{z}, \mathbf{x} \rangle} \ket{\mathbf{z}, f(\mathbf{x})} } {2^n}
 \end{equation}
 Observamos entonces que en el sumatorio, para cada $\mathbf{x}$ y para cada $\mathbf{z}$ tenemos que $\ket{\mathbf{z}, f(\mathbf{x})}$ coincide con $\ket{\mathbf{z}, f(\mathbf{x}\oplus\mathbf{c})}$ por la periodicidad de la función. Por tanto si agrupamos los pares, sus coeficientes serán
 \begin{equation}
@@ -1720,7 +1707,7 @@ Observamos entonces que en el sumatorio, para cada $\mathbf{x}$ y para cada $\ma
 \end{equation}
 Entonces, si discutimos la expresión según el valor de $\langle \mathbf{z}, \mathbf{c} \rangle$ tenemos que si $\langle \mathbf{z}, \mathbf{c} \rangle = 1$, la expresión anterior se anula. Si $\langle \mathbf{z}, \mathbf{c} \rangle = 0$ obtenemos el valor $\pm 1$. Por tanto si medimos los $n$ primeros qubits tras el circuito, obtendremos las cadena binarias $\mathbf{z}$ que cumplen que $\langle \mathbf{z}, \mathbf{c} \rangle = 0$. Lo que nos queda por hacer es sólamente plantear una ecuación lineal con las cadenas resultantes para obtener $\mathbf{c}$.\\
 \linebreak
-Por tanto necesitamos ejecutar el circuito varias veces para obtener $n$ cadenas de diferentes $\mathbf{z_i}$ tal que $\langle \mathbf{z_i}, \mathbf{c} \rangle = 0$ para poder resolver la ecuación lineal que se presenta. Por tanto el orden de complejidad del algoritmo sería de $O(n)$.
+Necesitamos ejecutar el circuito varias veces para obtener $n$ cadenas de diferentes $\mathbf{z_i}$ tal que $\langle \mathbf{z_i}, \mathbf{c} \rangle = 0$ para poder resolver la ecuación lineal que se presenta. Obtenemos un orden de complejidad del algoritmo de $O(n)$.
 
 \newpage
 
@@ -1846,7 +1833,7 @@ Finalmente realizamos una operación de intercambio con la puerta de intercambio
 \end{equation}
 Con esto terminamos en el estado que buscábamos además de demostrar que la transformada cuántica de Fourier es unitaria pues está compuesto de operaciones unitarias.\\
 \linebreak
-La complejidad del algoritmo o de la operación dependerá entonces del número de puertas u operaciones del circuito. Se aplica entonces primero una puerta de Hadamard seguido de $n-1$ puertas controladas de rotación para el primer qubit, con un total de $n$ puertas para el primer qubit. Esto le sigue también una puerta de Hadamard en el segundo qubits seguido de otras $n-2$ puertas controladas, con un total de $n + (n-1)$ puertas para el primer y segundo qubit. Podemos ver entonces que esto nos llevará un total de $n +(n-1) + \ldots +1 = n(n+1)/2$ puetas. No nos olvidamos de las operaciones de intercambio requiriendo al menos $n/2$ operaciones. Por tanto la complejidad de la transformada cuántica de Fourier es de $O(n^2)$.
+La complejidad del algoritmo o de la operación dependerá entonces del número de puertas u operaciones del circuito. Se aplica entonces primero una puerta de Hadamard seguido de $n-1$ puertas controladas de rotación para el primer qubit, con un total de $n$ puertas para el primer qubit. Esto le sigue también una puerta de Hadamard en el segundo qubits seguido de otras $n-2$ puertas controladas, con un total de $n + (n-1)$ puertas para el primer y segundo qubit. Podemos ver entonces que esto nos llevará un total de $n +(n-1) + \ldots +1 = n(n+1)/2$ puetas. No nos olvidamos de las operaciones de intercambio requiriendo al menos $n/2$ operaciones. Por tanto la complejidad de la transformada cuántica de Fourier es de $O(n^2)$.\\
 
 Ahora veremos que la transformación cuántica de Fourier es esencial para el proceso de la estimación de la fase. Este último consiste en considerar una aplicación unitaria $U$ que tiene un autovector $\ket{u}$ con autovalor $e^{2\pi \varphi}$ donde se desconoce el valor de $\varphi$. Tenemos el objetivo de estimar el valor de $\varphi$ y para ello dispondremos de el oráculo que nos permitirá realizar la operación controlada de $U^{2^j}$.\\
 Comenzaremos con dos registros de qubits, o dos conjuntos de qubits. El primero registro tendrá $t$ qubits en el estado $\ket{\mathbf{0}}$ con $t$ el número de bits que contendrá la aproximación de $\varphi$.\\
@@ -2044,14 +2031,13 @@ Entonces a partir de esto teoremas podemos sacar un algoritmo para factorizar co
 
 \section{Conclusión}
 
-En esta sección no mostraremos una conclusión como tal, pues por la naturaleza del trabajo, no se lleva a un resultado que exija su presentación en un conclusión.\\
-Sin embargo aprovecharemos esta parte para mostrar algunas impresiones propias sobre el trabajo en vista a lo que se ha hecho.\\
+Aprovecharemos esta parte para mostrar algunas impresiones propias sobre el trabajo en vista a lo que se ha hecho.\\
 \linebreak
-Teniendo en cuenta entonces el área de estudio, podemos decir que ha sido muy interesante ver tanto, soluciones a algunas cuestiones de la computación que se han visto en la propia carrera como las técnicas aplicadas en ella. A pesar de lo sencillo que puede resultar la álgebra lineal en principio, hemos visto que es potente permitiendo a uno resolver incluso problemas con una complejidad elevada.\\
+Teniendo en cuenta entonces el área de estudio, podemos decir que ha sido muy interesante ver tanto, soluciones a algunas cuestiones de la computación que se han visto en la propia carrera como las técnicas aplicadas en ella. A pesar de lo sencillo que puede resultar la álgebra lineal en principio, hemos visto que es lo suficientemente potente para resolver incluso problemas con una complejidad elevada.\\
 \linebreak
-Sin embargo, lamentamos la falta de tanto tiempo como conocimientos para entrar en detalles más profundos y complejos, ya sea en cuestiones de la mecánica cuántica que es de vital importancia, o de cualquier cuestión propia de la computación cuántica que no hemos entrado en detalle. Damos de ejemplo la existencia de puertas universales, como en la última parte donde se desarrollan ideas de la teoría de números. A pesar de todos esto, hacemos notar que ambos libros ofrece fuentes de información para los temas más complejos, ya sea referenciados o en el propio libro.\\
+Sin embargo, lamentamos la falta tanto de tiempo como conocimientos para entrar en detalles más profundos y complejos, ya sea en cuestiones de la mecánica cuántica que es de vital importancia, o de cualquier cuestión propia de la computación cuántica. Damos de ejemplo la existencia de puertas universales, como en la última parte donde se desarrollan ideas de la teoría de números. A pesar de todo esto, hacemos notar que ambos libros ofrecen fuentes de información para los temas más complejos.\\
 \linebreak
-Además también queremos mencionar sobre las implementaciones de los algoritmos. Debido tanto a la falta de conocimientos y también a la falta de recursos las implementaciones están realizadas con un número bajo de qubits por la naturaleza de las simulaciones, donde un número elevado de qubits conlleva un incremento exponencial en el uso de los recursos. Y también queremos hacer notar, quizás lo único que podríamos concluir en este trabajo, es que en las pocas ejecuciones del algoritmo en un ordenador cuántico real hemos visto cómo de erróneo estaba el resultado obtenido. Esto nos muestra que la implementación de los ordenadores cuánticos siguen en desarrollo, teniendo que esperar a estos para poder ver una implementación real de los algoritmos y que sea funcional.\\
+Además también queremos mencionar sobre las implementaciones de los algoritmos. Debido a la falta de recursos las implementaciones están realizadas con un número bajo de qubits por la naturaleza de las simulaciones, donde un número elevado de qubits conlleva un incremento exponencial en el uso de los recursos. También queremos hacer notar, quizás lo único que podríamos concluir en este trabajo, es que en las pocas ejecuciones del algoritmo en un ordenador cuántico real hemos visto cómo de erróneo estaba el resultado obtenido. Esto nos muestra que la implementación de los ordenadores cuánticos siguen en desarrollo, teniendo que esperar a estos para poder ver una implementación más precisa y funcional de los algoritmos.\\
 
 \newpage
 
