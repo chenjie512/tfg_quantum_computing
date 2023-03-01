@@ -393,7 +393,7 @@ Representación geométrica:
 
 \begin{center}
 
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.7,xscale=0.7]
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.6,xscale=0.6]
 %uncomment if require: \path (0,369); %set diagram left start at 0, and has height of 369
 
 \uncover<1->{
@@ -474,12 +474,22 @@ Representación geométrica:
 
 \end{center}
 
+\uncover<1->{
+\begin{equation}
+\ket{\psi} = \frac{1}{\sqrt{N}} \sum_{\mathbf{x}\in\{0,1\}^n} \ket{\mathbf{x}}
+\qquad
+\ket{\alpha} = \frac{1}{\sqrt{N-M}} \sum_{f(\mathbf{x}) = 0} \ket{\mathbf{x}}
+\qquad
+\ket{\beta} = \frac{1}{\sqrt{M}} \sum_{f(\mathbf{x}) = 1} \ket{\mathbf{x}}
+\end{equation}
+}
+
 
 \end{frame}
 
 \begin{frame}{Algoritmo de Periodicidad de Simon}
 \begin{block}{Periodicidad}
-Sea $ff:\{0,1\}^n \longrightarrow \{0,1\}^n$ tal que se cumple que existe una cadena binaria $\mathbf{c}\in\{0,1\}^n$, para todo $\mathbf{x}, \mathbf{y}\in\{0,1\}^n$ se cumple
+Sea $f:\{0,1\}^n \longrightarrow \{0,1\}^n$ tal que se cumple que existe una cadena binaria $\mathbf{c}\in\{0,1\}^n$, para todo $\mathbf{x}, \mathbf{y}\in\{0,1\}^n$ se cumple
 \begin{equation}
 f(\mathbf{x}) = f(\mathbf{y}) \; \text{si y sólo si} \; \mathbf{x} = \mathbf{y}\oplus \mathbf{c}
 \end{equation}
@@ -566,7 +576,9 @@ R_k =
 
 \end{frame}
 
-\begin{frame}[fragile]{Conclusiones}
+\section{Ejecuciones de algoritmos}
+
+\begin{frame}[fragile]{Ejecuciones de algoritmos}
 Código en qiskit para el algoritmo de Grover:
 \begin{columns}
 \column{0.5\textwidth}
@@ -605,7 +617,7 @@ gc.draw('mpl')
 \end{frame}
 
 
-\begin{frame}{Conclusiones}
+\begin{frame}{Ejecuciones de algoritmos}
 
 \only<1>{
 Circuito cuántico de Grover implementado en qiskit:
@@ -631,6 +643,23 @@ Ejecución en un ordenador cuántico:
 
 \end{frame}
 
+\section{Conclusiones}
+
+\begin{frame}{Conclusiones}
+\begin{itemize}[<+->]
+\item Se requiere conocimientos sobre álgebra lineal y producto tensorial para la computación cuántica.
+
+\item A parte del área de estudio de cada algoritmo. Como el caso del algoritmo de factorización de Shor con la teoría de números.
+
+\item Hay temas más complejos como la existencia de puertas universales.
+
+\item Las implementaciones se han hecho con un número bajo de qubits.
+
+\item La tecnología de hoy en día no permite una implementación totalmente funcional.
+
+\end{itemize}
+
+\end{frame}
 
 
 \end{document}

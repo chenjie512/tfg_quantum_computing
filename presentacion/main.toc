@@ -2,3 +2,5 @@
 \beamer@sectionintoc {1}{Quantum Bit}{3}{0}{1}
 \beamer@sectionintoc {2}{Puertas cuánticas}{8}{0}{2}
 \beamer@sectionintoc {3}{Algoritmos cuánticos}{19}{0}{3}
+\beamer@sectionintoc {4}{Ejecuciones de algoritmos}{40}{0}{4}
+\beamer@sectionintoc {5}{Conclusiones}{45}{0}{5}
